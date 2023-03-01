@@ -1,0 +1,440 @@
+@import "variables.scss";
+
+/* -------------------- Nav -------------------- */
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.navlogo {
+  padding: 10px;
+}
+.home {
+  padding: 0 1rem;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: $line-color;
+  margin: 0.6rem 0; /* 16px /16 */
+  font-size: 1.45em; /* 16px /16 */
+  text-decoration: none;
+}
+.home :link:not(:hover) {
+  text-decoration: none;
+}
+.home :hover {
+  text-decoration: none;
+  color: $background-color;
+  background-color: $line-color;
+  transition: 0.1s;
+}
+.navbar .logodiv {
+  a {
+    color: black;
+    background: none;
+  }
+}
+
+.navbar .logodiv {
+  a:hover {
+    background-color: $line-color;
+    color: $background-color;
+  }
+}
+
+.nav-item {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1rem 0.7rem;
+  color: $base-text;
+  background: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.nav-item:hover {
+  color: $background-color;
+  background-color: $line-color;
+  transition: 0.2s;
+}
+.nav-item-active {
+  text-decoration: none;
+  color: white;
+  background-color: $line-color;
+}
+
+.nav-item-active:hover {
+  background-color: $dark-grey;
+}
+
+.navstuff i {
+  font-size: 1.5rem;
+}
+
+/* -------------------- Navbar responsiveness -------------------- */
+
+.navbar .icon {
+  display: none;
+  color: $line-color;
+  background: none;
+  padding: 0.5rem 0.7rem;
+}
+
+.navbar .icon:hover {
+  color: white;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background-color: $line-color;
+  a {
+    color: "white";
+  }
+}
+
+.navstuff {
+  padding-right: 30px;
+}
+
+@media screen and (max-width: 800px) {
+  .navstuff {
+    display: none;
+  }
+  .navbar a.icon {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navstuff.responsive {
+    padding-bottom: 20px;
+    background-color: white;
+    margin-top: 50px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+  }
+  .navstuff.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 30px;
+  }
+  .navstuff.responsive a {
+    float: none;
+    padding-left: 100px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    display: block;
+    text-align: right;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+}
+
+/* -------------------- Custom Scrollbar -------------------- */
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: $background-color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $base-text;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-grey;
+}
+
+/* -------------------- Font Awesome -------------------- */
+
+.fa,
+.fas {
+  font-size: 2rem;
+}
+
+/* -------------------- Manga Panel Utilities -------------------- */
+
+.mangapage {
+  max-width: 95vw;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-gap: 10px;
+  img {
+    display: block;
+    width: 100%;
+  }
+  div {
+    min-height: 100px;
+  }
+}
+
+.mangapaper {
+  background-color: $translucent-grey;
+}
+
+.mangacontent {
+  h1 {
+    margin: 0;
+  }
+  padding: 20px;
+}
+
+.mangapad {
+  padding: 20px;
+}
+
+.mangapanel {
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+  img {
+    display: block;
+  }
+}
+.mangahalftone {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAF0lEQVQYlWNgYGD4D8U4AUEF1Af0dhMAOBcH+bmFHC0AAAAASUVORK5CYII=);
+}
+
+/* -------------------- Masonry Grid -------------------- */
+
+.grid {
+  display: flex;
+  width: 90vw;
+  margin: 0 auto;
+  .grid-col {
+    flex: 1;
+  }
+  .imagediv {
+    padding: 10px;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.grid-col--2,
+.grid-col--3,
+.grid-col--4 {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .grid-col--2 {
+    display: block;
+  }
+  .grid-col--3 {
+    display: block;
+  }
+  .grid-col--4 {
+    display: none;
+  }
+}
+
+@media (min-width: 1080px) {
+  .grid-col--2 {
+    display: block;
+  }
+  .grid-col--3 {
+    display: block;
+  }
+  .grid-col--4 {
+    display: block;
+  }
+}
+
+/* -------------------- Comics Nav -------------------- */
+
+.comicnav {
+  padding: 20px 0;
+  margin: 10px auto;
+  position: relative;
+  width: 960px;
+  max-width: 90vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  a {
+    background: none;
+  }
+  img {
+    max-height: 100px;
+  }
+  div {
+    align-items: center;
+  }
+}
+
+.minicomicnav {
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-items: center;
+
+  select {
+    width: 200px;
+    max-width: 90vw;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* -------------------- Footer -------------------- */
+
+.footerseating {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.footer {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      padding: 0.5rem;
+    }
+  }
+  grid-row-start: 2;
+  grid-row-end: 3;
+  width: 100%;
+  min-height: 100px;
+  background-color: $dark-grey;
+  h1,
+  h2,
+  h3,
+  i,
+  p {
+    color: $background-color;
+    padding: 1rem;
+  }
+}
+
+.footergrid {
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas: "one" "two";
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 0.5fr;
+  :nth-child(1) {
+    grid-area: one;
+  }
+  :nth-child(2) {
+    grid-area: two;
+  }
+  :nth-child(3) {
+    grid-area: three;
+  }
+  p {
+    padding: 0;
+  }
+  a {
+    padding: 0 10px;
+    background-color: $accent-one;
+    color: black;
+  }
+  a:hover {
+    padding: 0 10px;
+    background-color: black;
+    color: white;
+    transition: 0.2s;
+  }
+  h1 {
+    padding: 0;
+  }
+}
+
+.socialjunk {
+  display: flex;
+  p {
+    text-align: right;
+  }
+  a {
+    height: auto;
+    min-height: 30px;
+    text-decoration: none;
+    background: none;
+    padding: 0;
+    i {
+      color: $background-color;
+      padding: 0.5rem;
+      min-height: 30px;
+      font-size: 1.5rem;
+      display: inline-block;
+    }
+  }
+  a:hover {
+    padding: 0;
+    background: none;
+    i {
+      color: $accent-two;
+      transition: 0.2s;
+    }
+  }
+}
+
+.pfp {
+  border-radius: 100%;
+  margin: 50px 0 10px;
+  width: 150px;
+}
+
+@media screen and (min-width: 800px) {
+  .footergrid {
+    grid-template-areas: "one two";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+.morelinks {
+  text-align: right;
+}
+
+/* -------------------- News Banner Widget -------------------- */
+
+.newswidget {
+  background: none;
+  opacity: 1;
+  transition: 0.2s;
+  img {
+    margin-top: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+  }
+}
+
+.newswidget:hover {
+  background: none;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+/* -------------------- Disqus Styling -------------------- */
+#disqus_thread {
+  background-color: $background-color;
+  padding: 20px;
+  margin-bottom: 150px;
+}

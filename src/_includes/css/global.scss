@@ -755,12 +755,39 @@ main {
   }
 }
 
+.blogsect2 {
+  margin-top: 50px;
+  display: grid;
+  max-width: 95vw;
+  grid-gap: 20px;
+  grid-template-areas: "two" "one";
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
+  h1 {
+    padding: 0;
+    margin: 10px;
+  }
+  :nth-child(1) {
+    grid-area: one;
+  }
+  :nth-child(2) {
+    grid-area: two;
+  }
+  :nth-child(3) {
+    grid-area: two;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .blogsect {
     grid-template-areas: "one" "one";
   }
 }
-
+@media only screen and (max-width: 500px) {
+  .blogsect2 {
+    grid-template-areas: "one" "two";
+  }
+}
 .animsect {
   margin: 0px auto;
   margin-top: 50px;
