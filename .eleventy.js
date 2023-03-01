@@ -59,7 +59,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function (err, browserSync) {
-        const content_404 = fs.readFileSync("_site/404.html");
+        const content_404 = fs.readFileSync("docs/404.html");
 
         browserSync.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
@@ -83,7 +83,7 @@ module.exports = function (eleventyConfig) {
     // Best paired with the `url` filter: https://www.11ty.io/docs/filters/url/
 
     // You can also pass this in on the command line using `--pathprefix`
-    // pathPrefix: "/",
+    pathPrefix: "/",
 
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "njk",
@@ -94,7 +94,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "_site",
+      output: "docs",
     },
   };
 };
