@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  
+    <meta charset="utf-8">
+    <title>{{ renderData.title or title or metadata.title }}</title>
+    <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
+<meta property="og:description" content="{{ renderData.description or description or metadata.description }}" />
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/all.min.css' | url }}">
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <script src="/js/colcade.js"></script>
+    <script src="/js/hammer.js"></script>
+    
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="theme-color" content="#000000">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="footerseating">
+    <div class="notfooter">
+    {% include "components/navbar.njk" %}
+    
+    {{ content | safe }}
+
+    <p class="signature">Dust Wave  {% year %} </p>
+
+    {% include "components/accent.njk" %}
+
+    <style>
+    {% if navbarcolor %}
+    .navstuff {background-color: {{ navbarcolor }};}
+      {% else %}
+      .navstuff {background: none;}
+      {% endif %}
+
+{% if backgroundimage %}
+    body {background-image: url("{{ backgroundimage }}");}
+    {% endif %}
+    
+
+    {% if backgroundcolor %}
+    body {background-color:#{{ backgroundcolor }};
+    {% else %}
+    body {background-color: #f0f0f0;
+    {% endif %}
+
+    
+    </style>
+  </div>
+
+
+    <footer class="footer">
+    {% include "components/footer.njk" %}
+    <script>
+function myFunction() {
+  var x = document.getElementById("navcollapse");
+  if (x.className === "navstuff") {
+    x.className += " responsive";
+  } else {
+    x.className = "navstuff";
+  }
+}
+</script>
+    </footer>
+    <!-- Current page: {{ page.url | url }} -->
+    </div>
+  </body>
+</html>

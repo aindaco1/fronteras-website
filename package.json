@@ -1,0 +1,45 @@
+{
+  "name": "eleventy-base-blog",
+  "version": "5.0.2",
+  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "scripts": {
+    "build": "npm run sass && npx @11ty/eleventy",
+    "sass": "sass --style=compressed src/_includes/css/index.scss src/_includes/css/index.css",
+    "watch:eleventy": "npx @11ty/eleventy --serve",
+    "watch:sass": "npm run sass -- --watch",
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "start": "npm-run-all sass --parallel watch:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/11ty/eleventy-base-blog.git"
+  },
+  "author": {
+    "name": "Zach Leatherman",
+    "email": "zachleatherman@gmail.com",
+    "url": "https://zachleat.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+  },
+  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-navigation": "^0.1.3",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "colcade": "^0.2.0",
+    "luxon": "^1.21.3",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.2.5",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.32.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "colcade": "^0.2.0"
+  }
+}

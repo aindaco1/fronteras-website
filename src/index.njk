@@ -1,0 +1,101 @@
+---
+layout: layouts/page.njk
+title: Fronteras Micro-film Festival
+description: June 2-4, 2023 -- Fusion, Albuquerque, New Mexico
+description2: June 16-25, 2023 -- Currents New Media, Santa Fe, New Mexico
+description3: TBD -- MOOD Studios, Albuquerque, New Mexico
+navlogo: customs
+---
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Submit xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+ <button style="margin: 0 auto; display: block; margin-top: 40px; font-size: xxx-large;" onclick=" window.open('https://filmfreeway.com/Fronterasmicrofilmfestival','_blank')">Submit</button>
+
+<!-- Countdown -->
+<p style="text-align: center; max-width: none; font-weight: bold;">Deadline: <u>May 2, 11:59 PM MT</u>.</p>
+<p style="text-align: center; max-width: none; font-weight: bold;">Time left: <span class="blink-me" id="demo"></span></p>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("May 2, 2023 23:59:259").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Big Bend xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<a href="/faq/"><figure><img class="mangapanel" alt="bigbend" src="/img/bigbend.jpg"/><figcaption>More Info</figcaption></figure></a>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Categories xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+<h1 class="mobile-h1" style="text-align:center;">Categories</h1>
+<div style="display:flex">
+        <div style="padding: 10px">
+                <a name="16-9 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"<figure><img alt="widescreen tv" src="/img/lcd.png"/><figcaption>16:9<br/>30-180 secs</figcaption></figure></a>
+        </div>
+        <div style="padding: 10px">
+                <a name="9-16 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="border in portrait dimensions" src="/img/border-portrait.png"/><figcaption>9:16<br/>30-60 secs</figcaption></figure></a>
+        </div>
+        <div style="padding: 10px">
+                <a name="4-3 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="crt tv" src="/img/crt-tv.png"/><figcaption>4:3<br/>Silent, B&W, 30-90 secs</figcaption></figure></a>
+        </div>
+</div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<div style="display:flex">
+        <div style="padding: 10px">
+                <a name="installations link" style="margin: 50px auto;display: block;" class="newswidget" href="/installations/"<figure><img alt="link to installations page" src="/img/installations_small.png"/><figcaption>Installations</figcaption></figure></a>
+        </div>
+        <div style="padding: 10px">
+                <a name="rules link" style="margin: 50px auto;display: block;" class="newswidget" href="/rules/"><img alt="link to rules" src="/img/rules_small.png"/><figcaption>Rules</figcaption></figure></a>
+        </div>
+</div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx News xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<div class="blogsect">
+<div class="mangahalftone mangapanel" style="background-image:url(/img/6.png); background-size:100% auto;background-position:center;">
+</div>
+<div class="">
+<a href="{{ '/posts/' | url }}"><h1 class="mobile-h1">News</h1></a>
+{% set postslist = collections.posts | head(-5) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "components/postslist.njk" %}
+</div>
+</div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Manifesto xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<!--
+<div style="width: 100%;">
+<div style="width: 450px; max-width: 100%; margin: 50px auto;">
+<h1>// Manifesto</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate mauris sit amet leo porttitor, blandit luctus ex aliquet. Donec quis risus leo. Nulla facilisi. Quisque finibus viverra velit, vel maximus lacus congue sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur ac lectus lacinia, suscipit enim vitae, blandit turpis. Duis a sodales est, sodales blandit nisi. Nunc convallis sit amet quam eu vehicula. Ut aliquam nisi id urna maximus rutrum. Etiam in dui molestie, fermentum diam in, ullamcorper sapien. </p>
+</div>
+</div>
+-->
+
+<a style="opacity:0;" rel="me" href="http://dustwave.xyz">Dust Wave</a>
+
+{# {% for entry in collections.cinnamon %}
+<p>{{ entry.title }}</p>
+{% endfor %} #}

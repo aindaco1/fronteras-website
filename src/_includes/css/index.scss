@@ -1,0 +1,20 @@
+:root {
+  --red: #c5004a;
+  --darkred: #7f0036;
+  --lightgray: #e0e0e0;
+  --gray: #c0c0c0;
+  --darkgray: #333;
+  --navy: #17050f;
+  --blue: #082840;
+  --white: #fff;
+}
+
+@import "variables.scss";
+
+body {
+  background-color: $background-color;
+}
+
+@import "defaults.scss";
+@import "global.scss";
+@import "components.scss";

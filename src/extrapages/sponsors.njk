@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+title: Sponsors
+description:
+navlogo: cash
+backgroundcolor: 39ff14
+permalink: /sponsor/
+eleventyNavigation:
+  key: Sponsors
+  order: 5
+
+---
+
+{% include "components/header.njk" %}
+
+
+<div class="container">
+  <br />
+  <h1>Current Sponsors</h1>
+  <div class="blogsect">
+    <a href="https://dustwave.xyz" target="_blank"><img src="/img/dust-wave-horizontal.png"></a>
+    <a href="https://allthingsmood.com" target="_blank"><img src="/img/mood.png"></a>
+  </div>
+  <div class="blogsect">
+    <a href="https://www.cabq.gov/urban-enhancement-trust-fund/about-the-trust-fund" target="_blank"><img src="/img/uetf.png"></a>
+  </div>
+  <br />
+  <h3>Interested in sponsoring the festival?</h3>
+  <p>Fill out the form below and we'll respond right away.</p>
+  <form
+    action="https://formspree.io/f/mzbqrpeo"
+    method="POST"
+  >
+    <p>
+      <label>
+       <p>Name *</p>
+        <input type="text" name="name" placeholder="You or your company's full name ..." required>
+      </label>
+    </p>
+    <p>
+      <label>
+       <p>Email *</p>
+        <input type="email" name="email" placeholder="Your email address ..." required>
+      </label>
+    </p>
+    <p>
+      <label>
+        <p>Message!</p>
+        <textarea name="message" placeholder="Your message ..."></textarea>
+      </label>
+    </p>
+    <!-- your other form fields go here -->
+    <button type="submit">Send</button>
+  </form>
+</div>
+<br />
+<br />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

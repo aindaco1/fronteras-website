@@ -1,0 +1,10 @@
+---
+layout: layouts/page.njk
+title: News
+description: News on the festival.
+permalink: /posts/
+navlogo: handwave
+
+---
+{% set postslist = collections.posts %}
+{% include "components/postslist.njk" %}

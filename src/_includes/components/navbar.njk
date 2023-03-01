@@ -1,0 +1,48 @@
+<header>
+      <div class="navbar" id="mynavbar">
+        <div class="logodiv">
+          {% if navlogo =="fronteras" %}
+            <h2 class="home"><a href="{{ '/' | url }}">Fronteras</a></h1>
+          {% elif navlogo =="emoji" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🤬🤬🤬</a></h1>
+             {% elif navlogo =="emojiknight" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🗡🗡🗡</a></h1>
+          {% elif navlogo =="emojiskull" %}
+            <h2 class="home"><a href="{{ '/' | url }}">💀💀💀</a></h1>
+          {% elif navlogo =="customs" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🛃🛃🛃</a></h1>
+          {% elif navlogo =="cash" %}
+            <h2 class="home"><a href="{{ '/' | url }}">💰💰💰</a></h1>
+           {% elif navlogo =="emojianim" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🎥🎥🎥</a></h1>
+          {% elif navlogo =="emojipencils" %}
+            <h2 class="home"><a href="{{ '/' | url }}">✒️✒️✒️</a></h1>
+          {% elif navlogo =="handwave" %}
+            <h2 class="home"><a href="{{ '/' | url }}">👋👋👋</a></h1>
+          {% elif navlogo =="wave" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🌊🌊🌊</a></h1>
+          {% elif navlogo =="question" %}
+            <h2 class="home"><a href="{{ '/' | url }}">❔❔❔</a></h1>
+          {% elif navlogo =="installation" %}
+            <h2 class="home"><a href="{{ '/' | url }}">📺📺📺</a></h1>
+          {% elif navlogo =="skull" %}
+            <a href="{{ '/' | url }}"><img class="navlogo" src="/img/logoskull.svg" alt="skull logo" height="50px;"/></a>
+          {% elif navlogo =="emojipeach" %}
+            <h2 class="home"><a href="{{ '/' | url }}">🍑🍑🍑</a></h1>
+          {% elif navlogo =="cinnamon" %}
+            <a href="{{ '/' | url }}"><img class="navlogo" src="/img/cinnamonnav.svg" alt="cinnamon logo" height="60px;"/></a>
+          {% else %}
+           <h2 class="home"><a href="{{ '/' | url }}">Fronteras</a></h1>
+          {% endif %}
+        </div>
+
+      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <div class="navstuff" id="navcollapse">
+      {%- for entry in collections.all | eleventyNavigation %}<a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">{{ entry.title }}</a>{%- endfor %}
+  {# <a name="instagram link" class="nav-item" href="https://www.instagram.com/"><sub><i class="fab fa-instagram"></i></sub></a> #}
+      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective"><sub><i class="fab fa-youtube"></i></i></sub></a>
+      </div>
+      <a name="hamburger" href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+    </header>

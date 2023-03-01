@@ -1,0 +1,28 @@
+<script type="text/javascript">
+
+var myElement = document.getElementById('comicpage');
+
+var hammertime = new Hammer(myElement);
+hammertime.on('swipeleft', function(ev) {
+	window.location.href = document.getElementById("nextbutton").getAttribute("href");
+});
+hammertime.on('swiperight', function(ev) {
+	window.location.href = document.getElementById("prevbutton").getAttribute("href");
+});
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+       window.location.href = document.getElementById("prevbutton").getAttribute("href")
+    }
+    else if (e.keyCode == '39') {
+       window.location.href = document.getElementById("nextbutton").getAttribute("href")
+    }
+
+}
+
+</script>

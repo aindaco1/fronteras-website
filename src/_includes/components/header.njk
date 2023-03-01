@@ -1,0 +1,32 @@
+<div class="bigcontainer">
+{% if titleimage %}
+    <img class="logotitle" src="{{ titleimage }}"/>
+{% else %}
+    <h1 class="heading heading--stroke heading--halftone">{{ title }}</h1>
+{% endif %}
+
+{% if description %}
+    <div class="container">
+    <div class="subtitle2">
+        <p>{{ description }}</p>
+    </div>
+    </div>
+    
+{% endif %}
+{% if description2 %}
+    <div class="container">
+    <div class="subtitle3">
+        <p>{{ description2 }}</p>
+    </div>
+    </div>
+    
+{% endif %}
+{% if description3 %}
+    <div class="container">
+    <div class="subtitle">
+        <p>{{ description3 }}</p>
+    </div>
+    </div>
+    
+{% endif %}
+</div>

@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+title: Installations
+description: What some of the installations might look like.
+navlogo: installation
+backgroundcolor: ff4760
+permalink: /installations/
+eleventyNavigation:
+  key: Installations
+  order: 3
+sketches:
+  - surveillance
+  - trailer
+  - checkpoint
+  - fence
+  - desert
+  - bridge
+---
+
+{% include "components/header.njk" %}
+
+
+<div class="fullcontainer small-caption">
+<div class="grid">
+<div class="grid-col grid-col--1">
+</div>
+<div class="grid-col grid-col--2">
+</div>
+{# <div class="grid-col grid-col--3">
+</div> #}
+{# <div class="grid-col grid-col--4">
+</div> #}
+{% for item in sketches %}
+<div class="grid-item imagediv">
+      {# <a href="/{{ item }}"> #}
+        <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item }}</figcaption><figure>
+      {# </a> #}
+      </div>
+{% endfor %}
+</div>
+</div>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

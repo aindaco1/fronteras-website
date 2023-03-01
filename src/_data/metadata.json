@@ -1,0 +1,15 @@
+{
+  "title": "Fronteras Micro-film Festival",
+  "url": "https://fronterasmicrofilm.com/",
+  "description": "Micro-film festival and exhibition to provoke public conversation about national borders, addressing themes of surveillance, enforcement, and crossings.",
+  "feed": {
+    "subtitle": "Micro-film festival and exhibition to provoke public conversation about national borders, addressing themes of surveillance, enforcement, and crossings.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://fronterasmicrofilm.com/"
+  },
+  "author": {
+    "name": "Alonso Indacochea",
+    "email": "alonso@fronterasmicrofilm.com"
+  }
+}
