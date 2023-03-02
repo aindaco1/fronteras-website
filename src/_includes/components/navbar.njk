@@ -40,7 +40,7 @@
       <div class="navstuff" id="navcollapse">
       {%- for entry in collections.all | eleventyNavigation %}<a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">{{ entry.title }}</a>{%- endfor %}
   {# <a name="instagram link" class="nav-item" href="https://www.instagram.com/"><sub><i class="fab fa-instagram"></i></sub></a> #}
-      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective"><sub><i class="fab fa-youtube"></i></i></sub></a>
+      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank"><sub><i class="fab fa-youtube"></i></i></sub></a>
       </div>
       <a name="hamburger" href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>

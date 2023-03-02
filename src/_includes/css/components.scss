@@ -113,14 +113,15 @@
 
 @media screen and (max-width: 800px) {
   .navstuff.responsive {
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     background-color: white;
     margin-top: 50px;
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
     position: absolute;
     display: inline-block;
-    right: 20px;
+    right: 1px;
+    z-index: 9999;
   }
   .navstuff.responsive .icon {
     position: absolute;
@@ -137,6 +138,7 @@
     text-align: right;
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
+    margin-right: -30px;
   }
 }
 
