@@ -151,7 +151,6 @@ figcaption {
 @media (max-width: 500px) {
   .mobile-h1 {
     font-size: xx-large;
-    margin-top: 65px;
   }
 }
 
@@ -916,6 +915,10 @@ button {
   min-width: 75px;
   min-height: 40px;
   -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  -moz-appearance: none;
+  appearance: none;
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -931,4 +934,10 @@ input {
 .bars {
   background: url('/img/bars.svg') no-repeat center center / contain;
   content: url('/img/bars.svg');
+}
+
+/* ------------------- Post Hero ---------------------- */
+.post-hero {
+  max-width: 90% !important;
+  margin-bottom: 10px;
 }

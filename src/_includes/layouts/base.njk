@@ -8,15 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta itemprop="name" content="{{ renderData.title or title or metadata.title }}">
 <meta itemprop="description" content="{{ renderData.description or description or metadata.description }}">
-<meta itemprop="image" content="/img/bigbend.jpg">
+{% if renderData.image or image or metadata.image %}
+  <meta itemprop="image" content="{{ renderData.image or image or metadata.image }}">
+  <meta property="og:image" content="{{ renderData.image or image or metadata.image }}" />
+  <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
+  {% else %}
+    <meta itemprop="image" content="/img/bigbend.jpg">
+    <meta property="og:image" content="/img/bigbend.jpg" />
+    <meta name="twitter:image" content="/img/bigbend.jpg">
+{% endif %}
+
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
 <meta property="og:description" content="{{ renderData.description or description or metadata.description }}" />
-<meta property="og:image" content="/img/bigbend.jpg" />
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
 <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
-<meta name="twitter:image" content="/img/bigbend.jpg">
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/all.min.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
