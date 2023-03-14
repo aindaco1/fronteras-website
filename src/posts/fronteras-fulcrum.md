@@ -1,12 +1,12 @@
 ---
 title: Fronteras gets support from the Fulcrum Fund!
 description: 
-date: 2023-03-08
+date: 2023-03-15 15:00:00
 tags: grant
 layout: layouts/post.njk
 ---
 
-This is by no means limited to just the games that came out in 2021, but I made it through a large chunk of my backlog and discovered some of my all time favorites that I figured I would share.
+The Fulcrum Fund is an annual grant program created and administered by [516 ARTS](https://516arts.org) as a partner in the Regional Regranting Program of The Andy Warhol Foundation for the Visual Arts, with additional support from the Frederick Hammersley Fund for the Arts at the Albuquerque Community Foundation. The Fulcrum Fund serves as an essential support structure to enable artists to expand existing work and explore new directions in creating and showcasing projects that inspire curiosity, engagement, and dialogue. It is intended to be a springboard for artistic processes that are experimental and forward thinking, while celebrating projects that may not fit into the traditional museum and gallery systems.
 
 ## #1 // Outer Wilds
 I passed on this game for way too long because I wasn't the biggest fan of the visual style at first. It felt too much like space exploration meets backpacking through Europe. But after having played it, I *still* say that it's like space exploration meets backpacking through Europe, but this time with a positive inflection that doesn't translate to text. It's an amazing experience that I can say ABSOLUTELY NOTHING about. Go in as blind as a bat.

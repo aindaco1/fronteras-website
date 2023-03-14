@@ -273,7 +273,7 @@ body {
 }
 #aspect-content {
   margin: 50px 0 0;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
     * {
       box-sizing: border-box;
     }
@@ -412,6 +412,7 @@ body {
 }
 .aspect-info {
   width: 60%;
+  font-style: italic;
   white-space: nowrap;
   &:before {
     content: '';

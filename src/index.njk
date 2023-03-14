@@ -73,16 +73,16 @@ var x = setInterval(function() {
 </div>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx News xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-{# <div class="blogsect">
-<div class="mangahalftone mangapanel" style="background-image:url(/img/6.png); background-size:100% auto;background-position:center;">
+<div class="blogsect">
+        <div class="mangahalftone mangapanel" style="background-image:url(/img/6.png); background-size:100% auto;background-position:center;">
+        </div>
+        <div class="">
+                <a href="{{ '/posts/' | url }}"><h1 class="mobile-h1">News</h1></a>
+                {% set postslist = collections.posts | head(-5) %}
+                {% set postslistCounter = collections.posts | length %}
+                {% include "components/postslist.njk" %}
+        </div>
 </div>
-<div class="">
-<a href="{{ '/posts/' | url }}"><h1 class="mobile-h1">News</h1></a>
-{% set postslist = collections.posts | head(-5) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "components/postslist.njk" %}
-</div>
-</div> #}
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Manifesto xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <!--
