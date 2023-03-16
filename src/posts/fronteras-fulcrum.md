@@ -16,4 +16,4 @@ Funds from Fulcrum will go towards installation materials and fabrication costs,
 
 Congratulations to our fellow awardees! We're honored to be part of this cohort.
 
-More info [here]().
+More info [here](https://www.516arts.org/opportunities/fulcrum-fund).
