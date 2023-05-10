@@ -37,7 +37,7 @@ h4 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-p {
+p, ul {
   font-family: "Roboto Mono", monospace;
 }
 
@@ -940,4 +940,13 @@ input {
 .post-hero {
   max-width: 90% !important;
   margin-bottom: 10px;
+}
+.post-image {
+  max-width: 37.5em !important;
+}
+
+@media screen and (max-width: 768px) {
+  .post-image {
+    max-width: 100% !important;
+  }
 }
