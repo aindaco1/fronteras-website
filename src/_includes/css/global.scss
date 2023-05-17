@@ -950,3 +950,37 @@ input {
     max-width: 100% !important;
   }
 }
+
+// Shop
+
+figure.shop {
+	text-align: center;
+}
+
+.center-flex {
+	display: flex;
+	align-items: center;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+  justify-content: center;
+
+	@media screen and (max-width: 650px) {
+		flex-wrap: wrap;
+	}
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.shop img {
+  max-width: 300px;
+}
+
+.shop figcaption {
+  font-size: small;
+}
