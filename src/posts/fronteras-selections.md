@@ -120,5 +120,6 @@ Hasta luego,
 
 Alonso Indacochea
 Co-organizer
+
 <img src="/img/blog/tv-face.jpg" alt="tvs" class="post-image">
 </div>
