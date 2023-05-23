@@ -16,7 +16,7 @@ On behalf of everyone at [Dust Wave](https://dustwave.xyz), we're overjoyed to a
 **Untitled Indigenous Film** -- Samuel Ian Shorty (USA)
 **This Border** -- Richard Malcolm (USA)
 **The Darkest Place** -- Jay Renteria, Ryan Lewis, Alonso Indacochea (USA)
-**My Uncle Was Santo** -- Jorge Vivero Gómez (Mexico)
+**MY UNCLE WAS EL SANTO** -- Jorge Vivero Gómez (Mexico)
 **Follow Me Quietly** -- Wheeler Winston Dixon (USA)
 **Les Yeux (The Eyes)** -- Walker Stovall (USA)
 **Coyote** -- Dusty Deen (USA)
