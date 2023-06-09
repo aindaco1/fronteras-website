@@ -966,6 +966,7 @@ figure.shop {
 	display: flex;
 	flex-direction: row;
   justify-content: center;
+  align-items: end;
 
 	@media screen and (max-width: 650px) {
 		flex-wrap: wrap;
@@ -987,4 +988,8 @@ figure.shop {
 
 .full-width-post p {
   max-width: 100%;
+}
+
+span {
+  font-family: "Roboto Mono",monospace;
 }

@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+title: Tower of Cower
+description: Andres Indacochea, Laura Morris, Ryan Lewis, Kaidin Jarjusey and Alonso Indacochea
+navlogo: tower
+backgroundcolor: F72119
+permalink: /tower-of-cower/
+tower:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/tower-of-cower.jpg" alt="tower" class="post-hero installation-hero">
+    <p>"Tower of Cower" is an indoor video and camera installation consisting of several vintage CRT and LED televisions, showing short silent films about surveillance. The tower also features gutted CRTs using mirrors as screen replacements, and televisions displaying live surveillance footage of visitors to the installation. All of the video inputs/outputs are controlled by a video matrix switcher box and a PC, using RCA and VHF/UHF transmission. Arduino-controlled buttons, sliders and sensors allow visitors to manipulate screens on the tower. The installation is visible from 360 degrees, with televisions positioned around the tower.</p>
+    <p>The installation is designed to draw attention to the highly-surveilled nature of national borders, and to create a sense of unease or discomfort, by demonstrating how technology can be used to monitor and control people and their movements. We invite visitors to reflect on how surveillance technology is employed in border enforcement but also in their own lives.</p></br>
+  </div>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Alonso's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/alonso_inda/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Laura's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/kissmeimwelsh/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Ryan's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/notthatryanlewis/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Kaidin's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/qwaeofficial/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Andres's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/mastersynchacks/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">Films screened</h3>
+    <p style="text-align:center;">Follow Me Quietly</p>
+    <p style="text-align:center;">Les Yeux (The Eyes)</p>
+    <p style="text-align:center;">Pick</p>
+    <p style="text-align:center;">The Darkest Place</p>
+    <p style="text-align:center;">They Came From Planet X</p>
+  </div>
+  </br>
+</div>
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in tower %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/tower/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

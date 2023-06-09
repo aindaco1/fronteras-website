@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+title: Untitled Undocumented
+description: Phillip Torres, Nadia Torres, and Dorian Torres
+navlogo: flashlight
+backgroundcolor: FFE417
+permalink: /untitled-undocumented/
+untitled:
+  - 1
+  - 2
+  - 3
+  - 4
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/untitled-undocumented.jpg" alt="fence" class="post-hero installation-hero">
+    <p>"Untitled, Undocumented" is an art installation created by artists Phillip, Nadia, and Dorian Torres. Inspired by their family history and the current situation at the U.S.-Mexico border, the installation aims to depict the stark reality faced by people crossing the border.</p>
+    <p>The artists draw from their own family's history, specifically the experiences of their great grandfather, Juan Ysas, who worked on the railroad from Mexico to Texas. Juan Ysas and other workers were encouraged by the United States to continue building the railroad westward after completing their work in Texas. However, it is mentioned that the census changed Juan Ysas' last name to Isaac, eventually leading to him becoming a US citizen. This history highlights the complex narratives of migration and identity that many families, like the Torres family, have experienced.</p>
+    <p>The installation incorporates a replica of Trump's border wall, which has become a symbol of division and controversy. By recreating this physical barrier, the artists aim to convey the impact of border policies on individuals and families. They particularly focus on the plight of unaccompanied minors who are detained by immigration authorities while seeking asylum. In 2022, 152,000 minors, were detained at the border. This high number of unaccompanied minors in detention and the harsh conditions they face, emphasizes the inhumane realities of this situation.</p>
+    <p>The imagery of kids in cages, which has gained global attention, serves as a potent symbol within the installation. It highlights the distressing living conditions that many migrants, including children, endure while waiting for resolution of their immigration cases. The artists express concern for the lack of understanding and agency that individuals in this situation often face, as they may be signing legal documents without comprehending their implications.</p>
+    <p>"Untitled, Undocumented" serves as a poignant reflection on the current state of immigration and border policies. By weaving personal history with broader social issues, the installation invites viewers to contemplate the human stories behind these statistics and confront the inhumane treatment faced by many migrants. Through their art, the Torres family seeks to raise awareness and encourage dialogue about the complexities and consequences of border control and immigration policies.</p>
+    </br>
+  </div>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Phillip's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/feeltorres/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">Films screened</h3>
+    <p style="text-align:center;">Border Wall Construction, 2020</p>
+    <p style="text-align:center;">This Border</p>
+    <p style="text-align:center;">Untitled Indigenous Film</p>
+    <p style="text-align:center;">Who Were These Privileged Men?</p>
+    <p style="text-align:center;">You Came First</p>
+  </div>
+  </br>
+</div>
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in untitled %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/untitled/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

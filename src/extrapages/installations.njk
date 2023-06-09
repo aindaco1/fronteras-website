@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Installations
-description: What some of the installations might look like.
+description: Our 2023 installations.
 navlogo: installation
 backgroundcolor: ff4760
 permalink: /installations/
@@ -9,36 +9,42 @@ eleventyNavigation:
   key: Installations
   order: 3
 sketches:
-  - surveillance
-  - trailer
-  - checkpoint
-  - fence
-  - desert
-  - bridge
+  - tower-of-cower
+  - a-ghost-truck
+  - untitled-undocumented
+  - by-boat
+  - the-hands-that-hold-us
+  - the-space-between-home
+  - volumen-de-voz
 ---
 
 {% include "components/header.njk" %}
 
 
 <div class="fullcontainer small-caption">
-<div class="grid">
-<div class="grid-col grid-col--1">
-</div>
-<div class="grid-col grid-col--2">
-</div>
-{# <div class="grid-col grid-col--3">
-</div> #}
-{# <div class="grid-col grid-col--4">
-</div> #}
-{% for item in sketches %}
-<div class="grid-item imagediv">
-      {# <a href="/{{ item }}"> #}
-        <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item }}</figcaption><figure>
-      {# </a> #}
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+  {# <div class="grid-col grid-col--3">
+  </div> #}
+  {# <div class="grid-col grid-col--4">
+  </div> #}
+    {% for item in sketches %}
+      <div class="grid-item imagediv">
+            <a href="/{{ item }}">
+              <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            </a>
       </div>
-{% endfor %}
+    {% endfor %}
+  </div>
+  <div class="bigcontainer">
+    <p>Photos courtesy of <a href="https://www.instagram.com/cherrita.thao/" target="_blank">Cherrita Thao</a> and <a href="https://www.instagram.com/gary.shaw.foto/" target="_blank">Gary Shaw</a>.</p>
+  </div>
 </div>
-</div>
+</br>
+
 <script>
 // selector string as first argument
 var colc = new Colcade( '.grid', {

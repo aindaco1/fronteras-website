@@ -79,6 +79,48 @@
   font-size: 1.5rem;
 }
 
+.artist-insta {
+  text-decoration: none;
+  display: inline-flex;
+  padding: 0.4rem;
+  color: #000;
+  background: none;
+  font-weight: 300;
+}
+
+.artist-insta:hover {
+  background-color: transparent !important;
+}
+
+
+.artist-insta i {
+  font-size: 1rem;
+}
+
+.artist-insta i:hover {
+  color: $background-color;
+  background-color: $line-color;
+  transition: 0.2s;
+}
+
+.insta-row {
+  justify-content: space-around;
+}
+
+.insta-column {
+  flex-direction: initial;
+}
+
+.installation-hero {
+  margin: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,.5);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,.5);
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,.5);
+}
 /* -------------------- Navbar responsiveness -------------------- */
 
 .navbar .icon {

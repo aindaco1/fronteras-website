@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+title: A Ghost Truck
+description: Jordyn Bernicke and Jay Renteria
+navlogo: truck
+backgroundcolor: F5F5F5
+permalink: /a-ghost-truck/
+truck:
+  - 1
+  - 2
+  - 3
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/a-ghost-truck.jpg" alt="truck" class="post-hero installation-hero">
+    </br>
+    <p>“A Ghost Truck” is an immersive artistic experience housed within the back of a U-Haul truck, crafted to showcase a collection of short films centered around the themes of immigration and border crossings. By merging the physical and emotional dimensions of migration, this installation aims to evoke a profound sense of empathy and contemplation within its audience.</p>
+    <p>The intention behind the U-Haul truck as the setting for this installation is to prompt viewers to imagine themselves in the position of those embarking on arduous journeys across borders. By inviting individuals to physically step into the back of the truck, we hope to create an immersive experience that embodies the urgency, vulnerability, and resilience of those who undertake such journeys. Through this physical act, visitors are encouraged to connect with the stories depicted in the short films on a personal level, fostering a heightened sense of understanding and solidarity.</p>
+    <p>At the heart of the installation, a shrine adorned with Catholic artifacts represents the spiritual and cultural support that often accompanies migrants on their difficult odyssey. The inclusion of Catholic artifacts reflects the significant role that faith plays in the lives of many migrants, providing solace, strength, and a sense of belonging during their trials and tribulations. It serves as a reminder of the universal human desire for hope, protection, and a better future.</p>
+    <p>The screen inside is held up by two giant hands wrapped in newspaper, both as a nod to the Dust Wave's logo, but also as a slight against the 24/7 news cycle and its unfortunate sway in the way people think (or are told to think) about certain topics.</p>
+    <p>The outside of the truck is wrapped in a large white tarp, covered in flowers and bearing the sign of the film festival. It takes its form and name from “ghost bikes” which are the bicycles seen on the side of the road, often painted white and covered in flowers. These bikes represent memorials for cyclists who were killed on their journey, and the truck represents a memorial for those who have lost their lives on their journeys.</p>
+    <p>"A Ghost Truck" is an invitation to embark on a transformative journey—a journey of contemplation, connection, and a renewed commitment to building a world that recognizes the inherent dignity and worth of every individual, regardless of their place of birth or the borders they cross.</p>
+  </div>
+  </br>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Jordyn's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/jordynb_art/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Jay's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/jayrenteriuh/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">Films screened</h3>
+    <p style="text-align:center;">Bag Check</p>
+    <p style="text-align:center;">Coyote</p>
+    <p style="text-align:center;">Moving at the Speed of Thought</p>
+    <p style="text-align:center;">Returnal</p>
+    <p style="text-align:center;">This Border</p>
+    <p style="text-align:center;">Who Were These Privileged Men?</p>
+  </div>
+  </br>
+</div>
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in truck %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/truck/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

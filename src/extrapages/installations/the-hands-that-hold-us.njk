@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+title: The Hands That Hold Us
+description: Helen Atkins and Will Geusz
+navlogo: handwave
+backgroundcolor: 2E6021
+permalink: /the-hands-that-hold-us/
+hands:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/the-hands-that-hold-us.jpg" alt="tower" class="post-hero installation-hero">
+    <p>"The Hands that Hold Us" considers the people and stories that move across the borderlands. Mimicking the silhouette of a prickly pear cactus, the sculpture features concrete-cast-hands, cradling each other and culminating in a hand holding a phone which plays films. The hands evoke the personhood and humanity of those who cross borders. The way in which they hold each other reminds us that often, people cross borders to support their communities and families. The phone contrasts the organic shape and imagery of the nopales -- referencing modernity, and the fact that stories and experiences at the border are often captured by phone and shared through social media. The installation is lit with LEDs, built from concrete, double-sided, and made for outdoor exhibition.</p></br>
+  </div>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Helen's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/helenjuliet_art/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Will's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/willinandchillinarts/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">All selected films screened</h3>
+  </div>
+  </br>
+</div>
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in hands %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/hands/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

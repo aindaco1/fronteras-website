@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+title: Volumen de Voz
+description: Camille Carlson and Brandon Carter
+navlogo: loudspeaker
+backgroundcolor: FF4FA7
+permalink: /volumen-de-voz/
+volumen:
+  - 1
+  - 2
+  - 3
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/volumen-de-voz.jpg" alt="volumen" class="post-hero installation-hero">
+    </br>
+  </div>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Camille's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/meale_marle/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    <div class="center-flex flex-column insta-column">
+        <span>Brandon's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/cartercinema/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">Films screened</h3>
+    <p style="text-align:center;">Border Wall Construction, 2020</p>
+    <p style="text-align:center;">Coyote</p>
+    <p style="text-align:center;">MY UNCLE WAS EL SANTO</p>
+    <p style="text-align:center;">Returnal</p>
+    <p style="text-align:center;">The Darkest Place</p>
+    <p style="text-align:center;">Untitled Indigenous Film</p>
+    <p style="text-align:center;">Who Were These Privileged Men?</p>
+  </div>
+  </br>
+</div>
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in volumen %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/volumen/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>
