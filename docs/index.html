@@ -48,7 +48,8 @@
             <h2 class="home"><a href="/">🛃🛃🛃</a></h1>
           
         </div>
-      <div class="navstuff" id="navcollapse"><a class="nav-item" href="/shop/"></a><a class="nav-item" href="/faq/">FAQ</a><a class="nav-item" href="/posts/">News</a><a class="nav-item" href="/installations/">Installations</a><a class="nav-item" href="/sponsor/">Sponsors</a>
+      <div class="navstuff" id="navcollapse"><a class="nav-item" href="/faq/">FAQ</a><a class="nav-item" href="/posts/">News</a><a class="nav-item" href="/installations/">Installations</a><a class="nav-item" href="/films/">Films</a><a class="nav-item" href="/sponsor/">Sponsors</a>
+      <a name="shop" class="nav-item" href="https://dustwave.xyz/shop/" target="_blank">shop</a>
       <a name="instagram link" class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
       <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank"><sub><i class="fab fa-youtube"></i></i></sub></a>
       </div>
@@ -99,35 +100,47 @@
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 </br>
-<p style="text-align: center; max-width: none; font-weight: bold;"><b>Submissions for the 2023 Fronteras Micro-film Festival are closed. Thanks to those that submitted!</b></p>
+<h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
 
-<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Big Bend xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="/faq/"><figure><img class="mangapanel" alt="bigbend" src="/img/bigbend.jpg"/><figcaption>More Info</figcaption></figure></a>
-
-<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Categories xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-
-<h1 class="mobile-h1" style="text-align:center;">Categories</h1>
-<div style="display:flex">
-        <div style="padding: 10px">
-                <a name="16-9 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"<figure><img alt="widescreen tv" src="/img/lcd.png"/><figcaption>16:9<br/>30-180 secs</figcaption></figure></a>
-        </div>
-        <div style="padding: 10px">
-                <a name="9-16 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="border in portrait dimensions" src="/img/border-portrait.png"/><figcaption>9:16<br/>30-60 secs</figcaption></figure></a>
-        </div>
-        <div style="padding: 10px">
-                <a name="4-3 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="crt tv" src="/img/crt-tv.png"/><figcaption>4:3<br/>Silent, B&W, 30-90 secs</figcaption></figure></a>
-        </div>
+<div class="fullcontainer">
+  <div class="grid grid-front">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    <div class="grid-col grid-col--3">
+    </div>
+    
+      <div class="grid-item imagediv">
+            <a href="/coyote">
+              <figure><img class="imagecard" src="/img/filmsfront/coyote-1st.jpg"/><figcaption><h5 style="font-size:large"><strong>Coyote</strong></br></br>1st Place</h5></figcaption></figure>
+            </a>
+      </div>
+    
+      <div class="grid-item imagediv">
+            <a href="/santa-fe-resident">
+              <figure><img class="imagecard" src="/img/filmsfront/santa-fe-resident-2nd.jpg"/><figcaption><h5 style="font-size:large"><strong>Santa Fe Resident</strong></br></br>2nd Place</h5></figcaption></figure>
+            </a>
+      </div>
+    
+      <div class="grid-item imagediv">
+            <a href="/they-came-from-planet-x">
+              <figure><img class="imagecard" src="/img/filmsfront/they-came-from-planet-x-3rd.jpg"/><figcaption><h5 style="font-size:large"><strong>They Came From Planet X</strong></br></br>3rd Place</h5></figcaption></figure>
+            </a>
+      </div>
+    
+  </div>
 </div>
-
+</br>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<div style="display:flex">
-        <div style="padding: 10px">
-                <a name="installations link" style="margin: 50px auto;display: block;" class="newswidget" href="/installations/"<figure><img alt="link to installations page" src="/img/installations_small.png"/><figcaption>Installations</figcaption></figure></a>
-        </div>
-        <div style="padding: 10px">
-                <a name="rules link" style="margin: 50px auto;display: block;" class="newswidget" href="/rules/"><img alt="link to rules" src="/img/rules_small.png"/><figcaption>Rules</figcaption></figure></a>
-        </div>
+<div class="fullcontainer">
+        <h1 class="mobile-h1" style="text-align:center;">More Info</h1>
+        <a href="/faq/"><img class="mangapanel" alt="bigbend" src="/img/bigbend.jpg"/></a>
+        <a href="/installations/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="installations" src="/img/infofront/installations.jpg"><figcaption>Installations</figcaption></figure></a>
+        <a href="/films/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="films" src="/img/infofront/films.jpg"><figcaption>Films</figcaption></figure></a>
+        <a href="/rules/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="rules" src="/img/infofront/rules.jpg"><figcaption>Rules</figcaption></figure></a>
 </div>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Categories xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx News xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <div class="blogsect">
@@ -186,6 +199,13 @@
 
 
 
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>
 </div>
 </main>
 

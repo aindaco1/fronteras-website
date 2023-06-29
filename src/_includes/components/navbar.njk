@@ -13,7 +13,7 @@
             <h2 class="home"><a href="{{ '/' | url }}">🛃🛃🛃</a></h1>
           {% elif navlogo =="cash" %}
             <h2 class="home"><a href="{{ '/' | url }}">💰💰💰</a></h1>
-           {% elif navlogo =="emojianim" %}
+          {% elif navlogo =="emojianim" %}
             <h2 class="home"><a href="{{ '/' | url }}">🎥🎥🎥</a></h1>
           {% elif navlogo =="emojipencils" %}
             <h2 class="home"><a href="{{ '/' | url }}">✒️✒️✒️</a></h1>
@@ -53,6 +53,7 @@
       {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
       <div class="navstuff" id="navcollapse">
       {%- for entry in collections.all | eleventyNavigation %}<a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">{{ entry.title }}</a>{%- endfor %}
+      <a name="shop" class="nav-item" href="https://dustwave.xyz/shop/" target="_blank">shop</a>
       <a name="instagram link" class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
       <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank"><sub><i class="fab fa-youtube"></i></i></sub></a>
       </div>

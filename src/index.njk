@@ -6,6 +6,10 @@ description2: June 16-18, 2023 -- Currents New Media, Santa Fe, New Mexico
 description3: TBD -- MOOD Studios, Albuquerque, New Mexico
 navlogo: customs
 image: /img/bigbend.jpg
+filmsfront:
+ - coyote-1st
+ - santa-fe-resident-2nd
+ - they-came-from-planet-x-3rd
 ---
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Submit xxxxxxxxxxxxxxxxxxxxxxxxxx -->
  {# <button style="margin: 0 auto; display: block; margin-top: 40px; font-size: -webkit-xxx-large;" onclick=" window.open('https://filmfreeway.com/Fronterasmicrofilmfestival','_blank')">Submit</button> #}
@@ -46,17 +50,40 @@ var x = setInterval(function() {
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 </br>
-<p style="text-align: center; max-width: none; font-weight: bold;"><b>Submissions for the 2023 Fronteras Micro-film Festival are closed. Thanks to those that submitted!</b></p>
+<h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
 
-<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Big Bend xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="/faq/"><figure><img class="mangapanel" alt="bigbend" src="/img/bigbend.jpg"/><figcaption>More Info</figcaption></figure></a>
-
+<div class="fullcontainer">
+  <div class="grid grid-front">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    <div class="grid-col grid-col--3">
+    </div>
+    {% for item in filmsfront %}
+      <div class="grid-item imagediv">
+            <a href="/{{ item.slice(0,-4) }}">
+              <figure><img class="imagecard" src="/img/filmsfront/{{ item }}.jpg"/><figcaption><h5 style="font-size:large"><strong>{{ item.slice(0,-4)| replace("-", " ") | title }}</strong></br></br>{{ item.slice(-3)| title }} Place</h5></figcaption></figure>
+            </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<div class="fullcontainer">
+        <h1 class="mobile-h1" style="text-align:center;">More Info</h1>
+        <a href="/faq/"><img class="mangapanel" alt="bigbend" src="/img/bigbend.jpg"/></a>
+        <a href="/installations/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="installations" src="/img/infofront/installations.jpg"><figcaption>Installations</figcaption></figure></a>
+        <a href="/films/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="films" src="/img/infofront/films.jpg"><figcaption>Films</figcaption></figure></a>
+        <a href="/rules/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="rules" src="/img/infofront/rules.jpg"><figcaption>Rules</figcaption></figure></a>
+</div>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Categories xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-
+{# </br>
 <h1 class="mobile-h1" style="text-align:center;">Categories</h1>
-<div style="display:flex">
+<div style="display:flex; justify-content:space-evenly;">
         <div style="padding: 10px">
-                <a name="16-9 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"<figure><img alt="widescreen tv" src="/img/lcd.png"/><figcaption>16:9<br/>30-180 secs</figcaption></figure></a>
+                <a name="16-9 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><figure><img alt="widescreen tv" src="/img/lcd.png"/><figcaption>16:9<br/>30-180 secs</figcaption></figure></a>
         </div>
         <div style="padding: 10px">
                 <a name="9-16 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="border in portrait dimensions" src="/img/border-portrait.png"/><figcaption>9:16<br/>30-60 secs</figcaption></figure></a>
@@ -64,18 +91,7 @@ var x = setInterval(function() {
         <div style="padding: 10px">
                 <a name="4-3 link" style="margin: 50px auto;display: block;" class="newswidget small-caption" href="/faq/#categories"><img alt="crt tv" src="/img/crt-tv.png"/><figcaption>4:3<br/>Silent, B&W, 30-90 secs</figcaption></figure></a>
         </div>
-</div>
-
-<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<div style="display:flex">
-        <div style="padding: 10px">
-                <a name="installations link" style="margin: 50px auto;display: block;" class="newswidget" href="/installations/"<figure><img alt="link to installations page" src="/img/installations_small.png"/><figcaption>Installations</figcaption></figure></a>
-        </div>
-        <div style="padding: 10px">
-                <a name="rules link" style="margin: 50px auto;display: block;" class="newswidget" href="/rules/"><img alt="link to rules" src="/img/rules_small.png"/><figcaption>Rules</figcaption></figure></a>
-        </div>
-</div>
-
+</div> #}
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx News xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <div class="blogsect">
         <div class="mangahalftone mangapanel" style="background-image:url(/img/6.png); background-size:100% auto;background-position:center;">
@@ -103,3 +119,11 @@ var x = setInterval(function() {
 {# {% for entry in collections.cinnamon %}
 <p>{{ entry.title }}</p>
 {% endfor %} #}
+
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

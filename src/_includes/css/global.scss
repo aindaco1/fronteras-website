@@ -645,7 +645,7 @@ main {
 }
 
 .fullcontainer {
-  width: 95;
+  width: 95%;
   max-width: 98vw;
   margin: 0 auto;
   img {
@@ -992,4 +992,32 @@ figure.shop {
 
 span {
   font-family: "Roboto Mono",monospace;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+.top-right-corner {
+  position: absolute;
+  top: -19px;
+  right: -10px;
+  max-width: 20% !important;
+}
+
+.top-right-corner-hug {
+  position: absolute;
+  top: 3px;
+  right: 5%;
+  max-width: 20% !important;
+}
+
+.grid-front {
+  width: unset !important;
+}
+
+.grid-col-front {
+  display: flex;
+  align-items: center;
 }
