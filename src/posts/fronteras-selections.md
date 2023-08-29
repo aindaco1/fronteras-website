@@ -54,7 +54,7 @@ As far as the installations, I'd like to share a few behind the scenes construct
 	<div class="center-flex flex-column">
 		<figure class="shop">
             <video
-            width="300"
+            width="100%"
             controls
             poster="">
             <source
@@ -67,7 +67,7 @@ As far as the installations, I'd like to share a few behind the scenes construct
 	<div class="center-flex flex-column">
 		<figure class="shop">
             <video
-            width="300"
+            width="100%"
             controls
             poster="">
             <source
@@ -88,7 +88,7 @@ As far as the installations, I'd like to share a few behind the scenes construct
 	<div class="center-flex flex-column">
 		<figure class="shop">
             <video
-            width="300"
+            width="100%"
             controls
             poster="">
             <source
