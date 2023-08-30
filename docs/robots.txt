@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fronterasmicrofilm.com/sitemap.xml
