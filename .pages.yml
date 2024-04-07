@@ -12,3 +12,4 @@ content:
       - { name: navlogo, label: Nav Logo, type: string }
       - { name: layout, label: Layout, type: string, hidden: true, default: layouts/post.njk }
       - { name: image, label: Image, type: image }
+      - { name: body, label: Body, type: rich-text }
