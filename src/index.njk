@@ -1,9 +1,7 @@
 ---
 layout: layouts/page.njk
 title: Fronteras Micro-film Festival
-description: March 1, 2024 -- MOOD, Albuquerque, New Mexico
-description2: June 2-4, 2023 -- FUSION, Albuquerque, New Mexico
-description3: June 16-18, 2023 -- Currents New Media, Santa Fe, New Mexico
+description: September 12-13, 2025 -- PASEO, Taos, New Mexico
 navlogo: customs
 image: /img/bigbend.jpg
 filmsfront:
@@ -48,28 +46,6 @@ var x = setInterval(function() {
 }, 1000);
 </script> #}
 
-<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-</br>
-<h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
-
-<div class="fullcontainer">
-  <div class="grid grid-front">
-    <div class="grid-col grid-col--1">
-    </div>
-    <div class="grid-col grid-col--2">
-    </div>
-    <div class="grid-col grid-col--3">
-    </div>
-    {% for item in filmsfront %}
-      <div class="grid-item imagediv">
-            <a href="/{{ item.slice(0,-4) }}">
-              <figure><img class="imagecard" src="/img/filmsfront/{{ item }}.jpg"/><figcaption><h5 style="font-size:large"><strong>{{ item.slice(0,-4)| replace("-", " ") | title }}</strong></br></br>{{ item.slice(-3)| title }} Place</h5></figcaption></figure>
-            </a>
-      </div>
-    {% endfor %}
-  </div>
-</div>
-</br>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <div class="fullcontainer">
         <h1 class="mobile-h1" style="text-align:center;">More Info</h1>
@@ -103,6 +79,29 @@ var x = setInterval(function() {
                 {% include "components/postslist.njk" %}
         </div>
 </div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
+</br>
+<h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
+
+<div class="fullcontainer">
+  <div class="grid grid-front">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    <div class="grid-col grid-col--3">
+    </div>
+    {% for item in filmsfront %}
+      <div class="grid-item imagediv">
+            <a href="/{{ item.slice(0,-4) }}">
+              <figure><img class="imagecard" src="/img/filmsfront/{{ item }}.jpg"/><figcaption><h5 style="font-size:large"><strong>{{ item.slice(0,-4)| replace("-", " ") | title }}</strong></br></br>{{ item.slice(-3)| title }} Place</h5></figcaption></figure>
+            </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Manifesto xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <!--

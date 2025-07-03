@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+title: Film Selections
+description: Our 2025 film selections.
+navlogo: emojianim
+backgroundcolor: F5F5F5
+permalink: /films/
+eleventyNavigation:
+  key: Films
+  order: 4
+films:
+  - bag-check
+  - border-wall-construction-2020
+  - coyote
+  - creat
+  - ding
+  - fences
+  - follow-me-quietly
+  - les-yeux
+  - moving-at-the-speed-of-thought
+  - my-uncle-was-el-santo
+  - pick
+  - returnal
+  - santa-fe-resident
+  - the-birch-tree
+  - the-darkest-place
+  - the-dream-of-being-free
+  - they-came-from-planet-x
+  - this-border
+  - untitled-indigenous-film
+  - who-were-these-privileged-men
+  - you-came-first
+---
+
+{% include "components/header.njk" %}
+
+<br><br>
+<h1 class="mobile-h1" style="text-align:center;">Coming Soon ...</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{# <div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    <div class="grid-col grid-col--3">
+    </div>
+  {# <div class="grid-col grid-col--4">
+  </div>}
+    {% for item in films %}
+      <div class="grid-item imagediv">
+            <a href="/{{ item }}">
+              <figure><img class="imagecard" src="/img/films/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br> #}
+
+{# <script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script> #}

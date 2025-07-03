@@ -1021,3 +1021,123 @@ iframe {
   display: flex;
   align-items: center;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  text-decoration: none;
+  color: inherit;
+  background: inherit;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1rem 0.7rem;
+  border: none;
+  cursor: pointer;
+  // Remove list bullet, etc if needed
+  outline: none;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  color: #f7f7f7;
+  background: #000;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: lightgray;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 200;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+  color: #222 !important;
+  background: none !important;
+  display: block;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: .15rem 0;
+  padding: .7rem 1rem;
+  border-radius: 2px;
+}
+
+/* Highlight active dropdown link */
+.dropdown-content a.nav-item-active, .dropdown-content a:hover, .dropdown-content a:focus {
+  text-decoration: none;
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+/* Mobile: use class toggle to show/hide submenu */
+@media (max-width: 800px) {
+  .dropbtn {
+    position: relative;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: right;
+    padding-right: 2.2em;
+    font-size: 1em;
+  }
+  .dropbtn::after {
+    content: '';
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    position: absolute;
+    right: 0.4em;
+    top: 55%;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: transform 0.2s;
+  }
+  .dropdown:focus .dropbtn::after, .dropdown:hover .dropbtn::after {
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    transform: translateY(-50%) rotate(45deg);
+    top: 53%;
+  }
+  .dropdown.open .dropbtn::after {
+    transform: translateY(-50%) rotate(135deg);
+  }
+  .dropdown-content {
+    display: none;
+    position: static;
+    width: 100%;
+    background: lightgray;
+    box-shadow: none;
+    border-radius: 0;
+    margin-top: 0;
+    padding: 0;
+    text-align: right;
+    z-index: 1;
+  }
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+  .dropdown-content a {
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    margin: 0;
+  }
+  .navstuff {
+    padding-right: 0 !important;
+  }
+  .dropdown {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}

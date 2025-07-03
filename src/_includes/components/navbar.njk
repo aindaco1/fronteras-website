@@ -50,14 +50,40 @@
           {% endif %}
         </div>
 
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-      <div class="navstuff" id="navcollapse">
-      {%- for entry in collections.all | eleventyNavigation %}<a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">{{ entry.title }}</a>{%- endfor %}
-      <a name="shop" class="nav-item" href="https://shop.dustwave.xyz/#2023-fronteras-micro-film-festival" target="_blank">shop</a>
-      <a name="instagram link" class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank"><sub><i class="fab fa-youtube"></i></i></sub></a>
+    <div class="navstuff" id="navcollapse">
+
+      {# Main nav (not parent or children of 2023) #}
+      {%- for entry in collections.all | eleventyNavigation %}
+        {%- if not entry.parent and entry.key != "2023" %}
+          <a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">
+            {{ entry.title }}
+          </a>
+        {%- endif %}
+      {%- endfor %}
+
+      {# 2023 Dropdown -- parent item (not a real link, just a label/button) #}
+      <div class="dropdown">
+        <a href="#" class="dropbtn">2023</a>
+        <div class="dropdown-content">
+          {%- for entry in collections.all | eleventyNavigation("2023") %}
+            <a class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}" href="{{ entry.url | url }}">
+              {{ entry.title }}
+            </a>
+          {%- endfor %}
+        </div>
       </div>
-      <a name="hamburger" href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-    </header>
+
+      {# Other fixed links #}
+      <a name="shop" class="nav-item" href="https://shop.dustwave.xyz/#2023-fronteras-micro-film-festival" target="_blank">shop</a>
+      <a name="instagram link" class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank">
+        <sub><i class="fab fa-instagram"></i></sub>
+      </a>
+      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank">
+        <sub><i class="fab fa-youtube"></i></sub>
+      </a>
+    </div>
+    <a name="hamburger" href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</header>

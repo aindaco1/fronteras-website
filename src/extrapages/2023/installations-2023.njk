@@ -1,0 +1,56 @@
+---
+layout: layouts/base.njk
+title: Installations
+description: Our 2023 installations.
+navlogo: installation
+backgroundcolor: ff4760
+permalink: /installations-2023/
+eleventyNavigation:
+  key: Installations2023
+  parent: "2023"
+  order: 3
+  title: Installations
+sketches:
+  - tower-of-cower
+  - a-ghost-truck
+  - untitled-undocumented
+  - by-boat
+  - the-hands-that-hold-us
+  - the-space-between-home
+  - volumen-de-voz
+---
+
+{% include "components/header.njk" %}
+
+
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+  {# <div class="grid-col grid-col--3">
+  </div> #}
+  {# <div class="grid-col grid-col--4">
+  </div> #}
+    {% for item in sketches %}
+      <div class="grid-item imagediv">
+            <a href="/{{ item }}">
+              <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            </a>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="bigcontainer">
+    <p>Photos courtesy of <a href="https://www.instagram.com/cherrita.thao/" target="_blank">Cherrita Thao</a> and <a href="https://www.instagram.com/gary.shaw.foto/" target="_blank">Gary Shaw</a>.</p>
+  </div>
+</div>
+</br>
+
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>

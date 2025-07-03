@@ -5,7 +5,7 @@
 	
 	<link href="https://fronterasmicrofilm.com/feed/feed.xml" rel="self"/>
 	<link href="https://fronterasmicrofilm.com"/>
-	<updated>2023-05-22T15:01:00Z</updated>
+	<updated>2025-06-27T15:00:00Z</updated>
 	<id>https://fronterasmicrofilm.com/</id>
 	<author>
 		<name>Dust Wave</name>
@@ -176,5 +176,18 @@ June 16-18&lt;/p&gt;
 Co-organizer&lt;/p&gt;
 &lt;img src=&quot;https://fronterasmicrofilm.com/img/blog/tv-face.jpg&quot; alt=&quot;tvs&quot; class=&quot;post-image&quot; /&gt;
 &lt;/div&gt;</content>
+	</entry>
+	
+	<entry>
+		<title>Fronteras 2025 is at PASEO!</title>
+		<link href="https://fronterasmicrofilm.com/posts/fronteras-back-paseo/"/>
+		<updated>2025-06-27T15:00:00Z</updated>
+		<id>https://fronterasmicrofilm.com/posts/fronteras-back-paseo/</id>
+		<content type="html">&lt;img src=&quot;https://fronterasmicrofilm.com/img/paseo.png&quot; alt=&quot;paseo 2025&quot; class=&quot;post-hero&quot; style=&quot;background: black; padding: 10px;&quot; /&gt;
+&lt;p&gt;The 2025 Fronteras Micro-film Festival will be featured at &lt;a href=&quot;https://paseoproject.org/paseo2025&quot;&gt;PASEO 2025&lt;/a&gt; in Taos, New Mexico on September 12-13, 2025!&lt;/p&gt;
+&lt;p&gt;The PASEO outdoor art festival brings projection, installation, and performance art to the streets of Taos, New Mexico every fall. This free, community centered event features local, regional, national, and international artists with work that is site-specific, context responsive and participatory. For two nights, sunset to 11pm, the PASEO brings the community together with a creative and inspiring shared experience.&lt;/p&gt;
+&lt;p&gt;We are honored to be part of such a world-renown cohort of artists exploring the frontiers of art and technology. Congratulations to our fellow artists!&lt;/p&gt;
+&lt;p&gt;More info &lt;a href=&quot;https://paseoproject.org/paseo2025&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
 	</entry>
 </feed>
