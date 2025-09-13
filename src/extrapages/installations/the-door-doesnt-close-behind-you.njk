@@ -1,0 +1,69 @@
+---
+layout: layouts/base.njk
+title: The Door Doesn't Close Behind You
+description: Adrian Pijoan
+navlogo: door
+backgroundcolor: FEE283
+permalink: /the-door-doesnt-close-behind-you/
+image: /img/sketches/the-door-doesnt-close-behind-you.png
+door:
+  - 1
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="/img/sketches/the-door-doesnt-close-behind-you.jpg" alt="door" class="post-hero installation-hero">
+    </br>
+    <p>“A Ghost Truck” is an immersive artistic experience housed within the back of a U-Haul truck, crafted to showcase a collection of short films centered around the themes of immigration and border crossings. By merging the physical and emotional dimensions of migration, this installation aims to evoke a profound sense of empathy and contemplation within its audience.</p>
+  </div>
+  </br>
+  <div class="flex-row insta-row" markdown="0">
+    <div class="center-flex flex-column insta-column">
+        <span>Adrian's</span><a name="instagram link" class="artist-insta" href="https://www.instagram.com/adrian_pijoan/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+  </div>
+  </br>
+  <div class="full-width-post">
+    <h3 style="text-align:center;">Films screened</h3>
+    <p style="text-align:center;"><a href="/u1f4bb_openfield/">(U+1F4BB)_OpenField</a></p>
+    <p style="text-align:center;"><a href="/the-screech-dreams_soft-error-genealogy/">The Screech Dreams_Soft Error Genealogy</a></p>
+    <p style="text-align:center;"><a href="/the-new-colossus/">The New Colossus</a></p>
+    <p style="text-align:center;"><a href="/telemetry/">Telemetry</a></p>
+    <p style="text-align:center;"><a href="/pan-terrestrial-peoples-anthem/">Pan-terrestrial People's Anthem</a></p>
+    <p style="text-align:center;"><a href="/oh-are-you-one-too/">Oh, Are You One, Too?</a></p>
+    <p style="text-align:center;"><a href="/o-private-property/">O, Private Property!</a></p>
+    <p style="text-align:center;"><a href="/microfronteras-1-2-v2-reh/">Microfronteras 1 2 (V2) reh.</a></p>
+    <p style="text-align:center;"><a href="/lineas-de-comunicacion-lines-of-communication/">Líneas de Comunicación / Lines of Communication</a></p>
+    <p style="text-align:center;"><a href="/el-porton/">El Porton</a></p>
+    <p style="text-align:center;"><a href="/amatilla/">Amatilla</a></p>
+  </div>
+  </br>
+</div>
+</br>
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1">
+    </div>
+    <div class="grid-col grid-col--2">
+    </div>
+    {# <div class="grid-col grid-col--3">
+    </div> #}
+    {# <div class="grid-col grid-col--4">
+    </div> #}
+    {% for item in door %}
+      <div class="grid-item imagediv">
+        <img class="imagecard" src="/img/door/{{ item }}.jpg"/>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+// selector string as first argument
+var colc = new Colcade( '.grid', {
+  columns: '.grid-col',
+  items: '.grid-item'
+});
+</script>
