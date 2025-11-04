@@ -1,11 +1,8 @@
 # AGENTS.md
 
 ## Commands
-- **Build**: `npm run build` (compiles Sass and builds Eleventy site)
+- **Build**: `npm run build` (cleans docs/, compiles Sass, builds Eleventy site)
 - **Dev**: `npm start` (runs Sass + Eleventy with hot reload at http://localhost:8080/)
-- **Serve**: `npm run serve` (start dev server only)
-- **Watch**: `npm run watch` (watch for changes without server)
-- **Debug**: `npm run debug` (verbose Eleventy debugging)
 
 ## Architecture
 - **SSG**: Eleventy v2 static site generator
@@ -21,4 +18,5 @@
 - **Template formats**: `.md`, `.njk`, `.html`, `.liquid` for pages
 - **Filters**: Use Luxon for date formatting (`readableDate`, `htmlDateString`)
 - **Dates**: UTC zone, format "dd LLL yyyy" for display
-- **Passthrough**: Assets in `src/_includes/{img,css,js,fonts,favicons}` copied to output
+- **Passthrough**: Assets in `src/_includes/{img,css,js,fonts,favicons}`, CNAME, .nojekyll copied to output
+- **Masonry grid**: Use Colcade library with 2-column grid structure, wrap initialization in `window.addEventListener('load')`

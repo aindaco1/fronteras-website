@@ -3,14 +3,12 @@
   "version": "5.0.2",
   "description": "A starter repository for a blog web site using the Eleventy static site generator.",
   "scripts": {
-    "build": "npm run sass && npx @11ty/eleventy",
+    "build": "npm run clean && npm run sass && npx @11ty/eleventy",
+    "clean": "rm -rf docs",
     "sass": "sass --style=compressed src/_includes/css/index.scss src/_includes/css/index.css",
+    "start": "npm-run-all sass --parallel watch:*",
     "watch:eleventy": "npx @11ty/eleventy --serve",
-    "watch:sass": "npm run sass -- --watch",
-    "watch": "npx @11ty/eleventy --watch",
-    "serve": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=* eleventy",
-    "start": "npm-run-all sass --parallel watch:*"
+    "watch:sass": "npm run sass -- --watch"
   },
   "repository": {
     "type": "git",

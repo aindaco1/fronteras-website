@@ -8,6 +8,9 @@ permalink: /the-door-doesnt-close-behind-you/
 image: /img/sketches/the-door-doesnt-close-behind-you.png
 door:
   - 1
+  - 2
+  - 4
+  - 5
 ---
 
 {% include "components/header.njk" %}
@@ -52,10 +55,6 @@ door:
     </div>
     <div class="grid-col grid-col--2">
     </div>
-    {# <div class="grid-col grid-col--3">
-    </div> #}
-    {# <div class="grid-col grid-col--4">
-    </div> #}
     {% for item in door %}
       <div class="grid-item imagediv">
         <img class="imagecard" src="/img/door/{{ item }}.jpg"/>
