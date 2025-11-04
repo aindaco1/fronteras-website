@@ -74,14 +74,14 @@ var x = setInterval(function() {
         </div>
         <div class="">
                 <a href="{{ '/posts/' | url }}"><h1 class="mobile-h1">News</h1></a>
-                {% set postslist = collections.posts | head(-5) %}
+                {% set postslist = collections.posts | head(-9) %}
                 {% set postslistCounter = collections.posts | length %}
                 {% include "components/postslist.njk" %}
         </div>
 </div>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-</br>
+{# </br>
 <h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
 
 <div class="fullcontainer">
@@ -100,7 +100,7 @@ var x = setInterval(function() {
       </div>
     {% endfor %}
   </div>
-</div>
+</div> #}
 </br>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Manifesto xxxxxxxxxxxxxxxxxxxxxxxxxx -->
@@ -121,8 +121,13 @@ var x = setInterval(function() {
 
 <script>
 // selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
-});
+// Only initialize if grid exists on page
+if (document.querySelector('.grid')) {
+  window.addEventListener('load', function() {
+    var colc = new Colcade( '.grid', {
+      columns: '.grid-col',
+      items: '.grid-item'
+    });
+  });
+}
 </script>

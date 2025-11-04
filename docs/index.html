@@ -178,44 +178,20 @@
       <a href="/tags/grant/" class="tag">grant</a>
   </li>
 
+  <li class="postlist-item">
+    <a href="/posts/currents-2023/" class="postlist-link">Fronteras featured at CURRENTS New Media 2023</a>
+    <time class="postlist-date" datetime="2023-03-13">13 Mar 2023</time>
+    
+      <a href="/tags/event/" class="tag">event</a>
+  </li>
+
 </ol>
 
         </div>
 </div>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Thanks for submitting xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-</br>
-<h1 class="mobile-h1" style="text-align:center;">2023 Winners</h1>
 
-<div class="fullcontainer">
-  <div class="grid grid-front">
-    <div class="grid-col grid-col--1">
-    </div>
-    <div class="grid-col grid-col--2">
-    </div>
-    <div class="grid-col grid-col--3">
-    </div>
-    
-      <div class="grid-item imagediv">
-            <a href="/coyote">
-              <figure><img class="imagecard" src="/img/filmsfront/coyote-1st.jpg"/><figcaption><h5 style="font-size:large"><strong>Coyote</strong></br></br>1st Place</h5></figcaption></figure>
-            </a>
-      </div>
-    
-      <div class="grid-item imagediv">
-            <a href="/santa-fe-resident">
-              <figure><img class="imagecard" src="/img/filmsfront/santa-fe-resident-2nd.jpg"/><figcaption><h5 style="font-size:large"><strong>Santa Fe Resident</strong></br></br>2nd Place</h5></figcaption></figure>
-            </a>
-      </div>
-    
-      <div class="grid-item imagediv">
-            <a href="/they-came-from-planet-x">
-              <figure><img class="imagecard" src="/img/filmsfront/they-came-from-planet-x-3rd.jpg"/><figcaption><h5 style="font-size:large"><strong>They Came From Planet X</strong></br></br>3rd Place</h5></figcaption></figure>
-            </a>
-      </div>
-    
-  </div>
-</div>
 </br>
 
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Manifesto xxxxxxxxxxxxxxxxxxxxxxxxxx -->
@@ -234,10 +210,15 @@
 
 <script>
 // selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
-});
+// Only initialize if grid exists on page
+if (document.querySelector('.grid')) {
+  window.addEventListener('load', function() {
+    var colc = new Colcade( '.grid', {
+      columns: '.grid-col',
+      items: '.grid-item'
+    });
+  });
+}
 </script>
 </div>
 </main>
