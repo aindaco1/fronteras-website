@@ -46,7 +46,7 @@ date: 2025-01-15 15:00:00
 tags: event
 navlogo: installation
 layout: layouts/post.njk
-image: /img/your-image.jpg
+image: /img/blog/your-image.jpg
 ---
 
 Your content goes here in HTML/Markdown format.
@@ -54,8 +54,9 @@ Your content goes here in HTML/Markdown format.
 
 ### Image Guidelines
 
-- Upload images to `src/_includes/img/` (or subdirectory like `img/blog/`)
-- Reference images as `/img/filename.jpg` in your content
+- **Post images**: Upload to `src/_includes/img/blog/` — Pages CMS defaults to this folder for post images
+- **Other images**: Upload to `src/_includes/img/` or appropriate subdirectory
+- Reference images as `/img/blog/filename.jpg` (for posts) or `/img/filename.jpg` in your content
 - Recommended: Optimize images before uploading (compress, reasonable size)
 
 ## For Developers

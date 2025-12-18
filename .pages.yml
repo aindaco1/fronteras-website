@@ -64,11 +64,15 @@ content:
         label: Image
         type: image
         description: Main image for the post. Displayed as hero at top of post and used for social sharing.
+        options:
+          path: blog
 
       - name: ogImage
         label: Social Image Override
         type: image
         description: Optional. Use only if you need a different image for social sharing (e.g., static image instead of GIF).
+        options:
+          path: blog
 
       - name: body
         label: Body

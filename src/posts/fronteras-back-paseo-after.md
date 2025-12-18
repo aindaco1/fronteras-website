@@ -6,7 +6,7 @@ tags: event
 navlogo: installation
 layout: layouts/post.njk
 image: /img/blog/fronteras-at-paseo.gif
-ogImage: /img/paseo-2.jpg
+ogImage: /img/blog/paseo-2.jpg
 ---
 
 We had a great time at [PASEO 2025](https://paseoproject.org/paseo2025) in Taos, New Mexico on September 12-13, 2025!
