@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta itemprop="name" content="{{ renderData.title or title or metadata.title }}">
 <meta itemprop="description" content="{{ renderData.description or description or metadata.description }}">
-{% if renderData.image or image or metadata.image %}
-  <meta itemprop="image" content="{{ renderData.image or image or metadata.image }}">
-  <meta property="og:image" content="{{ renderData.image or image or metadata.image }}" />
-  <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
+{% if renderData.ogImage or ogImage or renderData.image or image or metadata.image %}
+  <meta itemprop="image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}">
+  <meta property="og:image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}" />
+  <meta name="twitter:image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}">
   {% else %}
     <meta itemprop="image" content="/img/bigbend.jpg">
     <meta property="og:image" content="/img/bigbend.jpg" />

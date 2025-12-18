@@ -8,7 +8,6 @@ layout: layouts/post.njk
 image: /img/blog/tvs.jpg
 ---
 
-<img src="/img/blog/tvs.jpg" alt="tvs" class="post-hero">
 <div class="full-width-post" markdown=1>
 
 On behalf of everyone at [Dust Wave](https://dustwave.xyz), we're overjoyed to announce the selected films for the inaugural Fronteras Micro-film Festival! In no particular order:

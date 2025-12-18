@@ -31,6 +31,12 @@ Pushes to `main` automatically sync to `production` and trigger deployment.
    - `CLOUDFLARE_KEY`
    - And set variable `CLOUDFLARE_ENABLED` to `true`
 
-## Contributing
+## Content Editing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for content editing and development guidelines.
+Non-technical editors can use [Pages CMS](https://pagescms.org) to edit content:
+
+1. Sign in with GitHub at [pagescms.org](https://pagescms.org)
+2. Select the fronteras-website repository
+3. Edit posts, upload images, and publish — changes deploy automatically!
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed content editing and development guidelines.

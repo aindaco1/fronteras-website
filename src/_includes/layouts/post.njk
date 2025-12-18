@@ -3,7 +3,9 @@ layout: layouts/base.njk
 ---
 <main>
 <div class="container">
-{% if thumbnail %}
+{% if image %}
+<img src="{{ image }}" alt="{{ title }}" class="post-hero" style="background: black; padding: 10px;">
+{% elif thumbnail %}
 <img style="max-width: 100%" src="{{ thumbnail }}"/>
 {% endif %}
 <h1 class="mobile-h1" style="margin-bottom:0;">{{ title }}</h1>

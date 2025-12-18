@@ -19,19 +19,37 @@
 
 ### Creating a New Blog Post
 
-Posts need this format at the top (called "frontmatter"):
+Use Pages CMS to create posts — it provides a form-based editor with all the fields pre-configured. The CMS will handle the frontmatter format automatically.
+
+#### Post Fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Title** | Yes | Main headline for the post |
+| **Description** | Yes | Short summary for SEO/social sharing (max 160 chars) |
+| **Date** | Yes | Publication date and time (use 15:00:00 for consistency) |
+| **Tags** | No | Category: event, grant, winners, thanks, announcement (or create new) |
+| **Nav Logo** | No | Icon in navigation: installation, cash, trophy, thanks, announcement |
+| **Image** | No | Main image displayed as hero at top of post and for social sharing |
+| **Social Image Override** | No | Only needed if you want a different image for social previews (e.g., static instead of GIF) |
+| **Body** | No | Post content in HTML/Markdown |
+
+#### Manual Frontmatter Format
+
+If editing files directly, posts use this format:
 
 ```yaml
 ---
 title: Your Post Title
 description: A short description (max 160 characters)
-date: 2025-01-15 12:00:00
+date: 2025-01-15 15:00:00
 tags: event
+navlogo: installation
 layout: layouts/post.njk
 image: /img/your-image.jpg
 ---
 
-Your content goes here in Markdown format.
+Your content goes here in HTML/Markdown format.
 ```
 
 ### Image Guidelines
