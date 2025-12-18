@@ -1,15 +1,24 @@
-media: src/_includes/img
+media:
+  input: src/_includes/img
+  output: /img
+
 content:
   - name: posts
     label: Posts
     type: collection
     path: src/posts
+    view:
+      fields: [title, date, tags]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
-      - { name: title, label: Title, type: string }
-      - { name: description, label: Description, type: string, options: { maxlength:160 } }
-      - { name: date, label: Date, type: date, options: { format: yyyy-MM-dd HH:mm, time: true } }
-      - { name: tags, label: Tags, type: string }
-      - { name: navlogo, label: Nav Logo, type: string }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Description, type: string, required: true, options: { maxlength: 160 } }
+      - { name: date, label: Date, type: date, required: true, options: { format: yyyy-MM-dd HH:mm, time: true } }
+      - { name: tags, label: Tags, type: select, default: event, options: { values: [event, grant, winners, thanks, announcement], creatable: true } }
+      - { name: navlogo, label: Nav Logo, type: select, default: installation, options: { values: [installation, cash, trophy, thanks, announcement] } }
       - { name: layout, label: Layout, type: string, hidden: true, default: layouts/post.njk }
-      - { name: image, label: Image, type: image }
-      - { name: body, label: Body, type: code }
+      - { name: image, label: Featured Image, type: image }
+      - { name: body, label: Body, type: text }
