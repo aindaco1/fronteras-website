@@ -80,3 +80,41 @@ content:
         description: Post content in HTML/Markdown.
         options:
           language: html
+
+  - name: sponsors
+    label: Sponsors
+    type: file
+    path: src/_data/sponsors.json
+    fields:
+      - name: ""
+        label: Sponsors
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Sponsor or partner name
+
+          - name: url
+            label: Website URL
+            type: string
+            required: true
+            description: Link to sponsor website
+
+          - name: logo
+            label: Logo
+            type: image
+            required: true
+            description: Sponsor logo image
+            options:
+              path: sponsors
+
+          - name: tier
+            label: Tier
+            type: select
+            default: sponsor
+            description: Sponsorship level
+            options:
+              values: [organizer, partner, sponsor]

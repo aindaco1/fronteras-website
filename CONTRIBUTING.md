@@ -54,9 +54,18 @@ Your content goes here in HTML/Markdown format.
 
 ### Image Guidelines
 
-- **Post images**: Upload to `src/_includes/img/blog/` — Pages CMS defaults to this folder for post images
-- **Other images**: Upload to `src/_includes/img/` or appropriate subdirectory
-- Reference images as `/img/blog/filename.jpg` (for posts) or `/img/filename.jpg` in your content
+Images are organized into subdirectories:
+
+| Type | Directory | Usage |
+|------|-----------|-------|
+| **Post images** | `img/blog/` | Blog post hero images (Pages CMS default) |
+| **Sponsor logos** | `img/sponsors/` | Partner and sponsor logos |
+| **Branding** | `img/branding/` | Dust Wave logo, Fronteras logo |
+| **Site assets** | `img/site/` | Background images, default social images |
+| **Films** | `img/films/` | Film stills and thumbnails |
+| **Installations** | `img/boat/`, `img/door/`, `img/hands/`, etc. | Installation-specific images |
+
+- Reference images as `/img/blog/filename.jpg`, `/img/sponsors/logo.png`, etc.
 - Recommended: Optimize images before uploading (compress, reasonable size)
 
 ## For Developers
