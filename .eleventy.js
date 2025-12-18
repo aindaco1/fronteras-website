@@ -57,9 +57,10 @@ module.exports = function (eleventyConfig) {
     breaks: true,
     linkify: true,
   }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#",
+    permalink: markdownItAnchor.permalink.headerLink({
+      class: "direct-link",
+      symbol: "#",
+    }),
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);

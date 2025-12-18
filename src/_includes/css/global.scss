@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "variables.scss";
 @font-face {
   font-family: "Font-awesome";
@@ -201,8 +202,8 @@ $white-light-gray  : #f9f9f9;
       position: absolute;
       height: $radius - $width;
       width: $radius - $width;
-      top: $width / 2;
-      left: $width / 2;
+      top: math.div($width, 2);
+      left: math.div($width, 2);
       border-radius: 50%;
       background-color: $white;
     }
@@ -220,7 +221,7 @@ $white-light-gray  : #f9f9f9;
     z-index: 1;
   }
   .chart-pie > div {
-    clip: rect(0, $radius, $radius, $radius / 2);
+    clip: rect(0, $radius, $radius, math.div($radius, 2));
   }
   .chart-pie > div,
   .chart-pie.over50 .first-fill {
@@ -233,14 +234,14 @@ $white-light-gray  : #f9f9f9;
     clip: rect(auto,auto,auto,auto);
   }
   .chart-pie.over50 .first-fill {
-    clip: rect(0, $radius, $radius, $radius / 2);
+    clip: rect(0, $radius, $radius, math.div($radius, 2));
   }
   .chart-pie:not(.over50) .first-fill {
       display: none;
   }
   .second-fill {
     position: absolute;
-    clip: rect(0, $radius / 2, $radius, 0);
+    clip: rect(0, math.div($radius, 2), $radius, 0);
     width: 100%;
     height: 100%;
     border-radius: 50%;
