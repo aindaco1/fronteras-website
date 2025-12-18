@@ -53,6 +53,8 @@ npm start  # Dev server at http://localhost:8080
 
 Push to `main` → Auto-syncs to `production` → Builds and deploys via GitHub Actions
 
+The `docs/` directory is generated during build but not committed to the repo.
+
 ### Architecture
 
 - **Eleventy v2** static site generator
