@@ -18,6 +18,8 @@
     <meta name="twitter:image" content="/img/bigbend.jpg">
 {% endif %}
 
+<link rel="canonical" href="{{ metadata.url }}{{ page.url }}" />
+<meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
 <meta property="og:description" content="{{ renderData.description or description or metadata.description }}" />
