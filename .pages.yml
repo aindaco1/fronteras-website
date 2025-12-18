@@ -85,11 +85,14 @@ content:
     label: Sponsors
     type: file
     path: src/_data/sponsors.json
+    format: json
     fields:
-      - name: ""
+      - name: list
         label: Sponsors
         type: object
-        list: true
+        list:
+          collapsible:
+            summary: "{fields.name}"
         fields:
           - name: name
             label: Name

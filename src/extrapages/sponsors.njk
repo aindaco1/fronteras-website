@@ -15,7 +15,7 @@ eleventyNavigation:
 <div class="container">
 <br />
   <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-evenly;">
-    {% for sponsor in sponsors %}
+    {% for sponsor in sponsors.list %}
       <div style="padding: 1rem; max-width: 50%;">
         <a href="{{ sponsor.url }}" target="_blank"><img src="{{ sponsor.logo }}" alt="{{ sponsor.name }}"></a>
       </div>

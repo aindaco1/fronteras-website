@@ -62,6 +62,7 @@ Images are organized into subdirectories:
 | **Sponsor logos** | `img/sponsors/` | Partner and sponsor logos |
 | **Branding** | `img/branding/` | Dust Wave logo, Fronteras logo |
 | **Site assets** | `img/site/` | Background images, default social images |
+| **Homepage** | `img/home/` | Homepage-specific images (TV mockups, etc.) |
 | **Films** | `img/films/` | Film stills and thumbnails |
 | **Installations** | `img/boat/`, `img/door/`, `img/hands/`, etc. | Installation-specific images |
 

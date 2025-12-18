@@ -1,26 +1,28 @@
-[
-  {
-    "name": "Dust Wave",
-    "url": "https://dustwave.xyz",
-    "logo": "/img/branding/dust-wave-horizontal.png",
-    "tier": "organizer"
-  },
-  {
-    "name": "MOOD",
-    "url": "https://allthingsmood.com",
-    "logo": "/img/sponsors/mood.png",
-    "tier": "partner"
-  },
-  {
-    "name": "City of Albuquerque UETF",
-    "url": "https://www.cabq.gov/urban-enhancement-trust-fund/about-the-trust-fund",
-    "logo": "/img/sponsors/uetf.png",
-    "tier": "sponsor"
-  },
-  {
-    "name": "PASEO",
-    "url": "https://paseoproject.org",
-    "logo": "/img/blog/paseo.png",
-    "tier": "partner"
-  }
-]
+{
+  "list": [
+    {
+      "name": "Dust Wave",
+      "url": "https://dustwave.xyz",
+      "logo": "/img/branding/dust-wave-horizontal.png",
+      "tier": "organizer"
+    },
+    {
+      "name": "MOOD",
+      "url": "https://allthingsmood.com",
+      "logo": "/img/sponsors/mood.png",
+      "tier": "partner"
+    },
+    {
+      "name": "City of Albuquerque UETF",
+      "url": "https://www.cabq.gov/urban-enhancement-trust-fund/about-the-trust-fund",
+      "logo": "/img/sponsors/uetf.png",
+      "tier": "sponsor"
+    },
+    {
+      "name": "PASEO",
+      "url": "https://paseoproject.org",
+      "logo": "/img/blog/paseo.png",
+      "tier": "partner"
+    }
+  ]
+}
