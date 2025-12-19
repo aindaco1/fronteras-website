@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "components/header.njk" %}
+</br>
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="{{ image }}" alt="{{ title }} film still" class="post-hero installation-hero">
+    </br>
+    {{ body | safe }}
+    </br>
+    {% if authors %}
+    <span>{% for author in authors %}<span>{{ author.name }}</span>{% if author.instagram %}<a name="instagram link" class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>{% endif %}{% if not loop.last %} &amp; {% endif %}{% endfor %}</span>
+    </br>
+    {% for author in authors %}
+    {% if author.bio %}
+    <p>{{ author.bio | safe }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+  </br></br>
+</div>
