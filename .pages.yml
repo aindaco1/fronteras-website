@@ -88,7 +88,7 @@ content:
     filename: "{primary}.njk"
     format: yaml-frontmatter
     view:
-      fields: [title, description]
+      fields: [title, authors]
       primary: title
       sort: [title]
       default:
@@ -100,13 +100,8 @@ content:
         type: string
         required: true
 
-      - name: description
-        label: Director/Artist
-        type: string
-        description: Display name for the director/artist (shown in listings)
-
       - name: authors
-        label: Authors
+        label: Artists
         type: object
         list:
           collapsible:
@@ -128,46 +123,6 @@ content:
             type: text
             description: Short biography of the artist
 
-      - name: permalink
-        label: Permalink
-        type: string
-        required: true
-        description: URL path (e.g., /amatilla/)
-
-      - name: layout
-        label: Layout
-        type: string
-        hidden: true
-        default: layouts/film.njk
-
-      - name: navlogo
-        label: Nav Logo
-        type: select
-        default: emojianim
-        options:
-          values: [emojianim, installation, wave]
-
-      - name: backgroundcolor
-        label: Background Color
-        type: select
-        default: "F5F5F5"
-        description: Choose a preset color or enter a custom hex code (without #)
-        options:
-          values:
-            - label: Light Gray (F5F5F5)
-              value: "F5F5F5"
-            - label: Light Blue (6fcae7)
-              value: "6fcae7"
-            - label: Yellow (FEE283)
-              value: "FEE283"
-            - label: Aqua (7fffd4)
-              value: "7fffd4"
-            - label: Dark Green (2E6021)
-              value: "2E6021"
-            - label: Neon Green (39ff14)
-              value: "39ff14"
-          creatable: true
-
       - name: image
         label: Hero Image
         type: image
@@ -182,6 +137,47 @@ content:
         description: 'Artist statement wrapped in quotes and italics. Format: <p><i>"Your statement here."</i></p>'
         options:
           language: html
+
+      - name: navlogo
+        label: Nav Logo
+        type: select
+        default: emojianim
+        description: "🎬 emojianim | 🖼️ installation | 👋 wave"
+        options:
+          values:
+            - label: "🎬 Film"
+              value: emojianim
+            - label: "🖼️ Installation"
+              value: installation
+            - label: "👋 Wave"
+              value: wave
+
+      - name: backgroundcolor
+        label: Background Color
+        type: select
+        default: "F5F5F5"
+        description: Choose a preset color or enter a custom hex code (without #)
+        options:
+          values:
+            - label: Light Gray
+              value: "F5F5F5"
+            - label: Light Blue
+              value: "6fcae7"
+            - label: Yellow
+              value: "FEE283"
+            - label: Aqua
+              value: "7fffd4"
+            - label: Dark Green
+              value: "2E6021"
+            - label: Neon Green
+              value: "39ff14"
+          creatable: true
+
+      - name: layout
+        label: Layout
+        type: string
+        hidden: true
+        default: layouts/film.njk
 
   - name: sponsors
     label: Sponsors (2025)

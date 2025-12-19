@@ -10,14 +10,7 @@ layout: layouts/base.njk
     </br>
     {{ bodyContent | safe }}
   </div>
-  </br>
-  <div class="flex-row insta-row" markdown="0">
-    {% for author in authors %}
-    <div class="center-flex flex-column insta-column">
-      <span>{{ author.name | firstName }}'s</span><a name="instagram link" class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-    </div>
-    {% endfor %}
-  </div>
+
   </br>
   <div class="full-width-post">
     {% if showAllFilms %}

@@ -77,6 +77,48 @@ module.exports = function (eleventyConfig) {
     return collections.films.find(film => film.data.title === title);
   });
 
+  // Filter to look up film by filename slug
+  eleventyConfig.addFilter("getFilmBySlug", function(slug, collections) {
+    if (!slug || !collections || !collections.films) return null;
+    return collections.films.find(film => {
+      // Match by filename (without extension and path)
+      const filename = film.inputPath.split('/').pop().replace('.njk', '');
+      return filename === slug;
+    });
+  });
+
+  // Create an installations collection for lookups
+  eleventyConfig.addCollection("installations", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk");
+  });
+
+  // Filter to look up installation by filename slug or by slugified title
+  eleventyConfig.addFilter("getInstallationBySlug", function(slug, collections, installationsData) {
+    if (!slug) return null;
+    const slugify = (str) => {
+      if (!str) return "";
+      return str.toLowerCase().replace(/['']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    };
+    // First check the .njk file collection
+    if (collections && collections.installations) {
+      const found = collections.installations.find(inst => {
+        const filename = inst.inputPath.split('/').pop().replace('.njk', '');
+        if (filename === slug) return true;
+        if (inst.data.title && slugify(inst.data.title) === slug) return true;
+        return false;
+      });
+      if (found) return found;
+    }
+    // Then check installations.json data
+    if (installationsData && installationsData.list) {
+      const jsonInst = installationsData.list.find(inst => slugify(inst.title) === slug);
+      if (jsonInst) {
+        return { data: { title: jsonInst.title }, url: '/' + slug + '/' };
+      }
+    }
+    return null;
+  });
+
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/js": "js" });

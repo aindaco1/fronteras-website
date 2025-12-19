@@ -48,9 +48,10 @@ films:
   {# <div class="grid-col grid-col--4">
   </div> #}
     {% for item in films %}
+      {% set film = item | getFilmBySlug(collections) %}
       <div class="grid-item imagediv">
-            <a href="/{{ item }}">
-              <figure><img class="imagecard" src="/img/films/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            <a href="{{ film.url if film else ('/' + item + '/') }}">
+              <figure><img class="imagecard" src="/img/films/{{ item }}.jpg"/><figcaption>{{ film.data.title if film else (item | replace("-", " ") | title) }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}

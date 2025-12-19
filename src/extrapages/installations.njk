@@ -27,9 +27,10 @@ sketches:
   {# <div class="grid-col grid-col--4">
   </div> #}
     {% for item in sketches %}
+      {% set installation = item | getInstallationBySlug(collections, installations) %}
       <div class="grid-item imagediv">
-            <a href="/{{ item }}">
-              <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            <a href="{{ installation.url if installation else ('/' + item + '/') }}">
+              <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ installation.data.title if installation else (item | replace("-", " ") | title) }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}
