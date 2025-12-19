@@ -34,17 +34,17 @@
       "description": "<p>\"<i>The door doesn't close behind you</i> is a sculptural installation designed for the Fronteras Micro-film Festival. When the door is closed, it projects an image of a closed door. When the door is opened, films from Fronteras are allowed to play.</p><p>As the son of an immigrant and first generation US citizen on my father's side, I think about the concept of keeping the door open for further immigration. We need to remember that as Americans most of us are the product of immigration. Immigration makes this country beautiful, but many people in this country now think that since they got theirs, it's time to close the door behind them.</p><p><i>The door doesn't close behind you</i> is a call to action. Unlike the title, the door in this sculpture is on spring hinges that force it closed unless it is held open. Passivity is not an option. If we don't act, it will continue to be slammed shut by those in power. People who walk by and are too afraid or nervous to make a gesture of opening the door get nothing. People who are bold and willing to act are rewarded with one of the many beautiful films contributed to Fronteras by filmmakers from all over the world.</p><p>There are no instructions provided for the door. People have to think for themselves, make the connection between the projection and the physical object; decide whether they want to step up and open the door, or leave it closed.\"</p>",
       "showAllFilms": false,
       "filmsScreened": [
-        "src/extrapages/films/u1f4bb_openfield.njk",
-        "src/extrapages/films/the-screech-dreams_soft-error-genealogy.njk",
-        "src/extrapages/films/the-new-colossus.njk",
-        "src/extrapages/films/telemetry.njk",
-        "src/extrapages/films/pan-terrestrial-peoples-anthem.njk",
-        "src/extrapages/films/oh-are-you-one-too.njk",
-        "src/extrapages/films/o-private-property.njk",
-        "src/extrapages/films/microfronteras-1-2-v2-reh.njk",
-        "src/extrapages/films/lineas-de-comunicacion-lines-of-communication.njk",
-        "src/extrapages/films/el-porton.njk",
-        "src/extrapages/films/amatilla.njk"
+        "(U+1F4BB)_OpenField",
+        "The Screech Dreams_Soft Error Genealogy",
+        "The New Colossus",
+        "Telemetry",
+        "Pan-terrestrial People's Anthem",
+        "Oh, Are You One, Too?",
+        "O, Private Property!",
+        "Microfronteras 1 2 (V2) reh.",
+        "Líneas de Comunicación / Lines of Communication",
+        "El Porton",
+        "Amatilla"
       ],
       "galleryImages": ["/img/the-door-doesnt-close-behind-you/1.jpg", "/img/the-door-doesnt-close-behind-you/2.jpg", "/img/the-door-doesnt-close-behind-you/4.jpg", "/img/the-door-doesnt-close-behind-you/5.jpg"]
     }

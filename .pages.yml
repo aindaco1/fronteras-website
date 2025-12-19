@@ -273,6 +273,7 @@ content:
             options:
               collection: films
               multiple: true
+              value: "{title}"
               label: "{title}"
               search: title
 

@@ -71,6 +71,12 @@ module.exports = function (eleventyConfig) {
     return collections.films.find(film => film.inputPath === path || film.inputPath === './' + path);
   });
 
+  // Filter to look up film by title
+  eleventyConfig.addFilter("getFilmByTitle", function(title, collections) {
+    if (!title || !collections || !collections.films) return null;
+    return collections.films.find(film => film.data.title === title);
+  });
+
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/js": "js" });
