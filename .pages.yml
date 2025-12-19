@@ -96,51 +96,53 @@ content:
         order: asc
     fields:
       - name: title
-        label: Title
+        label: Film Title
         type: string
         required: true
+        description: The exact title of your film as you want it displayed. Special characters and formatting will be preserved.
 
       - name: authors
-        label: Artists
+        label: Filmmakers
         type: object
         list:
           collapsible:
             summary: "{fields.name}"
+        description: Add all filmmakers (directors, artists) associated with this film. Each can have their own bio and Instagram.
         fields:
           - name: name
-            label: Name
+            label: Full Name
             type: string
             required: true
-            description: Artist/director name
+            description: Your full name as you want it credited on the site.
 
           - name: instagram
             label: Instagram Handle
             type: string
-            description: Instagram username (without @)
+            description: Your Instagram username without the @ symbol (e.g., "yourhandle" not "@yourhandle"). Leave blank if you don't want to link Instagram.
 
           - name: bio
             label: Bio
             type: rich-text
-            description: Short biography of the artist (HTML supported)
+            description: A brief biography (2-4 sentences) about you as a filmmaker. Describe your background, artistic focus, and any notable achievements. Links are supported.
 
       - name: image
-        label: Hero Image
+        label: Film Still
         type: image
         required: true
-        description: Main image displayed at top of film page
+        description: A compelling still frame or promotional image from your film. Requirements: JPG format, landscape orientation (16:9 or similar), minimum 1920px wide, under 500KB. This appears as the hero image on your film's page and in the film gallery.
         options:
           path: films
 
       - name: artistStatement
         label: Artist Statement
         type: rich-text
-        description: Artist statement (HTML supported). Typically wrapped in quotes and italics.
+        description: Your statement about this film (1-3 paragraphs). Describe your creative vision, inspiration, themes explored, and what you want viewers to take away. This will be displayed in quotes and italics. For multiple paragraphs, use blank lines between them.
 
       - name: navlogo
         label: Nav Logo
         type: select
         default: emojianim
-        description: "🎬 emojianim | 🖼️ installation | 👋 wave"
+        description: The animated icon shown in the navigation bar when viewing your film's page. Most films use the Film icon.
         options:
           values:
             - label: "🎬 Film"
@@ -151,10 +153,10 @@ content:
               value: wave
 
       - name: backgroundcolor
-        label: Background Color
+        label: Page Background Color
         type: select
         default: "F5F5F5"
-        description: Choose a preset color or enter a custom hex code (without #)
+        description: The background color for your film's page. Light Gray works well for most content. Choose a color that complements your film still.
         options:
           values:
             - label: Light Gray
@@ -191,30 +193,30 @@ content:
             summary: "{fields.name}"
         fields:
           - name: name
-            label: Name
+            label: Organization Name
             type: string
             required: true
-            description: Sponsor or partner name
+            description: The full name of the sponsor or partner organization.
 
           - name: url
             label: Website URL
             type: string
             required: true
-            description: Link to sponsor website
+            description: The sponsor's website URL including https:// (e.g., https://example.com)
 
           - name: logo
             label: Logo
             type: image
             required: true
-            description: Sponsor logo image
+            description: "Sponsor logo image. Requirements: PNG format with transparent background strongly preferred. Dimensions: 400-500px square works best (e.g., 400x400 or 500x500). Horizontal logos also work if similar height (e.g., 500x300). Keep file size under 200KB. Logos display at 50% container width on desktop and scale responsively."
             options:
               path: sponsors
 
           - name: tier
-            label: Tier
+            label: Sponsorship Tier
             type: select
             default: sponsor
-            description: Sponsorship level
+            description: The level of sponsorship. Organizers appear first, then Partners, then Sponsors.
             options:
               values: [organizer, partner, sponsor]
 
@@ -232,56 +234,57 @@ content:
             summary: "{fields.title}"
         fields:
           - name: title
-            label: Title
+            label: Installation Title
             type: string
             required: true
-            description: Installation title (URL will be auto-generated from this)
+            description: The title of your installation artwork. The page URL will be auto-generated from this title.
 
           - name: authors
-            label: Authors
+            label: Artists
             type: object
             list:
               collapsible:
                 summary: "{fields.name}"
+            description: Add all artists who created this installation. Each can have their own Instagram linked.
             fields:
               - name: name
-                label: Name
+                label: Full Name
                 type: string
                 required: true
-                description: Artist name
+                description: Your full name as you want it credited on the site.
 
               - name: instagram
                 label: Instagram Handle
                 type: string
-                description: Instagram username (without @)
+                description: Your Instagram username without the @ symbol. Leave blank if you don't want to link Instagram.
 
           - name: navlogo
             label: Nav Logo
             type: select
             default: installation
-            description: Icon shown in navigation
+            description: The animated icon shown in the navigation bar when viewing this installation's page.
             options:
               values: [installation, door, handwave, trophy, cash]
               creatable: true
 
           - name: backgroundcolor
-            label: Background Color
+            label: Page Background Color
             type: select
             required: true
-            description: Choose a preset color or enter a custom hex code (without #)
+            description: The background color for this installation's page. Choose a color that complements your hero image and artwork aesthetic.
             options:
               values:
-                - label: Light Blue (6fcae7)
+                - label: Light Blue
                   value: "6fcae7"
-                - label: Yellow (FEE283)
+                - label: Yellow
                   value: "FEE283"
-                - label: Aqua (7fffd4)
+                - label: Aqua
                   value: "7fffd4"
-                - label: Dark Green (2E6021)
+                - label: Dark Green
                   value: "2E6021"
-                - label: Light Gray (f0f0f0)
+                - label: Light Gray
                   value: "f0f0f0"
-                - label: Neon Green (39ff14)
+                - label: Neon Green
                   value: "39ff14"
               creatable: true
 
@@ -289,15 +292,15 @@ content:
             label: Hero Image
             type: image
             required: true
-            description: Main image displayed at top of installation page
+            description: The main promotional image for your installation. Requirements: JPG format, landscape orientation, minimum 1920px wide, under 500KB. This appears at the top of your installation's page and in the gallery.
             options:
               path: sketches
 
           - name: description
-            label: Body Content
+            label: Installation Description
             type: code
             required: true
-            description: Installation description/body content in HTML format
+            description: Describe your installation (2-5 paragraphs). Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival's border/migration themes. Use HTML formatting (<p> tags for paragraphs).
             options:
               language: html
 
@@ -305,12 +308,12 @@ content:
             label: Show All Films Link
             type: boolean
             default: true
-            description: If checked, shows "All selected films screened" link instead of specific films list
+            description: When checked, shows a link to "All selected films screened" instead of listing specific films. Uncheck if you want to list specific films that will be screened at this installation.
 
           - name: filmsScreened
             label: Films Screened
             type: reference
-            description: Select films from the Films collection (only used if "Show All Films Link" is unchecked)
+            description: Only used if "Show All Films Link" is unchecked. Select which films from the festival will be screened at this installation.
             options:
               collection: films
               multiple: true
@@ -321,6 +324,6 @@ content:
           - name: galleryImages
             label: Gallery Images
             type: image
-            description: Upload or select images for the gallery. For new installations, create a folder matching the slugified title (e.g., "the-hands-that-hold-us") and upload images there.
+            description: Additional photos of your installation (documentation, detail shots, audience interaction). Requirements: JPG format, any orientation, minimum 1200px on longest side. Upload to a folder matching your installation's URL slug (e.g., "the-hands-that-hold-us").
             options:
               multiple: true
