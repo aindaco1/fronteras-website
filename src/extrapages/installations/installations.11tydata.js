@@ -8,6 +8,7 @@ module.exports = {
     heroImage: data => data.installation?.heroImage || data.heroImage,
     authors: data => data.installation?.authors || data.authors,
     bodyContent: data => data.installation?.description,
+    showAllFilms: data => data.installation?.showAllFilms ?? data.showAllFilms,
     filmsScreened: data => data.installation?.filmsScreened || data.filmsScreened,
     galleryFolder: data => data.installation?.galleryFolder || data.galleryFolder,
     galleryImages: data => data.installation?.galleryImages || data.galleryImages

@@ -196,12 +196,30 @@ content:
             options:
               language: html
 
+          - name: showAllFilms
+            label: Show All Films Link
+            type: boolean
+            default: true
+            description: If checked, shows "All selected films screened" link instead of specific films list
+
           - name: filmsScreened
             label: Films Screened
-            type: code
-            description: 'Either "all" for all films link, or JSON array of film objects [{title, url}]'
-            options:
-              language: json
+            type: object
+            list:
+              collapsible:
+                summary: "{fields.title}"
+            description: Specific films to list (only used if "Show All Films Link" is unchecked)
+            fields:
+              - name: title
+                label: Film Title
+                type: string
+                required: true
+
+              - name: url
+                label: Film URL
+                type: string
+                required: true
+                description: URL path (e.g., "/el-porton/")
 
           - name: galleryFolder
             label: Gallery Folder
