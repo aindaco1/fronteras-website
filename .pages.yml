@@ -246,7 +246,7 @@ content:
             default: 📺 Installation
             description: The animated icon shown in the navigation bar when viewing this installation page.
             options:
-              values: [📺 Installation, 🚪 Door, 🖐️ Hand Wave, 🏆 Trophy, 💵 Cash]
+              values: [📺 Installation, 🚪 Door, 🖐️ Hand Wave, 🏆 Trophy, 💵 Cash, 🚚 Truck, ⛵ Boat, ☁️ Clouds, 🗼 Tower, 🔦 Flashlight, 📢 Loudspeaker]
               creatable: true
 
           - name: backgroundcolor

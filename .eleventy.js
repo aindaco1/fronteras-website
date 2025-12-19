@@ -51,7 +51,13 @@ module.exports = function (eleventyConfig) {
       '🚪 Door': 'door',
       '🖐️ Hand Wave': 'handwave',
       '🏆 Trophy': 'trophy',
-      '💵 Cash': 'cash'
+      '💵 Cash': 'cash',
+      '🚚 Truck': 'truck',
+      '⛵ Boat': 'boat',
+      '☁️ Clouds': 'clouds',
+      '🗼 Tower': 'tower',
+      '🔦 Flashlight': 'flashlight',
+      '📢 Loudspeaker': 'loudspeaker'
     };
     return logoMap[logo] || logo;
   });
