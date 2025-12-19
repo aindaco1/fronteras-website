@@ -118,7 +118,7 @@ content:
           - name: instagram
             label: Instagram Handle
             type: string
-            description: Your Instagram username without the @ symbol (e.g., "yourhandle" not "@yourhandle"). Leave blank if you don't want to link Instagram.
+            description: "Your Instagram username without the @ symbol. Leave blank if you don't want to link Instagram."
 
           - name: bio
             label: Bio
@@ -129,7 +129,7 @@ content:
         label: Film Still
         type: image
         required: true
-        description: A compelling still frame or promotional image from your film. Requirements: JPG format, landscape orientation (16:9 or similar), minimum 1920px wide, under 500KB. This appears as the hero image on your film's page and in the film gallery.
+        description: "A compelling still frame or promotional image from your film. Use JPG format, landscape orientation (16:9 or similar), minimum 1920px wide, under 500KB. This appears as the hero image on your film page and in the film gallery."
         options:
           path: films
 
@@ -292,7 +292,7 @@ content:
             label: Hero Image
             type: image
             required: true
-            description: The main promotional image for your installation. Requirements: JPG format, landscape orientation, minimum 1920px wide, under 500KB. This appears at the top of your installation's page and in the gallery.
+            description: "The main promotional image for your installation. Use JPG format, landscape orientation, minimum 1920px wide, under 500KB. This appears at the top of your installation page and in the gallery."
             options:
               path: sketches
 
@@ -300,7 +300,7 @@ content:
             label: Installation Description
             type: code
             required: true
-            description: Describe your installation (2-5 paragraphs). Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival's border/migration themes. Use HTML formatting (<p> tags for paragraphs).
+            description: "Describe your installation in 2-5 paragraphs. Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival themes. Use HTML formatting with p tags for paragraphs."
             options:
               language: html
 
@@ -324,6 +324,6 @@ content:
           - name: galleryImages
             label: Gallery Images
             type: image
-            description: Additional photos of your installation (documentation, detail shots, audience interaction). Requirements: JPG format, any orientation, minimum 1200px on longest side. Upload to a folder matching your installation's URL slug (e.g., "the-hands-that-hold-us").
+            description: "Additional photos of your installation showing documentation, detail shots, and audience interaction. Use JPG format, any orientation, minimum 1200px on longest side."
             options:
               multiple: true
