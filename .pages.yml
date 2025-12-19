@@ -164,6 +164,7 @@ content:
       - name: year
         label: Festival Year(s)
         type: select
+        required: true
         description: Which year(s) this film was selected. Select multiple if it appeared in both years.
         default: ["2025"]
         options:
@@ -215,6 +216,7 @@ content:
       - name: year
         label: Festival Year(s)
         type: select
+        required: true
         description: Which year(s) this sponsor supported. Select multiple if they sponsored both years.
         default: ["2025"]
         options:
@@ -331,6 +333,7 @@ content:
       - name: year
         label: Festival Year(s)
         type: select
+        required: true
         description: Which year(s) this installation appeared in. Select multiple if it appeared in both years.
         default: ["2025"]
         options:
