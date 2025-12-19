@@ -41,7 +41,7 @@ layout: layouts/base.njk
     <div class="grid-col grid-col--2"></div>
     {% for image in galleryImages %}
     <div class="grid-item imagediv">
-      <img class="imagecard" src="/img/{{ galleryFolder }}/{{ image }}"/>
+      <img class="imagecard" src="{{ image }}"/>
     </div>
     {% endfor %}
   </div>

@@ -48,6 +48,16 @@ module.exports = function (eleventyConfig) {
     return name.split(" ")[0];
   });
 
+  // Slugify a string
+  eleventyConfig.addFilter("slugify", (str) => {
+    if (!str) return "";
+    return str
+      .toLowerCase()
+      .replace(/['']/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  });
+
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
   // Create a films collection for lookups

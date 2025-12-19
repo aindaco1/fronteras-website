@@ -194,13 +194,7 @@ content:
             label: Title
             type: string
             required: true
-            description: Installation title
-
-          - name: slug
-            label: URL Slug
-            type: string
-            required: true
-            description: URL-friendly version of title (e.g., "the-hands-that-hold-us")
+            description: Installation title (URL will be auto-generated from this)
 
           - name: authors
             label: Authors
@@ -279,15 +273,11 @@ content:
             options:
               collection: films
               multiple: true
-
-          - name: galleryFolder
-            label: Gallery Folder
-            type: string
-            required: true
-            description: Folder name in img/ containing gallery images (e.g., "hands", "door")
+              label: "{title}"
 
           - name: galleryImages
             label: Gallery Images
-            type: string
-            list: true
-            description: List of image filenames in the gallery folder (e.g., "1.jpg", "2.jpg")
+            type: image
+            description: Upload or select images for the gallery. For new installations, create a folder matching the slugified title (e.g., "the-hands-that-hold-us") and upload images there.
+            options:
+              multiple: true
