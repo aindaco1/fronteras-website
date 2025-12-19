@@ -24,8 +24,11 @@ layout: layouts/base.njk
     <h3 style="text-align:center;"><a href="/films/">All selected films screened</a></h3>
     {% else %}
     <h3 style="text-align:center;">Films screened</h3>
-    {% for film in filmsScreened %}
-    <p style="text-align:center;"><a href="{{ film.url }}">{{ film.title }}</a></p>
+    {% for filmPath in filmsScreened %}
+      {% set film = filmPath | getFilmByPath(collections) %}
+      {% if film %}
+    <p style="text-align:center;"><a href="{{ film.url }}">{{ film.data.title }}</a></p>
+      {% endif %}
     {% endfor %}
     {% endif %}
   </div>

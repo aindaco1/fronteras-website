@@ -81,6 +81,61 @@ content:
         options:
           language: html
 
+  - name: films
+    label: Films (2025)
+    type: collection
+    path: src/extrapages/films
+    view:
+      fields: [title, description]
+      primary: title
+      sort: [title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Director/Artist
+        type: string
+
+      - name: permalink
+        label: Permalink
+        type: string
+        required: true
+        description: URL path (e.g., /amatilla/)
+
+      - name: layout
+        label: Layout
+        type: string
+        hidden: true
+        default: layouts/base.njk
+
+      - name: navlogo
+        label: Nav Logo
+        type: select
+        default: emojianim
+        options:
+          values: [emojianim, installation, wave]
+
+      - name: backgroundcolor
+        label: Background Color
+        type: string
+        default: "F5F5F5"
+
+      - name: image
+        label: Film Still
+        type: image
+        options:
+          path: films
+
+      - name: body
+        label: Body
+        type: rich-text
+
   - name: sponsors
     label: Sponsors (2025)
     type: file
@@ -176,9 +231,24 @@ content:
 
           - name: backgroundcolor
             label: Background Color
-            type: string
+            type: select
             required: true
-            description: Hex color code without # (e.g., "2E6021")
+            description: Choose a preset color or enter a custom hex code (without #)
+            options:
+              values:
+                - label: Light Blue (6fcae7)
+                  value: "6fcae7"
+                - label: Yellow (FEE283)
+                  value: "FEE283"
+                - label: Aqua (7fffd4)
+                  value: "7fffd4"
+                - label: Dark Green (2E6021)
+                  value: "2E6021"
+                - label: Light Gray (f0f0f0)
+                  value: "f0f0f0"
+                - label: Neon Green (39ff14)
+                  value: "39ff14"
+              creatable: true
 
           - name: heroImage
             label: Hero Image
@@ -204,22 +274,11 @@ content:
 
           - name: filmsScreened
             label: Films Screened
-            type: object
-            list:
-              collapsible:
-                summary: "{fields.title}"
-            description: Specific films to list (only used if "Show All Films Link" is unchecked)
-            fields:
-              - name: title
-                label: Film Title
-                type: string
-                required: true
-
-              - name: url
-                label: Film URL
-                type: string
-                required: true
-                description: URL path (e.g., "/el-porton/")
+            type: reference
+            description: Select films from the Films collection (only used if "Show All Films Link" is unchecked)
+            options:
+              collection: films
+              multiple: true
 
           - name: galleryFolder
             label: Gallery Folder

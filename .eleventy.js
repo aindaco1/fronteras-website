@@ -50,6 +50,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
+  // Create a films collection for lookups
+  eleventyConfig.addCollection("films", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk");
+  });
+
+  // Filter to look up film by input path
+  eleventyConfig.addFilter("getFilmByPath", function(path, collections) {
+    if (!path || !collections || !collections.films) return null;
+    return collections.films.find(film => film.inputPath === path || film.inputPath === './' + path);
+  });
+
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/js": "js" });
