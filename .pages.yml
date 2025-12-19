@@ -82,13 +82,13 @@ content:
           language: html
 
   - name: films
-    label: Films (2025)
+    label: Films
     type: collection
     path: src/extrapages/films
     filename: "{primary}.njk"
     format: yaml-frontmatter
     view:
-      fields: [title, authors]
+      fields: [title, authors, year]
       primary: title
       sort: [title]
       default:
@@ -161,139 +161,175 @@ content:
         hidden: true
         default: layouts/film.njk
 
+      - name: year
+        label: Festival Year(s)
+        type: select
+        description: Which year(s) this film was selected. Select multiple if it appeared in both years.
+        default: ["2025"]
+        options:
+          values: ["2023", "2025"]
+          multiple: true
+
   - name: sponsors
-    label: Sponsors (2025)
-    type: file
-    path: src/_data/sponsors.json
-    format: json
+    label: Sponsors
+    type: collection
+    path: src/extrapages/sponsors
+    filename: "{primary}.njk"
+    format: yaml-frontmatter
+    view:
+      fields: [name, tier, year]
+      primary: name
+      sort: [tier, name]
+      default:
+        sort: tier
+        order: asc
     fields:
-      - name: list
-        label: Sponsors
+      - name: name
+        label: Organization Name
+        type: string
+        required: true
+        description: The full name of the sponsor or partner organization.
+
+      - name: url
+        label: Website URL
+        type: string
+        required: true
+        description: The sponsor's website URL including https:// (e.g., https://example.com)
+
+      - name: logo
+        label: Logo
+        type: image
+        required: true
+        description: "Sponsor logo image. Requirements: PNG format with transparent background strongly preferred. Dimensions: 400-500px square works best (e.g., 400x400 or 500x500). Horizontal logos also work if similar height (e.g., 500x300). Keep file size under 200KB. Logos display at 50% container width on desktop and scale responsively."
+        options:
+          path: sponsors
+
+      - name: tier
+        label: Sponsorship Tier
+        type: select
+        default: sponsor
+        description: The level of sponsorship. Organizers appear first, then Partners, then Sponsors.
+        options:
+          values: [organizer, partner, sponsor]
+
+      - name: year
+        label: Festival Year(s)
+        type: select
+        description: Which year(s) this sponsor supported. Select multiple if they sponsored both years.
+        default: ["2025"]
+        options:
+          values: ["2023", "2025"]
+          multiple: true
+
+  - name: installations
+    label: Installations
+    type: collection
+    path: src/extrapages/installations
+    filename: "{primary}.njk"
+    format: yaml-frontmatter
+    view:
+      fields: [title, authors, year]
+      primary: title
+      sort: [title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Installation Title
+        type: string
+        required: true
+        description: The title of your installation artwork. The page URL will be auto-generated from this title.
+
+      - name: authors
+        label: Artists
         type: object
         list:
           collapsible:
             summary: "{fields.name}"
+        description: Add all artists who created this installation. Each can have their own Instagram linked.
         fields:
           - name: name
-            label: Organization Name
+            label: Full Name
             type: string
             required: true
-            description: The full name of the sponsor or partner organization.
+            description: Your full name as you want it credited on the site.
 
-          - name: url
-            label: Website URL
+          - name: instagram
+            label: Instagram Handle
             type: string
-            required: true
-            description: The sponsor's website URL including https:// (e.g., https://example.com)
+            description: Your Instagram username without the @ symbol. Leave blank if you don't want to link Instagram.
 
-          - name: logo
-            label: Logo
-            type: image
-            required: true
-            description: "Sponsor logo image. Requirements: PNG format with transparent background strongly preferred. Dimensions: 400-500px square works best (e.g., 400x400 or 500x500). Horizontal logos also work if similar height (e.g., 500x300). Keep file size under 200KB. Logos display at 50% container width on desktop and scale responsively."
-            options:
-              path: sponsors
+      - name: heroImage
+        label: Hero Image
+        type: image
+        required: true
+        description: "The main promotional image for your installation. Use JPG format, landscape orientation, minimum 1920px wide, under 500KB. This appears at the top of your installation page and in the gallery."
+        options:
+          path: sketches
 
-          - name: tier
-            label: Sponsorship Tier
-            type: select
-            default: sponsor
-            description: The level of sponsorship. Organizers appear first, then Partners, then Sponsors.
-            options:
-              values: [organizer, partner, sponsor]
+      - name: description
+        label: Installation Description
+        type: rich-text
+        required: true
+        description: "Describe your installation in 2-5 paragraphs. Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival themes."
 
-  - name: installations
-    label: Installations (2025)
-    type: file
-    path: src/_data/installations.json
-    format: json
-    fields:
-      - name: list
-        label: Installations
-        type: object
-        list:
-          collapsible:
-            summary: "{fields.title}"
-        fields:
-          - name: title
-            label: Installation Title
-            type: string
-            required: true
-            description: The title of your installation artwork. The page URL will be auto-generated from this title.
+      - name: navlogo
+        label: Nav Logo
+        type: select
+        default: 📺 Installation
+        description: The animated icon shown in the navigation bar when viewing this installation page.
+        options:
+          values: [📺 Installation, 🚪 Door, 🖐️ Hand Wave, 🏆 Trophy, 💵 Cash, 🚚 Truck, ⛵ Boat, ☁️ Clouds, 🗼 Tower, 🔦 Flashlight, 📢 Loudspeaker]
+          creatable: true
 
-          - name: authors
-            label: Artists
-            type: object
-            list:
-              collapsible:
-                summary: "{fields.name}"
-            description: Add all artists who created this installation. Each can have their own Instagram linked.
-            fields:
-              - name: name
-                label: Full Name
-                type: string
-                required: true
-                description: Your full name as you want it credited on the site.
+      - name: backgroundcolor
+        label: Page Background Color
+        type: select
+        required: true
+        description: The background color for this installation page. Choose a color that complements your hero image and artwork aesthetic.
+        options:
+          values: [Light Blue, Yellow, Aqua, Dark Green, Light Gray, Neon Green]
+          creatable: true
 
-              - name: instagram
-                label: Instagram Handle
-                type: string
-                description: Your Instagram username without the @ symbol. Leave blank if you don't want to link Instagram.
+      - name: layout
+        label: Layout
+        type: string
+        hidden: true
+        default: layouts/installation.njk
 
-          - name: navlogo
-            label: Nav Logo
-            type: select
-            default: 📺 Installation
-            description: The animated icon shown in the navigation bar when viewing this installation page.
-            options:
-              values: [📺 Installation, 🚪 Door, 🖐️ Hand Wave, 🏆 Trophy, 💵 Cash, 🚚 Truck, ⛵ Boat, ☁️ Clouds, 🗼 Tower, 🔦 Flashlight, 📢 Loudspeaker]
-              creatable: true
+      - name: showAllFilms
+        label: Show All Films Link
+        type: boolean
+        default: true
+        description: When checked, shows a link to "All selected films screened" instead of listing specific films. Uncheck if you want to list specific films that will be screened at this installation.
 
-          - name: backgroundcolor
-            label: Page Background Color
-            type: select
-            required: true
-            description: The background color for this installation page. Choose a color that complements your hero image and artwork aesthetic.
-            options:
-              values: [Light Blue, Yellow, Aqua, Dark Green, Light Gray, Neon Green]
-              creatable: true
+      - name: filmsScreened
+        label: Films Screened
+        type: reference
+        description: Only used if "Show All Films Link" is unchecked. Select which films from the festival will be screened at this installation.
+        options:
+          collection: films
+          multiple: true
+          value: "{title}"
+          label: "{title}"
+          search: title
 
-          - name: heroImage
-            label: Hero Image
-            type: image
-            required: true
-            description: "The main promotional image for your installation. Use JPG format, landscape orientation, minimum 1920px wide, under 500KB. This appears at the top of your installation page and in the gallery."
-            options:
-              path: sketches
+      - name: galleryImages
+        label: Gallery Images
+        type: image
+        description: "Additional photos of your installation showing documentation, detail shots, and audience interaction. Use JPG format, any orientation, minimum 1200px on longest side."
+        options:
+          multiple: true
+          path: installations
 
-          - name: description
-            label: Installation Description
-            type: code
-            required: true
-            description: "Describe your installation in 2-5 paragraphs. Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival themes. Use HTML formatting with p tags for paragraphs."
-            options:
-              language: html
+      - name: year
+        label: Festival Year(s)
+        type: select
+        description: Which year(s) this installation appeared in. Select multiple if it appeared in both years.
+        default: ["2025"]
+        options:
+          values: ["2023", "2025"]
+          multiple: true
 
-          - name: showAllFilms
-            label: Show All Films Link
-            type: boolean
-            default: true
-            description: When checked, shows a link to "All selected films screened" instead of listing specific films. Uncheck if you want to list specific films that will be screened at this installation.
 
-          - name: filmsScreened
-            label: Films Screened
-            type: reference
-            description: Only used if "Show All Films Link" is unchecked. Select which films from the festival will be screened at this installation.
-            options:
-              collection: films
-              multiple: true
-              value: "{title}"
-              label: "{title}"
-              search: title
-
-          - name: galleryImages
-            label: Gallery Images
-            type: image
-            description: "Additional photos of your installation showing documentation, detail shots, and audience interaction. Use JPG format, any orientation, minimum 1200px on longest side."
-            options:
-              multiple: true

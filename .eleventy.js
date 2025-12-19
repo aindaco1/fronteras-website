@@ -104,9 +104,28 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
+  // Helper to check if film year matches (supports string or array)
+  const filmHasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
   // Create a films collection for lookups
   eleventyConfig.addCollection("films", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk");
+  });
+
+  // Create films collection filtered by year 2023
+  eleventyConfig.addCollection("films2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk")
+      .filter(item => filmHasYear(item, "2023"));
+  });
+
+  // Create films collection filtered by year 2025
+  eleventyConfig.addCollection("films2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk")
+      .filter(item => filmHasYear(item, "2025"));
   });
 
   // Filter to look up film by input path
@@ -134,6 +153,61 @@ module.exports = function (eleventyConfig) {
   // Create an installations collection for lookups
   eleventyConfig.addCollection("installations", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk");
+  });
+
+  // Helper to check if year matches (supports string or array)
+  const hasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
+  // Create installations collection filtered by year 2023
+  eleventyConfig.addCollection("installations2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk")
+      .filter(item => hasYear(item, "2023"));
+  });
+
+  // Create installations collection filtered by year 2025
+  eleventyConfig.addCollection("installations2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk")
+      .filter(item => hasYear(item, "2025"));
+  });
+
+  // Helper to check if sponsor year matches (supports string or array)
+  const sponsorHasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
+  // Helper to sort sponsors by tier
+  const sortByTier = (a, b) => {
+    const tierOrder = { organizer: 0, partner: 1, sponsor: 2 };
+    const tierA = tierOrder[a.data.tier] ?? 3;
+    const tierB = tierOrder[b.data.tier] ?? 3;
+    if (tierA !== tierB) return tierA - tierB;
+    return (a.data.name || '').localeCompare(b.data.name || '');
+  };
+
+  // Create a sponsors collection (all sponsors)
+  eleventyConfig.addCollection("sponsors", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .sort(sortByTier);
+  });
+
+  // Create sponsors filtered by year 2023
+  eleventyConfig.addCollection("sponsors2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .filter(item => sponsorHasYear(item, "2023"))
+      .sort(sortByTier);
+  });
+
+  // Create sponsors filtered by year 2025
+  eleventyConfig.addCollection("sponsors2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .filter(item => sponsorHasYear(item, "2025"))
+      .sort(sortByTier);
   });
 
   // Filter to look up installation by filename slug or by slugified title
