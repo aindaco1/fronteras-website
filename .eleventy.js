@@ -42,6 +42,12 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Convert newlines to <br> tags
+  eleventyConfig.addFilter("nl2br", (str) => {
+    if (!str) return "";
+    return str.trim().replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>');
+  });
+
   // Get first name from full name
   eleventyConfig.addFilter("firstName", (name) => {
     if (!name) return "";

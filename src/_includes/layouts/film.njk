@@ -8,7 +8,7 @@ layout: layouts/base.njk
   <div class="full-width-post">
     <img src="{{ image }}" alt="{{ title }} film still" class="post-hero installation-hero">
     </br>
-    {{ body | safe }}
+    {% if artistStatement %}<p><i>"{{ artistStatement | nl2br | safe }}"</i></p>{% endif %}
     {% if authors %}
     {% for author in authors %}
     {% if author.bio %}

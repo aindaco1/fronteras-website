@@ -131,7 +131,7 @@ content:
         options:
           path: films
 
-      - name: body
+      - name: artistStatement
         label: Artist Statement
         type: rich-text
         description: Artist statement (HTML supported). Typically wrapped in quotes and italics.
