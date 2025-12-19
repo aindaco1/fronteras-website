@@ -1,64 +1,22 @@
 ---
-layout: layouts/base.njk
+layout: layouts/installation.njk
 title: The Space Between Home
-description: Helen Atkins and Will Geusz
+authors:
+  - name: Helen Atkins
+    instagram: helenjuliet_art
+  - name: Will Geusz
+    instagram: willinandchillinarts
 navlogo: ☁️ Clouds
-backgroundcolor: 4E9FE5
-permalink: /the-space-between-home/
-image: /img/sketches/the-space-between-home.jpg
+backgroundcolor: Light Blue
+heroImage: /img/sketches/the-space-between-home.jpg
+description: |
+  <p>"The Space Between Home" explores the physical and psychological distance that exists between a person's place of origin, and the place they migrate to. The cloud-like installation evokes the physical and imagined space many travel as they cross borders. It is deeply inspired by Helen's experience being the child of an immigrant mother from Caracas, Venezuela. Her family has traveled by plane great distances, sometimes for short visits, other times leaving their home and not knowing if, or when they may return. "The Space Between Home" evokes the duality of identity and destiny that many people who migrate, and their families, experience.</p>
+showAllFilms: true
+filmsScreened: []
+galleryImages:
+  - /img/the-space-between-home/1.jpg
+  - /img/the-space-between-home/2.jpg
+  - /img/the-space-between-home/3.jpg
+  - /img/the-space-between-home/4.jpg
 year: "2023"
-clouds:
-  - 1
-  - 2
-  - 3
-  - 4
 ---
-
-{% include "components/header.njk" %}
-
-<div class="bigcontainer">
-  <div class="full-width-post">
-    <img src="/img/sketches/the-space-between-home.jpg" alt="clouds" class="post-hero installation-hero">
-    <p>"The Space Between Home" explores the physical and psychological distance that exists between a person's place of origin, and the place they migrate to. The cloud-like installation evokes the physical and imagined space many travel as they cross borders. It is deeply inspired by Helen's experience being the child of an immigrant mother from Caracas, Venezuela. Her family has traveled by plane great distances, sometimes for short visits, other times leaving their home and not knowing if, or when they may return. "The Space Between Home" evokes the duality of identity and destiny that many people who migrate, and their families, experience.</p>
-    </br>
-  </div>
-  <div class="flex-row insta-row" markdown="0">
-    <div class="center-flex flex-column insta-column">
-        <span>Helen's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/helenjuliet_art/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-    </div>
-    <div class="center-flex flex-column insta-column">
-        <span>Will's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/willinandchillinarts/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-    </div>
-  </div>
-  </br>
-  <div class="full-width-post">
-    <h3 style="text-align:center;"><a href="/films/">All selected films screened</a></h3>
-  </div>
-  </br>
-</div>
-
-<div class="fullcontainer small-caption">
-  <div class="grid">
-    <div class="grid-col grid-col--1">
-    </div>
-    <div class="grid-col grid-col--2">
-    </div>
-    {# <div class="grid-col grid-col--3">
-    </div> #}
-    {# <div class="grid-col grid-col--4">
-    </div> #}
-    {% for item in clouds %}
-      <div class="grid-item imagediv">
-        <img class="imagecard" src="/img/the-space-between-home/{{ item }}.jpg"/>
-      </div>
-    {% endfor %}
-  </div>
-</div>
-</br>
-<script>
-// selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
-});
-</script>

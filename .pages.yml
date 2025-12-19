@@ -260,6 +260,11 @@ content:
             type: string
             description: Your Instagram username without the @ symbol. Leave blank if you don't want to link Instagram.
 
+          - name: bio
+            label: Bio
+            type: rich-text
+            description: A brief biography (2-4 sentences) about you as an artist. Describe your background, artistic focus, and any notable achievements. Links are supported.
+
       - name: heroImage
         label: Hero Image
         type: image

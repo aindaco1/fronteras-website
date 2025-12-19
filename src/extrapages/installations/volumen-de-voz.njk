@@ -1,74 +1,31 @@
 ---
-layout: layouts/base.njk
+layout: layouts/installation.njk
 title: Volumen de Voz
-description: Camille Carlson and Brandon Carter
+authors:
+  - name: Camille Carlson
+    instagram: meale_marle
+  - name: Brandon Carter
+    instagram: cartercinema
 navlogo: 📢 Loudspeaker
-backgroundcolor: FF4FA7
-permalink: /volumen-de-voz/
-image: /img/sketches/volumen-de-voz.jpg
+backgroundcolor: Neon Green
+heroImage: /img/sketches/volumen-de-voz.jpg
+description: |
+  <p>The goal of the installation Volumen de Voz (Volume of Voice) is to invite the audience to confront three different perspectives.</p>
+  <p>"The Refugees" behind the chain link fence represent the vulnerable, disenfranchised migrant populations who so often struggle to have their perspectives seen and heard. Between language, bureaucratic, and physical barriers, there exist innumerable hurdles that prevent these populations from having their voices amplified as loudly as those of their oppressors.</p>
+  <p>"The Suit" represents the ease of access to the perspectives of those in power. Far fewer barriers exist for people of privilege and power to have their voices not only heard but amplified.</p>
+  <p>The velvet stanchions serve as a reminder to the audience that all art is both presented and observed through filters. Any perspective gained by observation of art is, though valuable, still inauthentic when compared to the potential perspective to be gained by observation of the authentic situation art is representing. Though we can and should attempt to amplify the voices of the vulnerable and disenfranchised, our representation will always be distorted by the comfortable distance from which we are able to view an uncomfortable situation.</p>
+showAllFilms: false
+filmsScreened:
+  - Border Wall Construction, 2020
+  - Coyote
+  - MY UNCLE WAS EL SANTO
+  - Returnal
+  - The Darkest Place
+  - Untitled Indigenous Film
+  - Who Were These Privileged Men?
+galleryImages:
+  - /img/volumen-de-voz/1.jpg
+  - /img/volumen-de-voz/2.jpg
+  - /img/volumen-de-voz/3.jpg
 year: "2023"
-volumen:
-  - 1
-  - 2
-  - 3
 ---
-
-{% include "components/header.njk" %}
-
-<div class="bigcontainer">
-  <div class="full-width-post">
-    <img src="/img/sketches/volumen-de-voz.jpg" alt="volumen" class="post-hero installation-hero">
-    </br>
-    <p>The goal of the installation Volumen de Voz (Volume of Voice) is to invite the audience to confront three different perspectives.</p>
-    <p>"The Refugees" behind the chain link fence represent the vulnerable, disenfranchised migrant populations who so often struggle to have their perspectives seen and heard. Between language, bureaucratic, and physical barriers, there exist innumerable hurdles that prevent these populations from having their voices amplified as loudly as those of their oppressors.</p>
-    <p>"The Suit" represents the ease of access to the perspectives of those in power. Far fewer barriers exist for people of privilege and power to have their voices not only heard but amplified.</p>
-    <p>The velvet stanchions serve as a reminder to the audience that all art is both presented and observed through filters. Any perspective gained by observation of art is, though valuable, still inauthentic when compared to the potential perspective to be gained by observation of the authentic situation art is representing. Though we can and should attempt to amplify the voices of the vulnerable and disenfranchised, our representation will always be distorted by the comfortable distance from which we are able to view an uncomfortable situation.</p>
-    </br>
-  </div>
-  <div class="flex-row insta-row" markdown="0">
-    <div class="center-flex flex-column insta-column">
-        <span>Camille's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/meale_marle/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-    </div>
-    <div class="center-flex flex-column insta-column">
-        <span>Brandon's</span><a name="instagram link" class="artist-insta" href="https://instagram.com/cartercinema/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
-    </div>
-  </div>
-  </br>
-  <div class="full-width-post">
-    <h3 style="text-align:center;">Films screened</h3>
-    <p style="text-align:center;"><a href="/border-wall-construction-2020/">Border Wall Construction, 2020</a></p>
-    <p style="text-align:center;"><a href="/coyote/">Coyote</a></p>
-    <p style="text-align:center;"><a href="/my-uncle-was-el-santo/">MY UNCLE WAS EL SANTO</a></p>
-    <p style="text-align:center;"><a href="/returnal/">Returnal</a></p>
-    <p style="text-align:center;"><a href="/the-darkest-place/">The Darkest Place</a></p>
-    <p style="text-align:center;"><a href="/untitled-indigenous-film/">Untitled Indigenous Film</a></p>
-    <p style="text-align:center;"><a href="/who-were-these-privileged-men/">Who Were These Privileged Men?</a></p>
-  </div>
-  </br>
-</div>
-
-<div class="fullcontainer small-caption">
-  <div class="grid">
-    <div class="grid-col grid-col--1">
-    </div>
-    <div class="grid-col grid-col--2">
-    </div>
-    {# <div class="grid-col grid-col--3">
-    </div> #}
-    {# <div class="grid-col grid-col--4">
-    </div> #}
-    {% for item in volumen %}
-      <div class="grid-item imagediv">
-        <img class="imagecard" src="/img/volumen-de-voz/{{ item }}.jpg"/>
-      </div>
-    {% endfor %}
-  </div>
-</div>
-</br>
-<script>
-// selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
-});
-</script>
