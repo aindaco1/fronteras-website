@@ -274,6 +274,7 @@ content:
               collection: films
               multiple: true
               label: "{title}"
+              search: title
 
           - name: galleryImages
             label: Gallery Images
