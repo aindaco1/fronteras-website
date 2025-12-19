@@ -1000,18 +1000,30 @@ iframe {
   margin: 0 auto;
 }
 
-.top-right-corner {
-  position: absolute;
-  top: -19px;
-  right: -10px;
-  max-width: 20% !important;
+.hero-with-laurel {
+  position: relative;
+  display: block;
 }
 
-.top-right-corner-hug {
+.hero-with-laurel .post-hero {
+  display: block;
+  width: 100%;
+}
+
+.laurel-overlay {
   position: absolute;
-  top: 3px;
+  top: 0;
   right: 5%;
-  max-width: 20% !important;
+  width: 15%;
+  max-width: 100px;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .laurel-overlay {
+    width: 18%;
+    max-width: 60px;
+  }
 }
 
 .grid-front {

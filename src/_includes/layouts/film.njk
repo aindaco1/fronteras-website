@@ -6,7 +6,18 @@ layout: layouts/base.njk
 </br>
 <div class="bigcontainer">
   <div class="full-width-post">
-    <img src="{{ image }}" alt="{{ title }} film still" class="post-hero installation-hero">
+    <div class="hero-with-laurel">
+      {% if laurelImage %}
+      <img src="{{ laurelImage }}" alt="Award" class="laurel-overlay">
+      {% endif %}
+      <img src="{{ image }}" alt="{{ title }} film still" class="post-hero installation-hero">
+    </div>
+    {% if youtubeId %}
+    </br>
+    <div class="embed-container">
+      <iframe src="https://www.youtube.com/embed/{{ youtubeId }}" title="{{ title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    {% endif %}
     </br>
     {% if artistStatement %}<p><i>"{{ artistStatement | nl2br | safe }}"</i></p>{% endif %}
     {% if authors %}

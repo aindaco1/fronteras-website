@@ -138,6 +138,18 @@ content:
         type: rich-text
         description: Your statement about this film (1-3 paragraphs). Describe your creative vision, inspiration, themes explored, and what you want viewers to take away. This will be displayed in quotes and italics. For multiple paragraphs, use blank lines between them.
 
+      - name: youtubeId
+        label: YouTube Video ID
+        type: string
+        description: "Optional. The YouTube video ID (the part after v= in the URL). For example, if the URL is https://www.youtube.com/watch?v=U6rcBOWV3h8, enter U6rcBOWV3h8. When provided, the video will display below the film still."
+
+      - name: laurelImage
+        label: Laurel/Award Image
+        type: image
+        description: "Optional. A laurel or award badge image that floats over the top-right corner of the film still. Use PNG with transparent background. Existing options: /img/films/best-film.png, /img/films/2nd-best-film.png, /img/films/3rd-best-film.png"
+        options:
+          path: films
+
       - name: navlogo
         label: Nav Logo
         type: select
