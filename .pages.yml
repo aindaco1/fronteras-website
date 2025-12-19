@@ -85,6 +85,8 @@ content:
     label: Films (2025)
     type: collection
     path: src/extrapages/films
+    filename: "{primary}.njk"
+    format: yaml-frontmatter
     view:
       fields: [title, description]
       primary: title
