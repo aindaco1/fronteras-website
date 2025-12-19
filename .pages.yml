@@ -120,8 +120,8 @@ content:
 
           - name: bio
             label: Bio
-            type: text
-            description: Short biography of the artist
+            type: rich-text
+            description: Short biography of the artist (HTML supported)
 
       - name: image
         label: Hero Image
@@ -133,10 +133,8 @@ content:
 
       - name: body
         label: Artist Statement
-        type: code
-        description: 'Artist statement wrapped in quotes and italics. Format: <p><i>"Your statement here."</i></p>'
-        options:
-          language: html
+        type: rich-text
+        description: Artist statement (HTML supported). Typically wrapped in quotes and italics.
 
       - name: navlogo
         label: Nav Logo
