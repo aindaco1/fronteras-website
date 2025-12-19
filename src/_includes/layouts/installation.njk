@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="post-hero installation-hero">
+    </br>
+    {{ bodyContent | safe }}
+  </div>
+  </br>
+  <div class="flex-row insta-row" markdown="0">
+    {% for author in authors %}
+    <div class="center-flex flex-column insta-column">
+      <span>{{ author.name | firstName }}'s</span><a name="instagram link" class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank"><sub><i class="fab fa-instagram"></i></sub></a>
+    </div>
+    {% endfor %}
+  </div>
+  </br>
+  <div class="full-width-post">
+    {% if filmsScreened == "all" %}
+    <h3 style="text-align:center;"><a href="/films/">All selected films screened</a></h3>
+    {% else %}
+    <h3 style="text-align:center;">Films screened</h3>
+    {% for film in filmsScreened %}
+    <p style="text-align:center;"><a href="{{ film.url }}">{{ film.title }}</a></p>
+    {% endfor %}
+    {% endif %}
+  </div>
+  </br>
+</div>
+</br>
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1"></div>
+    <div class="grid-col grid-col--2"></div>
+    {% for image in galleryImages %}
+    <div class="grid-item imagediv">
+      <img class="imagecard" src="/img/{{ galleryFolder }}/{{ image }}"/>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+window.addEventListener('load', function() {
+  var colc = new Colcade('.grid', {
+    columns: '.grid-col',
+    items: '.grid-item'
+  });
+});
+</script>

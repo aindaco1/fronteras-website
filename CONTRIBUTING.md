@@ -13,9 +13,11 @@
 | Content Type | Location | Format |
 |--------------|----------|--------|
 | Blog posts | `src/posts/` | Markdown (.md) |
+| Sponsors (2025) | `src/_data/sponsors.json` | JSON |
+| Installations (2025) | `src/_data/installations.json` | JSON |
 | Images | `src/_includes/img/` | JPG, PNG, GIF |
 | Films | `src/extrapages/films/` | Nunjucks (.njk) |
-| Installations | `src/extrapages/installations/` | Nunjucks (.njk) |
+| Older installations | `src/extrapages/installations/` | Nunjucks (.njk) |
 
 ### Creating a New Blog Post
 
@@ -68,6 +70,23 @@ Images are organized into subdirectories:
 
 - Reference images as `/img/blog/filename.jpg`, `/img/sponsors/logo.png`, etc.
 - Recommended: Optimize images before uploading (compress, reasonable size)
+
+### Editing Installations (2025)
+
+Use Pages CMS to edit installations. The data is stored in `src/_data/installations.json`.
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Title** | Yes | Installation name |
+| **URL Slug** | Yes | URL-friendly version (e.g., "the-hands-that-hold-us") |
+| **Authors** | Yes | List of artists with name and Instagram handle |
+| **Nav Logo** | No | Icon in navigation |
+| **Background Color** | Yes | Hex color without # (e.g., "2E6021") |
+| **Hero Image** | Yes | Main image at top of page |
+| **Body Content** | Yes | HTML description of the installation |
+| **Films Screened** | No | "all" for all films, or JSON array of specific films |
+| **Gallery Folder** | Yes | Folder name in img/ (e.g., "hands", "door") |
+| **Gallery Images** | No | List of image filenames for the gallery |
 
 ## For Developers
 

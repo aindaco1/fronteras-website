@@ -42,6 +42,12 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Get first name from full name
+  eleventyConfig.addFilter("firstName", (name) => {
+    if (!name) return "";
+    return name.split(" ")[0];
+  });
+
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });

@@ -82,7 +82,7 @@ content:
           language: html
 
   - name: sponsors
-    label: Sponsors
+    label: Sponsors (2025)
     type: file
     path: src/_data/sponsors.json
     format: json
@@ -121,3 +121,96 @@ content:
             description: Sponsorship level
             options:
               values: [organizer, partner, sponsor]
+
+  - name: installations
+    label: Installations (2025)
+    type: file
+    path: src/_data/installations.json
+    format: json
+    fields:
+      - name: list
+        label: Installations
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.title}"
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+            description: Installation title
+
+          - name: slug
+            label: URL Slug
+            type: string
+            required: true
+            description: URL-friendly version of title (e.g., "the-hands-that-hold-us")
+
+          - name: authors
+            label: Authors
+            type: object
+            list:
+              collapsible:
+                summary: "{fields.name}"
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+                description: Artist name
+
+              - name: instagram
+                label: Instagram Handle
+                type: string
+                description: Instagram username (without @)
+
+          - name: navlogo
+            label: Nav Logo
+            type: select
+            default: installation
+            description: Icon shown in navigation
+            options:
+              values: [installation, door, handwave, trophy, cash]
+              creatable: true
+
+          - name: backgroundcolor
+            label: Background Color
+            type: string
+            required: true
+            description: Hex color code without # (e.g., "2E6021")
+
+          - name: heroImage
+            label: Hero Image
+            type: image
+            required: true
+            description: Main image displayed at top of installation page
+            options:
+              path: sketches
+
+          - name: description
+            label: Body Content
+            type: code
+            required: true
+            description: Installation description/body content in HTML format
+            options:
+              language: html
+
+          - name: filmsScreened
+            label: Films Screened
+            type: code
+            description: 'Either "all" for all films link, or JSON array of film objects [{title, url}]'
+            options:
+              language: json
+
+          - name: galleryFolder
+            label: Gallery Folder
+            type: string
+            required: true
+            description: Folder name in img/ containing gallery images (e.g., "hands", "door")
+
+          - name: galleryImages
+            label: Gallery Images
+            type: string
+            list: true
+            description: List of image filenames in the gallery folder (e.g., "1.jpg", "2.jpg")
