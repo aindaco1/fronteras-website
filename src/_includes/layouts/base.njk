@@ -68,7 +68,7 @@
     
 
     {% if backgroundcolor %}
-    body {background-color:#{{ backgroundcolor }};
+    body {background-color:#{{ backgroundcolor | colorToHex }};
     {% else %}
     body {background-color: #f0f0f0;
     {% endif %}

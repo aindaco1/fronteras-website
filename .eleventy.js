@@ -42,6 +42,38 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Map navlogo display names to internal values
+  eleventyConfig.addFilter("navlogoToValue", (logo) => {
+    const logoMap = {
+      '🎥 Film': 'emojianim',
+      '📺 Installation': 'installation',
+      '🌊 Wave': 'wave',
+      '🚪 Door': 'door',
+      '🖐️ Hand Wave': 'handwave',
+      '🏆 Trophy': 'trophy',
+      '💵 Cash': 'cash'
+    };
+    return logoMap[logo] || logo;
+  });
+
+  // Map color names to hex codes
+  eleventyConfig.addFilter("colorToHex", (color) => {
+    const colorMap = {
+      'Light Gray': 'F5F5F5',
+      'Light Blue': '6fcae7',
+      'Yellow': 'FEE283',
+      'Aqua': '7fffd4',
+      'Dark Green': '2E6021',
+      'Neon Green': '39ff14',
+      'Red': 'ff4760'
+    };
+    // If it's already a hex code (6 chars, alphanumeric), return as-is
+    if (color && /^[0-9A-Fa-f]{6}$/.test(color)) {
+      return color;
+    }
+    return colorMap[color] || color || 'F5F5F5';
+  });
+
   // Convert newlines to <br> tags
   eleventyConfig.addFilter("nl2br", (str) => {
     if (!str) return "";

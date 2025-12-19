@@ -1,51 +1,52 @@
 <header>
       <div class="navbar" id="mynavbar">
         <div class="logodiv">
-          {% if navlogo =="fronteras" %}
+          {% set logo = navlogo | navlogoToValue %}
+          {% if logo =="fronteras" %}
             <h2 class="home"><a href="{{ '/' | url }}">Fronteras</a></h1>
-          {% elif navlogo =="emoji" %}
+          {% elif logo =="emoji" %}
             <h2 class="home"><a href="{{ '/' | url }}">🤬🤬🤬</a></h1>
-             {% elif navlogo =="emojiknight" %}
+          {% elif logo =="emojiknight" %}
             <h2 class="home"><a href="{{ '/' | url }}">🗡🗡🗡</a></h1>
-          {% elif navlogo =="emojiskull" %}
+          {% elif logo =="emojiskull" %}
             <h2 class="home"><a href="{{ '/' | url }}">💀💀💀</a></h1>
-          {% elif navlogo =="customs" %}
+          {% elif logo =="customs" %}
             <h2 class="home"><a href="{{ '/' | url }}">🛃🛃🛃</a></h1>
-          {% elif navlogo =="cash" %}
+          {% elif logo =="cash" %}
             <h2 class="home"><a href="{{ '/' | url }}">💰💰💰</a></h1>
-          {% elif navlogo =="emojianim" %}
+          {% elif logo =="emojianim" %}
             <h2 class="home"><a href="{{ '/' | url }}">🎥🎥🎥</a></h1>
-          {% elif navlogo =="emojipencils" %}
+          {% elif logo =="emojipencils" %}
             <h2 class="home"><a href="{{ '/' | url }}">✒️✒️✒️</a></h1>
-          {% elif navlogo =="handwave" %}
+          {% elif logo =="handwave" %}
             <h2 class="home"><a href="{{ '/' | url }}">👋👋👋</a></h1>
-          {% elif navlogo =="wave" %}
+          {% elif logo =="wave" %}
             <h2 class="home"><a href="{{ '/' | url }}">🌊🌊🌊</a></h1>
-          {% elif navlogo =="question" %}
+          {% elif logo =="question" %}
             <h2 class="home"><a href="{{ '/' | url }}">❔❔❔</a></h1>
-          {% elif navlogo =="installation" %}
+          {% elif logo =="installation" %}
             <h2 class="home"><a href="{{ '/' | url }}">📺📺📺</a></h1>
-          {% elif navlogo =="news" %}
+          {% elif logo =="news" %}
             <h2 class="home"><a href="{{ '/' | url }}">🗞️🗞️🗞️</a></h1>
-          {% elif navlogo =="emojipeach" %}
+          {% elif logo =="emojipeach" %}
             <h2 class="home"><a href="{{ '/' | url }}">🍑🍑🍑</a></h1>
-          {% elif navlogo =="thanks" %}
+          {% elif logo =="thanks" %}
             <h2 class="home"><a href="{{ '/' | url }}">🙏🙏🙏</a></h1>
-          {% elif navlogo =="trophy" %}
+          {% elif logo =="trophy" %}
             <h2 class="home"><a href="{{ '/' | url }}">🏆🏆🏆</a></h1>
-          {% elif navlogo =="boat" %}
+          {% elif logo =="boat" %}
             <h2 class="home"><a href="{{ '/' | url }}">⛵⛵⛵</a></h1>
-          {% elif navlogo =="tower" %}
+          {% elif logo =="tower" %}
             <h2 class="home"><a href="{{ '/' | url }}">🗼🗼🗼</a></h1>
-          {% elif navlogo =="clouds" %}
+          {% elif logo =="clouds" %}
             <h2 class="home"><a href="{{ '/' | url }}">☁️☁️☁️</a></h1>
-          {% elif navlogo =="flashlight" %}
+          {% elif logo =="flashlight" %}
             <h2 class="home"><a href="{{ '/' | url }}">🔦🔦🔦</a></h1>
-          {% elif navlogo =="loudspeaker" %}
+          {% elif logo =="loudspeaker" %}
             <h2 class="home"><a href="{{ '/' | url }}">📢📢📢</a></h1>
-          {% elif navlogo =="door" %}
+          {% elif logo =="door" %}
             <h2 class="home"><a href="{{ '/' | url }}">🚪🚪🚪</a></h1>
-          {% elif navlogo =="truck" %}
+          {% elif logo =="truck" %}
             <h2 class="home"><a href="{{ '/' | url }}">🚚🚚🚚</a></h1>
           {% else %}
            <h2 class="home"><a href="{{ '/' | url }}">Fronteras</a></h1>

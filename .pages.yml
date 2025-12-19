@@ -141,36 +141,18 @@ content:
       - name: navlogo
         label: Nav Logo
         type: select
-        default: emojianim
-        description: The animated icon shown in the navigation bar when viewing your film's page. Most films use the Film icon.
+        default: 🎥 Film
+        description: The animated icon shown in the navigation bar when viewing this film page.
         options:
-          values:
-            - label: "🎬 Film"
-              value: emojianim
-            - label: "🖼️ Installation"
-              value: installation
-            - label: "👋 Wave"
-              value: wave
+          values: [🎥 Film, 📺 Installation, 🌊 Wave]
 
       - name: backgroundcolor
         label: Page Background Color
         type: select
-        default: "F5F5F5"
-        description: The background color for your film's page. Light Gray works well for most content. Choose a color that complements your film still.
+        default: Light Gray
+        description: The background color for your film page. Light Gray works well for most content. Choose a color that complements your film still.
         options:
-          values:
-            - label: Light Gray
-              value: "F5F5F5"
-            - label: Light Blue
-              value: "6fcae7"
-            - label: Yellow
-              value: "FEE283"
-            - label: Aqua
-              value: "7fffd4"
-            - label: Dark Green
-              value: "2E6021"
-            - label: Neon Green
-              value: "39ff14"
+          values: [Light Gray, Light Blue, Yellow, Aqua, Dark Green, Neon Green]
           creatable: true
 
       - name: layout
@@ -261,31 +243,19 @@ content:
           - name: navlogo
             label: Nav Logo
             type: select
-            default: installation
-            description: The animated icon shown in the navigation bar when viewing this installation's page.
+            default: 📺 Installation
+            description: The animated icon shown in the navigation bar when viewing this installation page.
             options:
-              values: [installation, door, handwave, trophy, cash]
+              values: [📺 Installation, 🚪 Door, 🖐️ Hand Wave, 🏆 Trophy, 💵 Cash]
               creatable: true
 
           - name: backgroundcolor
             label: Page Background Color
             type: select
             required: true
-            description: The background color for this installation's page. Choose a color that complements your hero image and artwork aesthetic.
+            description: The background color for this installation page. Choose a color that complements your hero image and artwork aesthetic.
             options:
-              values:
-                - label: Light Blue
-                  value: "6fcae7"
-                - label: Yellow
-                  value: "FEE283"
-                - label: Aqua
-                  value: "7fffd4"
-                - label: Dark Green
-                  value: "2E6021"
-                - label: Light Gray
-                  value: "f0f0f0"
-                - label: Neon Green
-                  value: "39ff14"
+              values: [Light Blue, Yellow, Aqua, Dark Green, Light Gray, Neon Green]
               creatable: true
 
           - name: heroImage
