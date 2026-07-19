@@ -64,21 +64,29 @@ npm install
 npm start  # Dev server at http://localhost:8080
 ```
 
+The development server generates lightweight pages in `dev/`, serves large
+assets directly from `src/`, and cleans both `dev/` and `docs/` at startup and
+shutdown. Source files and compiled local CSS remain available under `src/`.
+
 ### Build
 
 ```bash
 npm run build  # Compiles Sass and builds Eleventy site to docs/
 ```
 
+This local production build retains original media. The GitHub Actions-only
+`npm run build:ci` step converts referenced JPG/PNG files to WebP and transcodes
+referenced MP4/WebM files to optimized VP9/Opus WebM without modifying `src/`.
+
 ### Deployment
 
-Push to `main` → Auto-syncs to `production` → Builds and deploys via GitHub Actions
+Pull requests run the build; pushes to `main` build and deploy via GitHub Actions.
 
-The `docs/` directory is generated during build but not committed to the repo.
+The `docs/` and `dev/` directories are generated but not committed to the repo.
 
 ### Architecture
 
-- **Static Site Generator**: Eleventy v2
+- **Static Site Generator**: Eleventy v3
 - **Templates**: Nunjucks (`.njk`) for layouts, Liquid for Markdown processing
 - **Styling**: Sass compiled from `src/_includes/css/index.scss`
 - **Masonry Grids**: Colcade library
