@@ -2,18 +2,20 @@
 
 ## Commands
 
-- **Dev**: `npm start` (runs Sass + Eleventy with hot reload at http://localhost:8080/)
-- **Build**: `npm run build` (cleans output, compiles Sass, builds Eleventy site)
+- **Dev**: `npm start` (runs Sass + Eleventy with hot reload at http://localhost:8080/; writes lightweight pages to `dev/` and cleans `dev/` plus `docs/` on startup and shutdown)
+- **Build**: `npm run build` (cleans output, compiles Sass, builds Eleventy site with original media in `docs/`)
+- **CI build**: `npm run build:ci` (GitHub Actions only; optimizes referenced images and videos after the production build)
 
 ## Architecture
 
 - **SSG**: Eleventy v2 static site generator
 - **Input**: `src/` directory (Markdown, Nunjucks, HTML, Liquid templates)
-- **Output**: `docs/` directory (generated locally, not committed - deployed via GitHub Actions)
+- **Dev output**: `dev/` directory (generated pages only; large passthrough assets are served directly from `src/`; removed when `npm start` stops)
+- **Production output**: `docs/` directory (generated, not committed; retained by `npm run build`, cleaned by `npm start`, and deployed via GitHub Actions)
 - **Templates**: Nunjucks (`.njk`) for layouts, Liquid for Markdown processing
 - **Styling**: Sass compiled from `src/_includes/css/index.scss` (uses `sass:math` for division)
 - **Collections**: Posts in `src/posts/`, custom tag collections via `_11ty/getTagList`
-- **Deployment**: GitHub Actions builds on push to `main`, deploys to GitHub Pages
+- **Deployment**: Pull requests run the CI build; pushes to `main` optimize referenced JPG/PNG files to WebP, transcode referenced MP4/WebM files to VP9/Opus WebM, and deploy to GitHub Pages
 
 ## Code Style
 

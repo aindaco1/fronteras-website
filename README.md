@@ -21,20 +21,40 @@ npm install
 npm start  # Dev server at http://localhost:8080/
 ```
 
+`npm start` writes lightweight generated pages to `dev/` and serves large assets
+directly from `src/`. It removes both `dev/` and `docs/` at startup and whenever
+the server stops, including Ctrl-C and normal termination. Source files needed
+for development and testing remain in `src/`.
+
 ### Build
 
 ```bash
 npm run build  # Output to docs/
 ```
 
+The production build leaves `docs/` in place so it can be inspected locally.
+It retains original media; GitHub Actions performs the deployment optimization.
+
+### CI Media Build
+
+`npm run build:ci` is reserved for GitHub Actions. After the production build it:
+
+- Converts referenced JPG and PNG files to WebP when that makes them smaller
+- Transcodes referenced MP4 and WebM files to VP9/Opus WebM, capped at 1280px
+- Rewrites generated HTML and CSS to use the optimized files
+- Leaves the original files in `src/` unchanged
+
+The defaults can be adjusted in CI with `MEDIA_IMAGE_QUALITY`,
+`MEDIA_VIDEO_CRF`, and `MEDIA_VIDEO_MAX_DIMENSION`.
+
 ## Deployment
 
-The site automatically builds and deploys via GitHub Actions on push to `main`:
+Pull requests run a build check. Pushes to `main` automatically build and deploy:
 
-1. Syncs `main` → `production` branch
-2. Builds with `npm run build`
-3. Deploys to GitHub Pages
-4. Optionally purges Cloudflare cache
+1. Installs the locked dependencies with Node.js 24
+2. Builds and optimizes media with `npm run build:ci`
+3. Deploys the generated `docs/` artifact to GitHub Pages
+4. Optionally purges the Cloudflare cache
 
 ### GitHub Settings Required
 

@@ -3,11 +3,12 @@
   "version": "5.0.2",
   "description": "A starter repository for a blog web site using the Eleventy static site generator.",
   "scripts": {
-    "build": "npm run clean && npm run sass && npx @11ty/eleventy",
-    "clean": "rm -rf docs",
+    "build": "npm run clean && npm run sass && ELEVENTY_ENV=production eleventy",
+    "build:ci": "node scripts/optimize-media.mjs --check && npm run build && node scripts/optimize-media.mjs",
+    "clean": "rm -rf dev docs",
     "sass": "sass --style=compressed src/_includes/css/index.scss src/_includes/css/index.css",
-    "start": "npm-run-all sass --parallel watch:*",
-    "watch:eleventy": "npx @11ty/eleventy --serve",
+    "start": "node scripts/start.js",
+    "watch:eleventy": "ELEVENTY_ENV=development eleventy --serve",
     "watch:sass": "npm run sass -- --watch"
   },
   "repository": {
@@ -33,11 +34,8 @@
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.32.2"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.2",
     "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
-    "colcade": "^0.2.0"
+    "sass": "^1.32.2",
+    "sharp": "^0.35.3"
   }
 }
