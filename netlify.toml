@@ -1,3 +1,29 @@
 [build]
-  publish = "_site"
-  command = "npm run sass && npx @11ty/eleventy"
+  publish = "docs"
+  command = "npm run build"
+
+# Force HTTPS
+[[redirects]]
+  from = "http://fronterasmicrofilm.com/*"
+  to = "https://fronterasmicrofilm.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.fronterasmicrofilm.com/*"
+  to = "https://fronterasmicrofilm.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.fronterasmicrofilm.com/*"
+  to = "https://fronterasmicrofilm.com/:splat"
+  status = 301
+  force = true
+
+# Pretty URLs - add trailing slash (Netlify handles this automatically with pretty URLs enabled)
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true

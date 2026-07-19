@@ -5,10 +5,8 @@ date: 2023-03-15 15:00:00
 tags: grant
 navlogo: cash
 layout: layouts/post.njk
-image: /img/fulcrum.png
+image: /img/blog/fulcrum.png
 ---
-
-<img src="/img/fulcrum-horizontal.png" alt="fulcrum" class="post-hero">
 
 The 2023 Fronteras Micro-film Festival has just received generous support from the [Fulcrum Fund](https://www.516arts.org/opportunities/fulcrum-fund), a grant program of [516 ARTS](https://516arts.org) made possible by [The Andy Warhol Foundation for the Visual Arts](https://warholfoundation.org) and the Frederick Hammersley Fund for the Arts at the Albuquerque Community Foundation. The Fulcrum Fund serves as an essential support structure to enable artists to expand existing work and explore new directions in creating and showcasing projects that inspire curiosity, engagement, and dialogue. It is intended to be a springboard for artistic processes that are experimental and forward thinking, while celebrating projects that may not fit into the traditional museum and gallery systems.
 

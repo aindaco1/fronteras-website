@@ -8,8 +8,6 @@ layout: layouts/post.njk
 image: /img/blog/tvs.jpg
 ---
 
-<img src="/img/blog/tvs.jpg" alt="tvs" class="post-hero">
-
 From the bottom of our collective hearts, we thank all the filmmakers for submitting films to the inaugural Fronteras Micro-film Festival! We are blown away by the interest and support from all around the world -- we received entries from México, Canada, France, Australia, the U.K., Iran, and the U.S. We are honored and thrilled to host a truly international festival!
 
 The festival, from concept to execution, is the collective effort of the members of [Dust Wave](https://dustwave.xyz) -- without their passion, diligence, and dedication, none of this would be possible. Specifically, I want to acknowledge the efforts of:

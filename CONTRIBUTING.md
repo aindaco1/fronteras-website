@@ -1,44 +1,59 @@
-# Contributing to Fronteras Microfilm Festival Website
+# Contributing to Fronteras Micro-film Festival Website
 
-## For Content Editors (Non-Technical)
+## For Content Editors
 
 ### Using Pages CMS (Recommended)
 
-1. Go to [pagescms.org](https://pagescms.org) and sign in with GitHub
-2. Select the fronteras-website repository
-3. Edit posts, upload images, and publish — changes deploy automatically!
+📖 **[See FRONTERAS-CMS-GUIDE.md](FRONTERAS-CMS-GUIDE.md)** for the complete content editing guide, including:
+
+- Adding and editing Films
+- Adding and editing Installations
+- Managing Sponsors
+- Creating Posts/News
+- Uploading images to the Media Library
+
+### Quick Start
+
+1. Go to [pagescms.org/edit/aindaco1/fronteras-website](https://pagescms.org/edit/aindaco1/fronteras-website)
+2. Sign in with GitHub credentials
+3. Select the collection you want to edit (Films, Installations, Sponsors, Posts)
+4. Click **+ New** or select an existing item to edit
+5. Fill out the form and click **Save**
+6. Changes deploy automatically in 1-2 minutes
 
 ### Content Locations
 
 | Content Type | Location | Format |
 |--------------|----------|--------|
-| Blog posts | `src/posts/` | Markdown (.md) |
-| Images | `src/_includes/img/` | JPG, PNG, GIF |
 | Films | `src/extrapages/films/` | Nunjucks (.njk) |
 | Installations | `src/extrapages/installations/` | Nunjucks (.njk) |
+| Sponsors | `src/extrapages/sponsors/` | Nunjucks (.njk) |
+| Posts | `src/posts/` | Markdown (.md) |
+| Images | `src/_includes/img/` | JPG, PNG, GIF |
 
-### Creating a New Blog Post
+### Image Folders
 
-Posts need this format at the top (called "frontmatter"):
+| Folder | Contents |
+|--------|----------|
+| `/img/films/` | Film stills, laurel badges |
+| `/img/sketches/` | Installation hero images |
+| `/img/sponsors/` | Sponsor/partner logos |
+| `/img/blog/` | Post header images |
+| `/img/[installation-name]/` | Installation gallery photos |
+| `/img/branding/` | Dust Wave logo, Fronteras logo |
 
-```yaml
+### Image Specifications
+
+| Type | Dimensions | Max Size | Format |
+|------|------------|----------|--------|
+| Film Still | 1920px wide | 500KB | JPG |
+| Installation Hero | 1920px wide | 500KB | JPG |
+| Installation Gallery | 1200px longest side | 300KB | JPG |
+| Sponsor Logo | 400-500px square | 200KB | PNG (transparent) |
+| Post Header | 1600×900px | 350KB | JPG |
+| Laurel Badge | Variable | 100KB | PNG (transparent) |
+
 ---
-title: Your Post Title
-description: A short description (max 160 characters)
-date: 2025-01-15 12:00:00
-tags: event
-layout: layouts/post.njk
-image: /img/your-image.jpg
----
-
-Your content goes here in Markdown format.
-```
-
-### Image Guidelines
-
-- Upload images to `src/_includes/img/` (or subdirectory like `img/blog/`)
-- Reference images as `/img/filename.jpg` in your content
-- Recommended: Optimize images before uploading (compress, reasonable size)
 
 ## For Developers
 
@@ -49,17 +64,71 @@ npm install
 npm start  # Dev server at http://localhost:8080
 ```
 
+The development server generates lightweight pages in `dev/`, serves large
+assets directly from `src/`, and cleans both `dev/` and `docs/` at startup and
+shutdown. Source files and compiled local CSS remain available under `src/`.
+
+### Build
+
+```bash
+npm run build  # Compiles Sass and builds Eleventy site to docs/
+```
+
+This local production build retains original media. The GitHub Actions-only
+`npm run build:ci` step converts referenced JPG/PNG files to WebP and transcodes
+referenced MP4/WebM files to optimized VP9/Opus WebM without modifying `src/`.
+
 ### Deployment
 
-Push to `main` → Auto-syncs to `production` → Builds and deploys via GitHub Actions
+Pull requests run the build; pushes to `main` build and deploy via GitHub Actions.
 
-The `docs/` directory is generated during build but not committed to the repo.
+The `docs/` and `dev/` directories are generated but not committed to the repo.
 
 ### Architecture
 
-- **Eleventy v2** static site generator
-- **Nunjucks** templates in `src/_includes/layouts/`
-- **Sass** styles in `src/_includes/css/`
-- **Colcade** for masonry grids
+- **Static Site Generator**: Eleventy v3
+- **Templates**: Nunjucks (`.njk`) for layouts, Liquid for Markdown processing
+- **Styling**: Sass compiled from `src/_includes/css/index.scss`
+- **Masonry Grids**: Colcade library
+- **CMS**: Pages CMS (configuration in `.pages.yml`)
 
-See [AGENTS.md](AGENTS.md) for detailed architecture info.
+### Directory Structure
+
+```
+src/
+├── _includes/
+│   ├── css/           # Sass stylesheets
+│   ├── img/           # All images
+│   ├── layouts/       # Page templates (base, post, film, installation)
+│   └── components/    # Reusable template components
+├── posts/             # Blog posts (Markdown)
+└── extrapages/
+    ├── films/         # Film pages (Nunjucks)
+    ├── installations/ # Installation pages (Nunjucks)
+    └── sponsors/      # Sponsor entries (Nunjucks)
+```
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `.eleventy.js` | Eleventy configuration |
+| `.pages.yml` | Pages CMS schema and field definitions |
+| `src/_includes/css/index.scss` | Main stylesheet entry point |
+| `src/_includes/layouts/base.njk` | Base HTML template |
+| `src/_includes/layouts/film.njk` | Film page template |
+| `src/_includes/layouts/installation.njk` | Installation page template |
+| `src/_includes/layouts/post.njk` | Blog post template |
+
+### Adding New Fields to CMS
+
+Edit `.pages.yml` to add new fields to collections. See [Pages CMS documentation](https://pagescms.org/docs) for field types and options.
+
+### Code Style
+
+- **Indentation**: 2 spaces
+- **Line endings**: LF
+- **Sass**: Use `math.div()` for division, not `/`
+- **Templates**: Nunjucks for layouts, Liquid for Markdown content
+
+See [AGENTS.md](AGENTS.md) for complete development conventions.

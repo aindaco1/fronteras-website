@@ -8,19 +8,6 @@ permalink: /films/
 eleventyNavigation:
   key: Films
   order: 4
-films:
-  - amatilla
-  - el-porton
-  - lineas-de-comunicacion-lines-of-communication
-  - microfronteras-1-2-v2-reh
-  - the-new-colossus
-  - o-private-property
-  - oh-are-you-one-too
-  - pan-terrestrial-peoples-anthem
-  - the-screech-dreams_soft-error-genealogy
-  - telemetry
-  - u1f4bb_openfield
-  - 40
 ---
 
 {% include "components/header.njk" %}
@@ -34,12 +21,12 @@ films:
     </div>
     <div class="grid-col grid-col--3">
     </div>
-  <div class="grid-col grid-col--4">
-  </div>
-    {% for item in films %}
+    <div class="grid-col grid-col--4">
+    </div>
+    {% for film in collections.films2025 %}
       <div class="grid-item imagediv">
-            <a href="/{{ item }}">
-              <figure><img class="imagecard" src="/img/films/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            <a href="{{ film.url }}">
+              <figure><img class="imagecard" src="{{ film.data.image }}"/><figcaption>{{ film.data.title }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}
@@ -48,9 +35,10 @@ films:
 </br>
 
 <script>
-// selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
+window.addEventListener('load', function() {
+  var colc = new Colcade('.grid', {
+    columns: '.grid-col',
+    items: '.grid-item'
+  });
 });
 </script>

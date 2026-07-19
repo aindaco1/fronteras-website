@@ -5,10 +5,8 @@ date: 2025-06-27 15:00:00
 tags: event
 navlogo: installation
 layout: layouts/post.njk
-image: /img/paseo.png
+image: /img/blog/paseo.png
 ---
-
-<img src="/img/paseo.png" alt="paseo 2025" class="post-hero" style="background: black; padding: 10px;">
 
 The 2025 Fronteras Micro-film Festival will be featured at [PASEO 2025](https://paseoproject.org/paseo2025) in Taos, New Mexico on September 12-13, 2025!
 

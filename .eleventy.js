@@ -1,11 +1,13 @@
 const { DateTime } = require("luxon");
-const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
+
+const isProduction = process.env.ELEVENTY_ENV === "production";
+const outputDirectory = isProduction ? "docs" : "dev";
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -17,6 +19,8 @@ module.exports = function (eleventyConfig) {
     },
   });
   eleventyConfig.setUseGitIgnore(false);
+  eleventyConfig.ignores.add("**/.DS_Store");
+  eleventyConfig.watchIgnores.add("**/.DS_Store");
 
   eleventyConfig.setDataDeepMerge(true);
 
@@ -42,8 +46,204 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Map navlogo display names to internal values
+  eleventyConfig.addFilter("navlogoToValue", (logo) => {
+    const logoMap = {
+      '🎥 Film': 'emojianim',
+      '📺 Installation': 'installation',
+      '🌊 Wave': 'wave',
+      '🚪 Door': 'door',
+      '🖐️ Hand Wave': 'handwave',
+      '🏆 Trophy': 'trophy',
+      '💵 Cash': 'cash',
+      '🚚 Truck': 'truck',
+      '⛵ Boat': 'boat',
+      '☁️ Clouds': 'clouds',
+      '🗼 Tower': 'tower',
+      '🔦 Flashlight': 'flashlight',
+      '📢 Loudspeaker': 'loudspeaker'
+    };
+    return logoMap[logo] || logo;
+  });
+
+  // Map color names to hex codes
+  eleventyConfig.addFilter("colorToHex", (color) => {
+    const colorMap = {
+      'Light Gray': 'F5F5F5',
+      'Light Blue': '6fcae7',
+      'Yellow': 'FEE283',
+      'Aqua': '7fffd4',
+      'Dark Green': '2E6021',
+      'Neon Green': '39ff14',
+      'Red': 'ff4760'
+    };
+    // If it's already a hex code (6 chars, alphanumeric), return as-is
+    if (color && /^[0-9A-Fa-f]{6}$/.test(color)) {
+      return color;
+    }
+    return colorMap[color] || color || 'F5F5F5';
+  });
+
+  // Convert newlines to <br> tags
+  eleventyConfig.addFilter("nl2br", (str) => {
+    if (!str) return "";
+    return str.trim().replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>');
+  });
+
+  // Get first name from full name
+  eleventyConfig.addFilter("firstName", (name) => {
+    if (!name) return "";
+    return name.split(" ")[0];
+  });
+
+  // Slugify a string
+  eleventyConfig.addFilter("slugify", (str) => {
+    if (!str) return "";
+    return str
+      .toLowerCase()
+      .replace(/['']/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  });
+
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
+  // Helper to check if film year matches (supports string or array)
+  const filmHasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
+  // Create a films collection for lookups
+  eleventyConfig.addCollection("films", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk");
+  });
+
+  // Create films collection filtered by year 2023
+  eleventyConfig.addCollection("films2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk")
+      .filter(item => filmHasYear(item, "2023"));
+  });
+
+  // Create films collection filtered by year 2025
+  eleventyConfig.addCollection("films2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/films/*.njk")
+      .filter(item => filmHasYear(item, "2025"));
+  });
+
+  // Filter to look up film by input path
+  eleventyConfig.addFilter("getFilmByPath", function(path, collections) {
+    if (!path || !collections || !collections.films) return null;
+    return collections.films.find(film => film.inputPath === path || film.inputPath === './' + path);
+  });
+
+  // Filter to look up film by title
+  eleventyConfig.addFilter("getFilmByTitle", function(title, collections) {
+    if (!title || !collections || !collections.films) return null;
+    return collections.films.find(film => film.data.title === title);
+  });
+
+  // Filter to look up film by filename slug
+  eleventyConfig.addFilter("getFilmBySlug", function(slug, collections) {
+    if (!slug || !collections || !collections.films) return null;
+    return collections.films.find(film => {
+      // Match by filename (without extension and path)
+      const filename = film.inputPath.split('/').pop().replace('.njk', '');
+      return filename === slug;
+    });
+  });
+
+  // Create an installations collection for lookups
+  eleventyConfig.addCollection("installations", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk");
+  });
+
+  // Helper to check if year matches (supports string or array)
+  const hasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
+  // Create installations collection filtered by year 2023
+  eleventyConfig.addCollection("installations2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk")
+      .filter(item => hasYear(item, "2023"));
+  });
+
+  // Create installations collection filtered by year 2025
+  eleventyConfig.addCollection("installations2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/installations/*.njk")
+      .filter(item => hasYear(item, "2025"));
+  });
+
+  // Helper to check if sponsor year matches (supports string or array)
+  const sponsorHasYear = (item, targetYear) => {
+    const year = item.data.year;
+    if (Array.isArray(year)) return year.includes(targetYear);
+    return year === targetYear;
+  };
+
+  // Helper to sort sponsors by tier
+  const sortByTier = (a, b) => {
+    const tierOrder = { organizer: 0, partner: 1, sponsor: 2 };
+    const tierA = tierOrder[a.data.tier] ?? 3;
+    const tierB = tierOrder[b.data.tier] ?? 3;
+    if (tierA !== tierB) return tierA - tierB;
+    return (a.data.name || '').localeCompare(b.data.name || '');
+  };
+
+  // Create a sponsors collection (all sponsors)
+  eleventyConfig.addCollection("sponsors", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .sort(sortByTier);
+  });
+
+  // Create sponsors filtered by year 2023
+  eleventyConfig.addCollection("sponsors2023", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .filter(item => sponsorHasYear(item, "2023"))
+      .sort(sortByTier);
+  });
+
+  // Create sponsors filtered by year 2025
+  eleventyConfig.addCollection("sponsors2025", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/extrapages/sponsors/*.njk")
+      .filter(item => sponsorHasYear(item, "2025"))
+      .sort(sortByTier);
+  });
+
+  // Filter to look up installation by filename slug or by slugified title
+  eleventyConfig.addFilter("getInstallationBySlug", function(slug, collections, installationsData) {
+    if (!slug) return null;
+    const slugify = (str) => {
+      if (!str) return "";
+      return str.toLowerCase().replace(/['']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    };
+    // First check the .njk file collection
+    if (collections && collections.installations) {
+      const found = collections.installations.find(inst => {
+        const filename = inst.inputPath.split('/').pop().replace('.njk', '');
+        if (filename === slug) return true;
+        if (inst.data.title && slugify(inst.data.title) === slug) return true;
+        return false;
+      });
+      if (found) return found;
+    }
+    // Then check installations.json data
+    if (installationsData && installationsData.list) {
+      const jsonInst = installationsData.list.find(inst => slugify(inst.title) === slug);
+      if (jsonInst) {
+        return { data: { title: jsonInst.title }, url: '/' + slug + '/' };
+      }
+    }
+    return null;
+  });
+
+  // During `--serve`, use source assets directly instead of duplicating them
+  // in the local output directory. Production builds still copy every asset.
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/_includes/js": "js" });
@@ -64,22 +264,6 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
-  // Browsersync Overrides
-  eleventyConfig.setBrowserSyncConfig({
-    callbacks: {
-      ready: function (err, browserSync) {
-        const content_404 = fs.readFileSync("docs/404.html");
-
-        browserSync.addMiddleware("*", (req, res) => {
-          // Provides the 404 content without redirect.
-          res.write(content_404);
-          res.end();
-        });
-      },
-    },
-    ui: false,
-    ghostMode: false,
-  });
 
   return {
     templateFormats: ["md", "njk", "html", "liquid", "yml", "pdf"],
@@ -103,7 +287,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "docs",
+      output: outputDirectory,
     },
   };
 };

@@ -5,10 +5,8 @@ date: 2023-03-13 15:00:00
 tags: event
 navlogo: installation
 layout: layouts/post.njk
-image: /img/currents.png
+image: /img/blog/currents.png
 ---
-
-<img src="/img/currents.png" alt="currents 2023" class="post-hero" style="background: black; padding: 10px;">
 
 The 2023 Fronteras Micro-film Festival will be featured at [CURRENTS New Media 2023](https://currentsnewmedia.org/festivals/currents-new-media-2023/) in Santa Fe, New Mexico on opening weekend (June 16-18, 2023)!
 
