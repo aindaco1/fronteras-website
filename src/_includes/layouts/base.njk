@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta itemprop="name" content="{{ renderData.title or title or metadata.title }}">
 <meta itemprop="description" content="{{ renderData.description or description or metadata.description }}">
-{% if renderData.image or image or metadata.image %}
-  <meta itemprop="image" content="{{ renderData.image or image or metadata.image }}">
-  <meta property="og:image" content="{{ renderData.image or image or metadata.image }}" />
-  <meta name="twitter:image" content="{{ renderData.image or image or metadata.image }}">
+{% if renderData.ogImage or ogImage or renderData.image or image or metadata.image %}
+  <meta itemprop="image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}">
+  <meta property="og:image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}" />
+  <meta name="twitter:image" content="{{ renderData.ogImage or ogImage or renderData.image or image or metadata.image }}">
   {% else %}
-    <meta itemprop="image" content="/img/bigbend.jpg">
-    <meta property="og:image" content="/img/bigbend.jpg" />
-    <meta name="twitter:image" content="/img/bigbend.jpg">
+    <meta itemprop="image" content="/img/site/bigbend.jpg">
+    <meta property="og:image" content="/img/site/bigbend.jpg" />
+    <meta name="twitter:image" content="/img/site/bigbend.jpg">
 {% endif %}
 
 <link rel="canonical" href="{{ metadata.url }}{{ page.url }}" />
@@ -26,6 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
 <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
+{% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/all.min.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
@@ -53,7 +54,7 @@
 
     <p class="signature">Dust Wave  {% year %} </p>
 
-    {% include "components/accent.njk" %}
+    <img class="svgaccent" src="/img/site/accent.svg" alt="" aria-hidden="true">
 
     <style>
     {% if navbarcolor %}
@@ -68,7 +69,7 @@
     
 
     {% if backgroundcolor %}
-    body {background-color:#{{ backgroundcolor }};
+    body {background-color:#{{ backgroundcolor | colorToHex }};
     {% else %}
     body {background-color: #f0f0f0;
     {% endif %}

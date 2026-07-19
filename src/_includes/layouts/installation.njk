@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "components/header.njk" %}
+
+<div class="bigcontainer">
+  <div class="full-width-post">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="post-hero installation-hero">
+    </br>
+    {{ bodyContent | safe }}
+  </div>
+
+  </br>
+  <div class="full-width-post">
+    {% if showAllFilms %}
+    <h3 style="text-align:center;"><a href="/films/">All selected films screened</a></h3>
+    {% else %}
+    <h3 style="text-align:center;">Films screened</h3>
+    {% for filmTitle in filmsScreened %}
+      {% set film = filmTitle | getFilmByTitle(collections) %}
+      {% if film %}
+    <p style="text-align:center;"><a href="{{ film.url }}">{{ film.data.title }}</a></p>
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+  </br>
+</div>
+</br>
+<div class="fullcontainer small-caption">
+  <div class="grid">
+    <div class="grid-col grid-col--1"></div>
+    <div class="grid-col grid-col--2"></div>
+    {% for image in galleryImages %}
+    <div class="grid-item imagediv">
+      <img class="imagecard" src="{{ image }}"/>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</br>
+<script>
+window.addEventListener('load', function() {
+  var colc = new Colcade('.grid', {
+    columns: '.grid-col',
+    items: '.grid-item'
+  });
+});
+</script>

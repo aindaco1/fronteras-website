@@ -8,9 +8,6 @@ permalink: /installations/
 eleventyNavigation:
   key: Installations
   order: 3
-sketches:
-  - the-hands-that-hold-us
-  - the-door-doesnt-close-behind-you
 ---
 
 {% include "components/header.njk" %}
@@ -22,14 +19,10 @@ sketches:
     </div>
     <div class="grid-col grid-col--2">
     </div>
-  {# <div class="grid-col grid-col--3">
-  </div> #}
-  {# <div class="grid-col grid-col--4">
-  </div> #}
-    {% for item in sketches %}
+    {% for installation in collections.installations2025 %}
       <div class="grid-item imagediv">
-            <a href="/{{ item }}">
-              <figure><img class="imagecard" src="/img/sketches/{{ item }}.jpg"/><figcaption>{{ item| replace("-", " ")| title }}</figcaption><figure>
+            <a href="{{ installation.url }}">
+              <figure><img class="imagecard" src="{{ installation.data.heroImage or installation.data.image }}"/><figcaption>{{ installation.data.title }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}
@@ -41,9 +34,10 @@ sketches:
 </br>
 
 <script>
-// selector string as first argument
-var colc = new Colcade( '.grid', {
-  columns: '.grid-col',
-  items: '.grid-item'
+window.addEventListener('load', function() {
+  var colc = new Colcade('.grid', {
+    columns: '.grid-col',
+    items: '.grid-item'
+  });
 });
 </script>

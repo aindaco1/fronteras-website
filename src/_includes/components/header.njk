@@ -5,13 +5,18 @@
     <h1 class="heading heading--stroke heading--halftone">{{ title }}</h1>
 {% endif %}
 
-{% if description %}
+{% if authors %}
+    <div class="container">
+    <div class="subtitle2">
+        <p>{% for author in authors %}{{ author.name }}{% if author.instagram %} <a name="instagram link" class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}{% if not loop.last %} &amp; {% endif %}{% endfor %}</p>
+    </div>
+    </div>
+{% elif description %}
     <div class="container">
     <div class="subtitle2">
         <p>{{ description }}</p>
     </div>
     </div>
-    
 {% endif %}
 {% if description2 %}
     <div class="container">
