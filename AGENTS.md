@@ -8,7 +8,7 @@
 
 ## Architecture
 
-- **SSG**: Eleventy v2 static site generator
+- **SSG**: Eleventy v3 static site generator
 - **Input**: `src/` directory (Markdown, Nunjucks, HTML, Liquid templates)
 - **Dev output**: `dev/` directory (generated pages only; large passthrough assets are served directly from `src/`; removed when `npm start` stops)
 - **Production output**: `docs/` directory (generated, not committed; retained by `npm run build`, cleaned by `npm start`, and deployed via GitHub Actions)

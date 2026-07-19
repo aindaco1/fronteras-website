@@ -86,7 +86,7 @@ The `docs/` and `dev/` directories are generated but not committed to the repo.
 
 ### Architecture
 
-- **Static Site Generator**: Eleventy v2
+- **Static Site Generator**: Eleventy v3
 - **Templates**: Nunjucks (`.njk`) for layouts, Liquid for Markdown processing
 - **Styling**: Sass compiled from `src/_includes/css/index.scss`
 - **Masonry Grids**: Colcade library

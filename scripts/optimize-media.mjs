@@ -155,9 +155,9 @@ async function optimizeImage(reference) {
   };
 }
 
-function run(command, args) {
+function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { stdio: "inherit" });
+    const child = spawn(command, args, { stdio: "inherit", ...options });
 
     child.once("error", reject);
     child.once("close", (code, signal) => {
@@ -288,6 +288,10 @@ async function main() {
   const videos = references.filter((reference) =>
     videoExtensions.has(reference.extension)
   );
+
+  if (videos.length > 0) {
+    await run("ffmpeg", ["-version"], { stdio: "ignore" });
+  }
 
   const imageResults = await mapWithConcurrency(images, 4, optimizeImage);
   const videoResults = await mapWithConcurrency(videos, 1, optimizeVideo);
