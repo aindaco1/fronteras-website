@@ -1,12 +1,13 @@
 ---
 layout: layouts/base.njk
+useColcade: true
 ---
 
 {% include "components/header.njk" %}
 
 <div class="bigcontainer">
   <div class="full-width-post">
-    <img src="{{ heroImage }}" alt="{{ title }}" class="post-hero installation-hero">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="post-hero installation-hero" fetchpriority="high">
     </br>
     {{ bodyContent | safe }}
   </div>
@@ -34,7 +35,7 @@ layout: layouts/base.njk
     <div class="grid-col grid-col--2"></div>
     {% for image in galleryImages %}
     <div class="grid-item imagediv">
-      <img class="imagecard" src="{{ image }}"/>
+      <img class="imagecard" src="{{ image }}" alt="" loading="lazy" decoding="async"/>
     </div>
     {% endfor %}
   </div>

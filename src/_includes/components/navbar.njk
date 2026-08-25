@@ -1,3 +1,4 @@
+{% from "components/icon.njk" import icon %}
 <header>
       <div class="navbar" id="mynavbar">
         <div class="logodiv">
@@ -77,16 +78,16 @@
       </div>
 
       {# Other fixed links #}
-      <a name="shop" class="nav-item" href="https://shop.dustwave.xyz/#2023-fronteras-micro-film-festival" target="_blank">shop</a>
-      <a name="instagram link" class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank">
-        <sub><i class="fab fa-instagram"></i></sub>
+      <a class="nav-item" href="https://shop.dustwave.xyz/#2023-fronteras-micro-film-festival" target="_blank" rel="noopener">shop</a>
+      <a class="nav-item" href="https://www.instagram.com/waveofdust/" target="_blank" rel="noopener" aria-label="Dust Wave on Instagram">
+        <sub>{{ icon("instagram", "nav-icon") }}</sub>
       </a>
-      <a name="youtube link" class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank">
-        <sub><i class="fab fa-youtube"></i></sub>
+      <a class="nav-item" href="https://www.youtube.com/@dustwavecollective" target="_blank" rel="noopener" aria-label="Dust Wave on YouTube">
+        <sub>{{ icon("youtube", "nav-icon") }}</sub>
       </a>
     </div>
-    <a name="hamburger" href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+    <button type="button" class="icon" data-nav-toggle aria-controls="navcollapse" aria-expanded="false" aria-label="Toggle navigation">
+      {{ icon("bars", "menu-icon") }}
+    </button>
   </div>
 </header>

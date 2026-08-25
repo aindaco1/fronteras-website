@@ -5,6 +5,7 @@ description: Our 2023 installations.
 navlogo: installation
 backgroundcolor: ff4760
 permalink: /installations-2023/
+useColcade: true
 eleventyNavigation:
   key: Installations2023
   parent: "2023"
@@ -24,7 +25,7 @@ eleventyNavigation:
     {% for installation in collections.installations2023 %}
       <div class="grid-item imagediv">
             <a href="{{ installation.url }}">
-              <figure><img class="imagecard" src="{{ installation.data.heroImage or installation.data.image }}"/><figcaption>{{ installation.data.title }}</figcaption></figure>
+              <figure><img class="imagecard" src="{{ installation.data.heroImage or installation.data.image }}" alt="{{ installation.data.title }}"{% if loop.first %} fetchpriority="high"{% elif loop.index > 2 %} loading="lazy" decoding="async"{% endif %}/><figcaption>{{ installation.data.title }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}

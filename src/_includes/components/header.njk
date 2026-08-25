@@ -1,3 +1,4 @@
+{% from "components/icon.njk" import icon %}
 <div class="bigcontainer">
 {% if titleimage %}
     <img class="logotitle" src="{{ titleimage }}"/>
@@ -8,7 +9,7 @@
 {% if authors %}
     <div class="container">
     <div class="subtitle2">
-        <p>{% for author in authors %}{{ author.name }}{% if author.instagram %} <a name="instagram link" class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}{% if not loop.last %} &amp; {% endif %}{% endfor %}</p>
+        <p>{% for author in authors %}{{ author.name }}{% if author.instagram %} <a class="artist-insta" href="https://instagram.com/{{ author.instagram }}/" target="_blank" rel="noopener" aria-label="{{ author.name }} on Instagram">{{ icon("instagram", "artist-icon") }}</a>{% endif %}{% if not loop.last %} &amp; {% endif %}{% endfor %}</p>
     </div>
     </div>
 {% elif description %}

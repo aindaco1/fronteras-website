@@ -49,10 +49,10 @@ var x = setInterval(function() {
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx More Info xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <div class="fullcontainer">
         <h1 class="mobile-h1" style="text-align:center;">More Info</h1>
-        <a href="/faq/"><img class="mangapanel" alt="bigbend" src="/img/site/bigbend.jpg"/></a>
-        <a href="/installations/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="installations" src="/img/infofront/installations.jpg"><figcaption>Installations</figcaption></figure></a>
-        <a href="/films/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="films" src="/img/infofront/films.jpg"><figcaption>Films</figcaption></figure></a>
-        <a href="/rules/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="rules" src="/img/infofront/rules.jpg"><figcaption>Rules</figcaption></figure></a>
+        <a href="/faq/"><img class="mangapanel" alt="Big Bend at night" src="/img/site/bigbend.jpg" width="1800" height="1200" fetchpriority="high"/></a>
+        <a href="/installations/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="Installations" src="/img/infofront/installations.jpg" width="579" height="579" loading="lazy" decoding="async"><figcaption>Installations</figcaption></figure></a>
+        <a href="/films/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="Films" src="/img/infofront/films.jpg" width="579" height="579" loading="lazy" decoding="async"><figcaption>Films</figcaption></figure></a>
+        <a href="/rules/"><figure style="text-align:center"><img style="display:inline-block;" class="mangapanel" alt="Rules" src="/img/infofront/rules.jpg" width="579" height="579" loading="lazy" decoding="async"><figcaption>Rules</figcaption></figure></a>
 </div>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxx Categories xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 {# </br>
@@ -118,16 +118,3 @@ var x = setInterval(function() {
 {# {% for entry in collections.cinnamon %}
 <p>{{ entry.title }}</p>
 {% endfor %} #}
-
-<script>
-// selector string as first argument
-// Only initialize if grid exists on page
-if (document.querySelector('.grid')) {
-  window.addEventListener('load', function() {
-    var colc = new Colcade( '.grid', {
-      columns: '.grid-col',
-      items: '.grid-item'
-    });
-  });
-}
-</script>

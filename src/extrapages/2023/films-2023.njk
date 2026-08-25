@@ -5,6 +5,7 @@ description: Our 2023 film selections.
 navlogo: emojianim
 backgroundcolor: F5F5F5
 permalink: /films-2023/
+useColcade: true
 eleventyNavigation:
   key: Films2023
   parent: "2023"
@@ -28,7 +29,7 @@ eleventyNavigation:
     {% for film in collections.films2023 %}
       <div class="grid-item imagediv">
             <a href="{{ film.url }}">
-              <figure><img class="imagecard" src="{{ film.data.image }}"/><figcaption>{{ film.data.title }}</figcaption></figure>
+              <figure><img class="imagecard" src="{{ film.data.image }}" alt="{{ film.data.title }}"{% if loop.first %} fetchpriority="high"{% elif loop.index > 4 %} loading="lazy" decoding="async"{% endif %}/><figcaption>{{ film.data.title }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}

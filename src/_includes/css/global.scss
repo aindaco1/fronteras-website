@@ -1,11 +1,5 @@
 @use "sass:math";
 @import "variables.scss";
-@font-face {
-  font-family: "Font-awesome";
-  src: url("/fonts/fa-solid-900.ttf") format("ttf");
-  src: url("/fonts/fa-regualr-400.ttf") format("ttf");
-}
-
 /* -------------------- Typography Treatments -------------------- */
 
 @font-face {

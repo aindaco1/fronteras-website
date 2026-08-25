@@ -4,9 +4,9 @@ layout: layouts/base.njk
 <main>
 <div class="container">
 {% if image %}
-<img src="{{ image }}" alt="{{ title }}" class="post-hero" style="background: black; padding: 10px;">
+<img src="{{ image }}" alt="{{ title }}" class="post-hero" style="background: black; padding: 10px;" fetchpriority="high">
 {% elif thumbnail %}
-<img style="max-width: 100%" src="{{ thumbnail }}"/>
+<img style="max-width: 100%" src="{{ thumbnail }}" alt="" loading="lazy" decoding="async"/>
 {% endif %}
 <h1 class="mobile-h1" style="margin-bottom:0;">{{ title }}</h1>
 {# <p style="margin:0 0 30px;"><small>{{ description }}</small></p> #}
