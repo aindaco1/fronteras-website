@@ -32,6 +32,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Restore optimized media cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v6.1.0
+        with:
+          path: .cache/media
+          key: fronteras-media-v1-${{ runner.os }}-${{ hashFiles('src/_includes/img/**/*') }}
+          restore-keys: |
+            fronteras-media-v1-${{ runner.os }}-
+
       - name: Install FFmpeg
         run: |
           sudo apt-get update
@@ -51,6 +59,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
@@ -61,6 +70,23 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
 
+      - name: Checkout deployment verification scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+
+      - name: Sync immutable asset cache rules
+        if: vars.CLOUDFLARE_ENABLED == 'true'
+        run: node scripts/sync-cloudflare-cache-rules.mjs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+
       - name: Purge Cloudflare cache
         if: vars.CLOUDFLARE_ENABLED == 'true'
         uses: jakejarvis/cloudflare-purge-action@eee6dba0236093358f25bb1581bd615dc8b3d8e3
@@ -68,3 +94,7 @@ jobs:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+
+      - name: Verify production asset caching
+        if: vars.CLOUDFLARE_ENABLED == 'true'
+        run: node scripts/verify-production-assets.mjs
