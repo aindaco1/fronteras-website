@@ -2,4 +2,5 @@ _site/
 dev/
 docs/
 node_modules/
+.cache/
 .DS_Store

@@ -27,9 +27,40 @@
 <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
 <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
 {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
-    <link rel="stylesheet" href="{{ '/css/index.css' | url }}?v={{ stylesheetVersion }}">
+    <style>
+      @font-face {
+        font-family: "Sega";
+        src: url("{{ assetPaths.sega }}") format("truetype");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("{{ assetPaths.robotoMono400Normal }}") format("woff2");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("{{ assetPaths.robotoMono400Italic }}") format("woff2");
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("{{ assetPaths.robotoMono700Normal }}") format("woff2");
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+      }
+    </style>
+    <link rel="stylesheet" href="{{ assetPaths.stylesheet }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-    {% if useColcade %}<script src="/js/colcade.js" defer></script>{% endif %}
+    {% if useColcade %}<script src="{{ assetPaths.colcade }}" defer></script>{% endif %}
     
 
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
@@ -39,9 +70,6 @@
 <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#000000">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
   </head>
   <body>
     <div class="footerseating">

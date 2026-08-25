@@ -2,20 +2,6 @@
 @import "variables.scss";
 /* -------------------- Typography Treatments -------------------- */
 
-@font-face {
-  font-family: "Blackout";
-  src: url("/webfonts/blackout_midnight-webfont.ttf");
-}
-@font-face {
-  font-family: "Sega";
-  src: url("/webfonts/Sega.TTF");
-}
-
-@font-face {
-  font-family: "Geist-RND";
-  src: url("/webfonts/GEIST_RND-webfont.woff");
-}
-
 h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;

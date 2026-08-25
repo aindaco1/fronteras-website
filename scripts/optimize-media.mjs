@@ -1,6 +1,10 @@
 import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
+import { createReadStream } from "node:fs";
 import {
   access,
+  copyFile,
+  mkdir,
   readFile,
   readdir,
   rename,
@@ -24,6 +28,9 @@ if (process.argv.includes("--check")) {
 const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const buildDirectory = path.join(projectRoot, "docs");
 const mediaDirectory = path.join(buildDirectory, "img");
+const outputMediaDirectory = path.join(buildDirectory, "assets", "img");
+const cacheDirectory = path.join(projectRoot, ".cache", "media");
+const cacheVersion = "fronteras-media-v1";
 const textExtensions = new Set([
   ".css",
   ".html",
@@ -33,7 +40,7 @@ const textExtensions = new Set([
   ".xml",
 ]);
 const mediaReference =
-  /\/img\/[^"'()<>\s?&#]+?\.(?:jpe?g|png|mp4|webm)\b/gi;
+  /(?<!\/assets)\/img\/[^"'()< >\s?&#]+?\.(?:avif|gif|jpe?g|png|svg|webp|mp4|webm)\b/gi;
 const imageExtensions = new Set([".jpg", ".jpeg", ".png"]);
 const videoExtensions = new Set([".mp4", ".webm"]);
 const imageQuality = Number(process.env.MEDIA_IMAGE_QUALITY || 80);
@@ -66,6 +73,30 @@ async function fileExists(filePath) {
   }
 }
 
+function fileHash(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = createHash("sha256");
+    const input = createReadStream(filePath);
+
+    input.on("error", reject);
+    input.on("data", (chunk) => hash.update(chunk));
+    input.on("end", () => resolve(hash.digest("hex")));
+  });
+}
+
+async function transformCachePath(reference, format) {
+  const sourceHash = await fileHash(reference.mediaPath);
+  const settings =
+    format === "webp"
+      ? `webp:${imageQuality}:effort-5:smart-subsample`
+      : `vp9:${videoCrf}:${videoMaxDimension}:opus-96k:cpu-5`;
+  const key = createHash("sha256")
+    .update(`${cacheVersion}:${sourceHash}:${settings}`)
+    .digest("hex");
+
+  return path.join(cacheDirectory, `${key}.${format}`);
+}
+
 function getMediaPath(url) {
   const relativePath = decodeURI(url.slice("/img/".length));
   const mediaPath = path.resolve(mediaDirectory, relativePath);
@@ -80,6 +111,7 @@ function getMediaPath(url) {
 
 async function findReferencedMedia(textFiles) {
   const references = new Map();
+  const missing = new Set();
 
   for (const textFile of textFiles) {
     const contents = await readFile(textFile, "utf8");
@@ -88,14 +120,23 @@ async function findReferencedMedia(textFiles) {
       const url = match[0];
       const mediaPath = getMediaPath(url);
 
-      if (await fileExists(mediaPath)) {
-        references.set(mediaPath, {
-          extension: path.extname(mediaPath).toLowerCase(),
-          mediaPath,
-          urls: new Set([...(references.get(mediaPath)?.urls || []), url]),
-        });
+      if (!(await fileExists(mediaPath))) {
+        missing.add(url);
+        continue;
       }
+
+      references.set(mediaPath, {
+        extension: path.extname(mediaPath).toLowerCase(),
+        mediaPath,
+        urls: new Set([...(references.get(mediaPath)?.urls || []), url]),
+      });
     }
+  }
+
+  if (missing.size > 0) {
+    throw new Error(
+      `Missing referenced media:\n${[...missing].sort().join("\n")}`
+    );
   }
 
   return [...references.values()];
@@ -119,42 +160,6 @@ async function mapWithConcurrency(items, concurrency, worker) {
   return results;
 }
 
-function replaceExtension(value, extension) {
-  return value.replace(/\.[^.]+$/, extension);
-}
-
-async function optimizeImage(reference) {
-  const outputPath = replaceExtension(reference.mediaPath, ".optimized.webp");
-  const inputStats = await stat(reference.mediaPath);
-
-  await sharp(reference.mediaPath)
-    .rotate()
-    .webp({ effort: 5, quality: imageQuality, smartSubsample: true })
-    .toFile(outputPath);
-
-  const outputStats = await stat(outputPath);
-
-  if (outputStats.size >= inputStats.size) {
-    await rm(outputPath, { force: true });
-    return {
-      inputBytes: inputStats.size,
-      outputBytes: inputStats.size,
-      replacements: [],
-    };
-  }
-
-  await rm(reference.mediaPath);
-
-  return {
-    inputBytes: inputStats.size,
-    outputBytes: outputStats.size,
-    replacements: [...reference.urls].map((url) => [
-      url,
-      replaceExtension(url, ".optimized.webp"),
-    ]),
-  };
-}
-
 function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, { stdio: "inherit", ...options });
@@ -174,13 +179,36 @@ function run(command, args, options = {}) {
   });
 }
 
-async function optimizeVideo(reference) {
-  const outputPath =
-    reference.extension === ".mp4"
-      ? replaceExtension(reference.mediaPath, ".optimized.webm")
-      : reference.mediaPath;
-  const temporaryPath = `${outputPath}.${process.pid}.tmp.webm`;
-  const inputStats = await stat(reference.mediaPath);
+async function cachedImage(reference) {
+  const cachePath = await transformCachePath(reference, "webp");
+
+  if (await fileExists(cachePath)) {
+    return { cacheHit: true, outputPath: cachePath };
+  }
+
+  const temporaryPath = `${cachePath}.${process.pid}.tmp`;
+
+  try {
+    await sharp(reference.mediaPath)
+      .rotate()
+      .webp({ effort: 5, quality: imageQuality, smartSubsample: true })
+      .toFile(temporaryPath);
+    await rename(temporaryPath, cachePath);
+    return { cacheHit: false, outputPath: cachePath };
+  } catch (error) {
+    await rm(temporaryPath, { force: true });
+    throw error;
+  }
+}
+
+async function cachedVideo(reference) {
+  const cachePath = await transformCachePath(reference, "webm");
+
+  if (await fileExists(cachePath)) {
+    return { cacheHit: true, outputPath: cachePath };
+  }
+
+  const temporaryPath = `${cachePath}.${process.pid}.tmp.webm`;
   const scale =
     `scale=w='min(${videoMaxDimension},iw)':` +
     `h='min(${videoMaxDimension},ih)':` +
@@ -229,32 +257,74 @@ async function optimizeVideo(reference) {
       "-1",
       temporaryPath,
     ]);
-
-    const outputStats = await stat(temporaryPath);
-
-    if (reference.extension === ".webm" && outputStats.size >= inputStats.size) {
-      await rm(temporaryPath, { force: true });
-      return {
-        inputBytes: inputStats.size,
-        outputBytes: inputStats.size,
-        replacements: [],
-      };
-    }
-
-    await rm(reference.mediaPath);
-    await rename(temporaryPath, outputPath);
-
-    return {
-      inputBytes: inputStats.size,
-      outputBytes: outputStats.size,
-      replacements: [...reference.urls]
-        .filter((url) => url.toLowerCase().endsWith(".mp4"))
-        .map((url) => [url, replaceExtension(url, ".optimized.webm")]),
-    };
+    await rename(temporaryPath, cachePath);
+    return { cacheHit: false, outputPath: cachePath };
   } catch (error) {
     await rm(temporaryPath, { force: true });
     throw error;
   }
+}
+
+function encodeOutputPath(relativePath) {
+  return relativePath.split(path.sep).map(encodeURIComponent).join("/");
+}
+
+async function fingerprint(reference, selectedPath, options = {}) {
+  const { cacheHit = false, transformed = false } = options;
+  const relativeInput = path.relative(mediaDirectory, reference.mediaPath);
+  const parsed = path.parse(relativeInput);
+  const selectedExtension = path.extname(selectedPath).toLowerCase();
+  const selectedHash = (await fileHash(selectedPath)).slice(0, 12);
+  const outputName =
+    `${parsed.name}${transformed ? ".optimized" : ""}.` +
+    `${selectedHash}${selectedExtension}`;
+  const relativeOutput = path.join(parsed.dir, outputName);
+  const outputPath = path.join(outputMediaDirectory, relativeOutput);
+  const inputStats = await stat(reference.mediaPath);
+  const outputStats = await stat(selectedPath);
+
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await copyFile(selectedPath, outputPath);
+
+  const outputUrl = `/assets/img/${encodeOutputPath(relativeOutput)}`;
+
+  return {
+    cacheHit,
+    inputBytes: inputStats.size,
+    outputBytes: outputStats.size,
+    replacements: [...reference.urls].map((url) => [url, outputUrl]),
+    transformed,
+  };
+}
+
+async function optimizeImage(reference) {
+  const inputStats = await stat(reference.mediaPath);
+  const cached = await cachedImage(reference);
+  const outputStats = await stat(cached.outputPath);
+
+  if (outputStats.size >= inputStats.size) {
+    return fingerprint(reference, reference.mediaPath);
+  }
+
+  return fingerprint(reference, cached.outputPath, {
+    cacheHit: cached.cacheHit,
+    transformed: true,
+  });
+}
+
+async function optimizeVideo(reference) {
+  const inputStats = await stat(reference.mediaPath);
+  const cached = await cachedVideo(reference);
+  const outputStats = await stat(cached.outputPath);
+
+  if (reference.extension === ".webm" && outputStats.size >= inputStats.size) {
+    return fingerprint(reference, reference.mediaPath);
+  }
+
+  return fingerprint(reference, cached.outputPath, {
+    cacheHit: cached.cacheHit,
+    transformed: true,
+  });
 }
 
 async function rewriteReferences(textFiles, replacements) {
@@ -272,11 +342,34 @@ async function rewriteReferences(textFiles, replacements) {
   }
 }
 
+async function assertNoRawMediaReferences(textFiles) {
+  const remaining = [];
+
+  for (const textFile of textFiles) {
+    const contents = await readFile(textFile, "utf8");
+    const matches = [...contents.matchAll(mediaReference)].map(
+      (match) => match[0]
+    );
+
+    if (matches.length > 0) {
+      remaining.push(`${path.relative(buildDirectory, textFile)}: ${matches[0]}`);
+    }
+  }
+
+  if (remaining.length > 0) {
+    throw new Error(
+      `Raw media references remain after fingerprinting:\n${remaining.join("\n")}`
+    );
+  }
+}
+
 function formatMiB(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MiB`;
 }
 
 async function main() {
+  await mkdir(cacheDirectory, { recursive: true });
+
   const buildFiles = await findFiles(buildDirectory);
   const textFiles = buildFiles.filter((file) =>
     textExtensions.has(path.extname(file).toLowerCase())
@@ -288,6 +381,11 @@ async function main() {
   const videos = references.filter((reference) =>
     videoExtensions.has(reference.extension)
   );
+  const passthrough = references.filter(
+    (reference) =>
+      !imageExtensions.has(reference.extension) &&
+      !videoExtensions.has(reference.extension)
+  );
 
   if (videos.length > 0) {
     await run("ffmpeg", ["-version"], { stdio: "ignore" });
@@ -295,21 +393,39 @@ async function main() {
 
   const imageResults = await mapWithConcurrency(images, 4, optimizeImage);
   const videoResults = await mapWithConcurrency(videos, 1, optimizeVideo);
-  const results = [...imageResults, ...videoResults];
+  const passthroughResults = await mapWithConcurrency(
+    passthrough,
+    4,
+    (reference) => fingerprint(reference, reference.mediaPath)
+  );
+  const results = [
+    ...imageResults,
+    ...videoResults,
+    ...passthroughResults,
+  ];
   const replacements = results.flatMap((result) => result.replacements);
 
   await rewriteReferences(textFiles, replacements);
+  await assertNoRawMediaReferences(textFiles);
+  await rm(mediaDirectory, { recursive: true, force: true });
 
   const inputBytes = results.reduce((sum, result) => sum + result.inputBytes, 0);
   const outputBytes = results.reduce(
     (sum, result) => sum + result.outputBytes,
     0
   );
+  const cacheHits = results.filter((result) => result.cacheHit).length;
+  const transformed = results.filter((result) => result.transformed).length;
 
   console.log(
-    `Optimized ${images.length} images and ${videos.length} videos: ` +
+    `Processed ${images.length} images, ${videos.length} videos, and ` +
+      `${passthrough.length} passthrough assets: ` +
       `${formatMiB(inputBytes)} -> ${formatMiB(outputBytes)} ` +
       `(${formatMiB(inputBytes - outputBytes)} saved).`
+  );
+  console.log(
+    `Content-addressed ${results.length} media assets; ${transformed} transformed, ` +
+      `${cacheHits} transform cache hits.`
   );
 }
 

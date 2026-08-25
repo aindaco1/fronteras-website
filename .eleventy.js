@@ -10,10 +10,36 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 const isProduction = process.env.ELEVENTY_ENV === "production";
 const outputDirectory = isProduction ? "docs" : "dev";
-const stylesheetVersion = createHash("sha256")
-  .update(readFileSync("src/_includes/css/index.css"))
-  .digest("hex")
-  .slice(0, 12);
+
+function contentHash(filePath) {
+  return createHash("sha256")
+    .update(readFileSync(filePath))
+    .digest("hex")
+    .slice(0, 12);
+}
+
+const assetFiles = {
+  stylesheet: "src/_includes/css/index.css",
+  colcade: "src/_includes/js/colcade.js",
+  sega: "src/_includes/fonts/Sega.TTF",
+  robotoMono400Normal:
+    "node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2",
+  robotoMono400Italic:
+    "node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-400-italic.woff2",
+  robotoMono700Normal:
+    "node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-700-normal.woff2",
+};
+const assetPaths = {
+  stylesheet: `/assets/css/index.${contentHash(assetFiles.stylesheet)}.css`,
+  colcade: `/assets/js/colcade.${contentHash(assetFiles.colcade)}.js`,
+  sega: `/assets/fonts/sega.${contentHash(assetFiles.sega)}.ttf`,
+  robotoMono400Normal:
+    `/assets/fonts/roboto-mono-latin-400-normal.${contentHash(assetFiles.robotoMono400Normal)}.woff2`,
+  robotoMono400Italic:
+    `/assets/fonts/roboto-mono-latin-400-italic.${contentHash(assetFiles.robotoMono400Italic)}.woff2`,
+  robotoMono700Normal:
+    `/assets/fonts/roboto-mono-latin-700-normal.${contentHash(assetFiles.robotoMono700Normal)}.woff2`,
+};
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -29,7 +55,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.watchIgnores.add("**/.DS_Store");
 
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addGlobalData("stylesheetVersion", stylesheetVersion);
+  eleventyConfig.addGlobalData("assetPaths", assetPaths);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
@@ -249,12 +275,21 @@ module.exports = function (eleventyConfig) {
   });
 
   // During `--serve`, use source assets directly instead of duplicating them
-  // in the local output directory. Production builds still copy every asset.
+  // in the local output directory. Production media is content-addressed by
+  // the CI optimizer after Eleventy finishes.
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy({ "src/_includes/img": "img" });
-  eleventyConfig.addPassthroughCopy({ "src/_includes/css": "css" });
-  eleventyConfig.addPassthroughCopy({ "src/_includes/js": "js" });
-  eleventyConfig.addPassthroughCopy({ "src/_includes/fonts": "webfonts" });
+  eleventyConfig.addPassthroughCopy({
+    [assetFiles.stylesheet]: assetPaths.stylesheet.slice(1),
+    [assetFiles.colcade]: assetPaths.colcade.slice(1),
+    [assetFiles.sega]: assetPaths.sega.slice(1),
+    [assetFiles.robotoMono400Normal]:
+      assetPaths.robotoMono400Normal.slice(1),
+    [assetFiles.robotoMono400Italic]:
+      assetPaths.robotoMono400Italic.slice(1),
+    [assetFiles.robotoMono700Normal]:
+      assetPaths.robotoMono700Normal.slice(1),
+  });
   eleventyConfig.addPassthroughCopy({ "src/_includes/favicons": "favicons" });
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy(".nojekyll");
