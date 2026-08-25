@@ -1,5 +1,5 @@
 const siteUrl = "https://fronterasmicrofilm.com";
-const attempts = Number(process.env.PRODUCTION_VERIFY_ATTEMPTS || 12);
+const attempts = Number(process.env.PRODUCTION_VERIFY_ATTEMPTS || 36);
 const retryDelayMs = Number(process.env.PRODUCTION_VERIFY_DELAY_MS || 5000);
 
 function wait(duration) {
