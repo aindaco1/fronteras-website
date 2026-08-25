@@ -19,7 +19,7 @@ const authHeaders = apiToken
   : { "X-Auth-Email": email, "X-Auth-Key": globalKey };
 const expression =
   '(http.host eq "fronterasmicrofilm.com" and ' +
-  'http.request.uri.path starts_with "/assets/")';
+  'starts_with(http.request.uri.path, "/assets/"))';
 
 const managedRules = [
   {
