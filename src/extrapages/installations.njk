@@ -5,6 +5,7 @@ description: Our 2025 installations.
 navlogo: installation
 backgroundcolor: ff4760
 permalink: /installations/
+useColcade: true
 eleventyNavigation:
   key: Installations
   order: 3
@@ -22,7 +23,7 @@ eleventyNavigation:
     {% for installation in collections.installations2025 %}
       <div class="grid-item imagediv">
             <a href="{{ installation.url }}">
-              <figure><img class="imagecard" src="{{ installation.data.heroImage or installation.data.image }}"/><figcaption>{{ installation.data.title }}</figcaption></figure>
+              <figure><img class="imagecard" src="{{ installation.data.heroImage or installation.data.image }}" alt="{{ installation.data.title }}"{% if loop.first %} fetchpriority="high"{% elif loop.index > 2 %} loading="lazy" decoding="async"{% endif %}/><figcaption>{{ installation.data.title }}</figcaption></figure>
             </a>
       </div>
     {% endfor %}

@@ -28,10 +28,8 @@
 <meta name="twitter:description" content="{{ renderData.description or description or metadata.description }}">
 {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/all.min.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-    <script src="/js/colcade.js"></script>
-    <script src="/js/hammer.js"></script>
+    {% if useColcade %}<script src="/js/colcade.js" defer></script>{% endif %}
     
 
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
@@ -82,15 +80,29 @@
     <footer class="footer">
     {% include "components/footer.njk" %}
     <script>
-function myFunction() {
-  var x = document.getElementById("navcollapse");
-  if (x.className === "navstuff") {
-    x.className += " responsive";
-  } else {
-    x.className = "navstuff";
-  }
-}
-</script>
+      const navToggle = document.querySelector("[data-nav-toggle]");
+      const nav = document.getElementById(navToggle?.getAttribute("aria-controls"));
+
+      function setNavOpen(open) {
+        nav?.classList.toggle("responsive", open);
+        navToggle?.setAttribute("aria-expanded", String(open));
+      }
+
+      navToggle?.addEventListener("click", () => {
+        setNavOpen(!nav.classList.contains("responsive"));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && nav?.classList.contains("responsive")) {
+          setNavOpen(false);
+          navToggle.focus();
+        }
+      });
+
+      window.matchMedia("(min-width: 801px)").addEventListener("change", (event) => {
+        if (event.matches) setNavOpen(false);
+      });
+    </script>
     </footer>
     <!-- Current page: {{ page.url | url }} -->
     </div>

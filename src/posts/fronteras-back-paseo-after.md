@@ -7,6 +7,7 @@ navlogo: installation
 layout: layouts/post.njk
 image: /img/blog/fronteras-at-paseo.gif
 ogImage: /img/blog/paseo-2.jpg
+useColcade: true
 ---
 
 We had a great time at [PASEO 2025](https://paseoproject.org/paseo2025) in Taos, New Mexico on September 12-13, 2025!
@@ -22,25 +23,25 @@ Despite rain, wind, our pop-up tent ending up on an electic line -- we had a bla
     <div class="grid-col grid-col--2">
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-1.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-1.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-2.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-2.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-3.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-3.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-4.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-4.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-5.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-5.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-6.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-6.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
     <div class="grid-item imagediv" style="padding: 10px 10px 10px 0;">
-      <img class="post-hero" src="/img/blog/paseo-7.jpg" style="background: black; padding: 10px;"/>
+      <img class="post-hero" src="/img/blog/paseo-7.jpg" alt="" style="background: black; padding: 10px;" loading="lazy" decoding="async"/>
     </div>
   </div>
 </div>
