@@ -1,4 +1,6 @@
 const { DateTime } = require("luxon");
+const { createHash } = require("node:crypto");
+const { readFileSync } = require("node:fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss").default;
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
@@ -8,6 +10,10 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 const isProduction = process.env.ELEVENTY_ENV === "production";
 const outputDirectory = isProduction ? "docs" : "dev";
+const stylesheetVersion = createHash("sha256")
+  .update(readFileSync("src/_includes/css/index.css"))
+  .digest("hex")
+  .slice(0, 12);
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -23,6 +29,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.watchIgnores.add("**/.DS_Store");
 
   eleventyConfig.setDataDeepMerge(true);
+  eleventyConfig.addGlobalData("stylesheetVersion", stylesheetVersion);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 

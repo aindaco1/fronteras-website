@@ -54,6 +54,7 @@ for (const [value, label] of [
 
 assertIncludes(home, 'fetchpriority="high"', "homepage LCP image");
 assertIncludes(home, 'loading="lazy"', "homepage below-fold images");
+assertIncludes(home, '/css/index.css?v=', "versioned stylesheet URL");
 assertIncludes(home, 'data-nav-toggle', "navigation toggle");
 assertIncludes(home, 'aria-expanded="false"', "navigation toggle state");
 
