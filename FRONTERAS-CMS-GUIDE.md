@@ -4,7 +4,7 @@ A comprehensive guide to managing content on the [Fronteras Micro-film Festival 
 
 ## Access Pages CMS
 
-1. Go to [pagescms.org/edit/aindaco1/fronteras-website](https://pagescms.org/edit/aindaco1/fronteras-website)
+1. Go to [app.pagescms.org/aindaco1/fronteras-website](https://app.pagescms.org/aindaco1/fronteras-website)
 2. If prompted, sign in with your account credentials (ask @Alonso Indacochea if you don't have these)
 3. Click on **Films**, **Installations**, **Sponsors**, or **Posts** in the left sidebar
 
@@ -844,4 +844,4 @@ For questions or issues, contact @Alonso Indacochea.
 
 ---
 
-*Last updated: December 2024*
+*Last updated: August 2026*

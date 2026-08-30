@@ -19,7 +19,9 @@ layout: layouts/base.njk
     </div>
     {% endif %}
     </br>
-    {% if artistStatement %}<p><i>"{{ artistStatement | nl2br | safe }}"</i></p>{% endif %}
+    {% if artistStatement %}
+    <div class="artist-statement">{% if "<p" in artistStatement %}{{ artistStatement | safe }}{% else %}<p>{{ artistStatement | nl2br | safe }}</p>{% endif %}</div>
+    {% endif %}
     {% if authors %}
     {% for author in authors %}
     {% if author.bio %}

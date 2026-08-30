@@ -390,7 +390,8 @@
   justify-content: space-between;
   grid-template-areas: "one" "two";
   grid-template-columns: auto;
-  grid-template-rows: 1fr 0.5fr;
+  grid-template-rows: auto auto;
+  row-gap: 2rem;
   :nth-child(1) {
     grid-area: one;
   }
@@ -416,6 +417,17 @@
   }
   h1 {
     padding: 0;
+  }
+}
+
+.footer-brand-heading {
+  background: none;
+  margin: 100px auto;
+}
+
+@media screen and (max-width: 500px) {
+  .footer-brand-heading {
+    margin: 3rem auto;
   }
 }
 
@@ -459,6 +471,7 @@
     grid-template-areas: "one two";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    row-gap: 0;
   }
 }
 

@@ -6,7 +6,7 @@ Website for the [Fronteras Micro-film Festival](https://fronterasfilmfestival.co
 
 Non-technical editors can use [Pages CMS](https://pagescms.org) to manage all content:
 
-1. Go to [pagescms.org/edit/aindaco1/fronteras-website](https://pagescms.org/edit/aindaco1/fronteras-website)
+1. Go to [app.pagescms.org/aindaco1/fronteras-website](https://app.pagescms.org/aindaco1/fronteras-website)
 2. Sign in with GitHub credentials
 3. Edit Films, Installations, Sponsors, or Posts
 

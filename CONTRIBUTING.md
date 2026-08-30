@@ -14,7 +14,7 @@
 
 ### Quick Start
 
-1. Go to [pagescms.org/edit/aindaco1/fronteras-website](https://pagescms.org/edit/aindaco1/fronteras-website)
+1. Go to [app.pagescms.org/aindaco1/fronteras-website](https://app.pagescms.org/aindaco1/fronteras-website)
 2. Sign in with GitHub credentials
 3. Select the collection you want to edit (Films, Installations, Sponsors, Posts)
 4. Click **+ New** or select an existing item to edit

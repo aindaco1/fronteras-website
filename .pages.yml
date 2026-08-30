@@ -1,6 +1,7 @@
 media:
   input: src/_includes/img
   output: /img
+  rename: safe
 
 content:
   - name: posts
@@ -60,6 +61,12 @@ content:
         hidden: true
         default: layouts/post.njk
 
+      - name: useColcade
+        label: Load Masonry Layout
+        type: boolean
+        hidden: true
+        default: false
+
       - name: image
         label: Image
         type: image
@@ -88,7 +95,7 @@ content:
     filename: "{primary}.njk"
     format: yaml-frontmatter
     view:
-      fields: [title, authors, year]
+      fields: [title, year]
       primary: title
       sort: [title]
       default:
@@ -124,6 +131,8 @@ content:
             label: Bio
             type: rich-text
             description: A brief biography (2-4 sentences) about you as a filmmaker. Describe your background, artistic focus, and any notable achievements. Links are supported.
+            options:
+              format: html
 
       - name: image
         label: Film Still
@@ -137,6 +146,8 @@ content:
         label: Artist Statement
         type: rich-text
         description: Your statement about this film (1-3 paragraphs). Describe your creative vision, inspiration, themes explored, and what you want viewers to take away. This will be displayed in quotes and italics. For multiple paragraphs, use blank lines between them.
+        options:
+          format: html
 
       - name: youtubeId
         label: YouTube Video ID
@@ -242,7 +253,7 @@ content:
     filename: "{primary}.njk"
     format: yaml-frontmatter
     view:
-      fields: [title, authors, year]
+      fields: [title, year]
       primary: title
       sort: [title]
       default:
@@ -278,6 +289,8 @@ content:
             label: Bio
             type: rich-text
             description: A brief biography (2-4 sentences) about you as an artist. Describe your background, artistic focus, and any notable achievements. Links are supported.
+            options:
+              format: html
 
       - name: heroImage
         label: Hero Image
@@ -292,6 +305,8 @@ content:
         type: rich-text
         required: true
         description: "Describe your installation in 2-5 paragraphs. Include your artistic concept, materials used, how visitors interact with it, and its connection to the festival themes."
+        options:
+          format: html
 
       - name: navlogo
         label: Nav Logo
@@ -308,7 +323,7 @@ content:
         required: true
         description: The background color for this installation page. Choose a color that complements your hero image and artwork aesthetic.
         options:
-          values: [Light Blue, Yellow, Aqua, Dark Green, Light Gray, Neon Green]
+          values: [Light Blue, Yellow, Aqua, Dark Green, Light Gray, Neon Green, Red]
           creatable: true
 
       - name: layout
@@ -351,5 +366,3 @@ content:
         options:
           values: ["2023", "2025"]
           multiple: true
-
-

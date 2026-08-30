@@ -713,6 +713,44 @@ main {
 
 /* -------------------- Index Styling -------------------- */
 
+.home-info-hero {
+  display: block;
+  width: 100%;
+}
+
+.home-info-links {
+  display: grid;
+  gap: 1.5rem;
+  width: min(100%, 579px);
+  margin: 1.5rem auto 0;
+}
+
+.home-info-card {
+  background: none;
+
+  figure {
+    margin: 0;
+    text-align: center;
+  }
+
+  .mangapanel {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .home-info-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+}
+
 .blogsect {
   margin-top: 50px;
   display: grid;
@@ -760,8 +798,19 @@ main {
 }
 
 @media only screen and (max-width: 500px) {
-  .blogsect {
-    grid-template-areas: "one" "one";
+  .home-info-links {
+    gap: 1.25rem;
+    width: min(100%, 16rem);
+  }
+
+  .home-news {
+    grid-template-areas: "two";
+    grid-template-rows: auto;
+    margin-top: 2rem;
+
+    > :first-child {
+      display: none;
+    }
   }
 }
 @media only screen and (max-width: 500px) {
@@ -913,6 +962,18 @@ input {
 }
 
 /* ------------------- Post Hero ---------------------- */
+.artist-statement {
+  font-style: italic;
+
+  p:first-child::before {
+    content: '"';
+  }
+
+  p:last-child::after {
+    content: '"';
+  }
+}
+
 .post-hero {
   max-width: 90% !important;
   margin-bottom: 10px;
