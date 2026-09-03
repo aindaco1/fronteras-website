@@ -1,6 +1,6 @@
 # Fronteras Micro-film Festival Website
 
-Website for the [Fronteras Micro-film Festival](https://fronterasfilmfestival.com), showcasing films and installations exploring themes of borders, migration, and identity.
+Website for the [Fronteras Micro-film Festival](https://fronterasmicrofilm.com), showcasing films and installations exploring themes of borders, migration, and identity.
 
 ## Content Management
 
