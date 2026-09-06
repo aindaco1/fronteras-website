@@ -1,29 +1,19 @@
 # AGENTS.md
 
+## Project Guidance
+
+- Read [DEVELOPMENT.md](documentation/DEVELOPMENT.md) for architecture, code conventions, build behavior, and deployment verification before changing code or tooling.
+- Read [CMS-GUIDE.md](documentation/CMS-GUIDE.md) when changing content or CMS fields; the configured schema is `.pages.yml`.
+- Follow [CONTRIBUTING.md](CONTRIBUTING.md#documentation-changes) for documentation placement and uppercase filenames. Keep detailed procedures in the relevant guide.
+
 ## Commands
 
-- **Dev**: `npm start` (runs Sass + Eleventy with hot reload at http://localhost:8080/; writes lightweight pages to `dev/` and cleans `dev/` plus `docs/` on startup and shutdown)
-- **Build**: `npm run build` (cleans output, compiles Sass, builds Eleventy site with original media in `docs/`)
-- **CI build**: `npm run build:ci` (GitHub Actions only; optimizes referenced images and videos after the production build)
+- **Dev**: `npm start` (Sass + Eleventy at http://localhost:8080/)
+- **Build**: `npm run build` (local production output plus performance checks)
+- **CI build**: `npm run build:ci` (GitHub Actions only; media optimization and additional checks)
 
-## Architecture
+## Generated Output
 
-- **SSG**: Eleventy v3 static site generator
-- **Input**: `src/` directory (Markdown, Nunjucks, HTML, Liquid templates)
-- **Dev output**: `dev/` directory (generated pages only; large passthrough assets are served directly from `src/`; removed when `npm start` stops)
-- **Production output**: `docs/` directory (generated, not committed; retained by `npm run build`, cleaned by `npm start`, and deployed via GitHub Actions)
-- **Templates**: Nunjucks (`.njk`) for layouts, Liquid for Markdown processing
-- **Styling**: Sass compiled from `src/_includes/css/index.scss` (uses `sass:math` for division)
-- **Collections**: Posts in `src/posts/`, custom tag collections via `_11ty/getTagList`
-- **Deployment**: Pull requests run the CI build; pushes to `main` optimize referenced JPG/PNG files to WebP, transcode referenced MP4/WebM files to VP9/Opus WebM, and deploy to GitHub Pages
-
-## Code Style
-
-- **Indentation**: 2 spaces (per `.editorconfig`)
-- **Line endings**: LF, trim trailing whitespace, UTF-8 charset
-- **Template formats**: `.md`, `.njk`, `.html`, `.liquid` for pages
-- **Filters**: Use Luxon for date formatting (`readableDate`, `htmlDateString`)
-- **Dates**: UTC zone, format "dd LLL yyyy" for display
-- **Passthrough**: Assets in `src/_includes/{img,css,js,fonts,favicons}`, CNAME, .nojekyll
-- **Masonry grid**: Use Colcade library with 2-column grid, wrap init in `window.addEventListener('load')`
-- **Sass**: Use `math.div()` for division, not `/`
+- `src/` contains website source; `documentation/` contains maintained guides.
+- `dev/` and `docs/` are disposable, ignored build output. `npm start` cleans both at startup and shutdown; `npm run build` cleans both and retains its generated `docs/` output.
+- Preserve original media in `src/`. Run media optimization only through GitHub Actions.

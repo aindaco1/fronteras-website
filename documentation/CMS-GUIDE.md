@@ -1,16 +1,40 @@
-# 🌵 Fronteras website
+# CMS Guide
 
-A comprehensive guide to managing content on the [Fronteras Micro-film Festival website](https://fronterasfilmfestival.com) using Pages CMS.
+For editors managing content on the [Fronteras Micro-film Festival website](https://fronterasmicrofilm.com) using Pages CMS. For source files, builds, and deployment configuration, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+## Contents
+
+- [Access Pages CMS](#access-pages-cms)
+- [Save and Check Publication](#save-and-check-publication)
+- [Films](#how-to-add-or-edit-films)
+- [Installations](#how-to-add-or-edit-installations)
+- [Sponsors](#how-to-add-or-edit-sponsors)
+- [Posts](#how-to-add-or-edit-posts)
+- [Media Library](#media-library)
+- [Troubleshooting](#troubleshooting)
 
 ## Access Pages CMS
 
 1. Go to [app.pagescms.org/aindaco1/fronteras-website](https://app.pagescms.org/aindaco1/fronteras-website)
-2. If prompted, sign in with your account credentials (ask @Alonso Indacochea if you don't have these)
+2. Sign in with your GitHub account. Contact @Alonso Indacochea if you need repository access.
 3. Click on **Films**, **Installations**, **Sponsors**, or **Posts** in the left sidebar
 
 ---
 
-## 🎬 How to Add/Edit Films
+## Save and Check Publication
+
+Use these steps after editing any collection:
+
+1. Click **Save** and complete any commit prompt. Use a message describing the change, such as "Add Coyote film page".
+2. Open the repository's [GitHub Actions runs](https://github.com/aindaco1/fronteras-website/actions/workflows/build-deploy.yml) and find the run for your saved change. A commit to `main` triggers deployment; a pull request runs a build check.
+3. Wait for that run's build and deployment to finish. Media processing can affect how long it takes.
+4. Visit the changed page on [fronterasmicrofilm.com](https://fronterasmicrofilm.com) and check the text, images, and links. If it still shows the previous version, follow [Troubleshooting](#troubleshooting).
+
+Saving commits the content change; confirm publication through the workflow and live page.
+
+---
+
+## How to Add or Edit Films
 
 ---
 
@@ -80,14 +104,7 @@ Select which year(s) this film was selected.
 
 The **Film Still** is the main hero image shown at the top of the film page and in the films gallery.
 
-### Specifications
-
-| Property | Requirement |
-| --- | --- |
-| **Dimensions** | 1920px wide, landscape (16:9 preferred) |
-| **File Size** | Under 500KB |
-| **Format** | JPG |
-| **Content** | High-quality still from the film |
+Use a high-quality landscape still from the film (16:9 preferred). See the shared [image size reference](#image-size-quick-reference) for preparation targets.
 
 ### How to Upload
 
@@ -179,9 +196,9 @@ The animated icon shown in the navigation bar. Default is **🎥 Film**.
 
 Choose a color that complements the film still.
 
-| Color | Hex | Best For |
+| Color | Best For |
 | --- | --- |
-| Light Gray | Default | Most content |
+| Light Gray (default) | Most content |
 | Light Blue | Blue-toned imagery |
 | Yellow | Warm-toned imagery |
 | Aqua | Cool-toned imagery |
@@ -192,11 +209,7 @@ Choose a color that complements the film still.
 
 ### Step 8: Save and Preview
 
-1. Click **Save** in the top right
-2. Add a commit message (e.g., "Add Coyote film page")
-3. Click **Save** to commit
-4. Wait 1-2 minutes for GitHub Actions to deploy
-5. Visit the site to see your new film!
+Follow [Save and Check Publication](#save-and-check-publication), then check the film page and its festival-year gallery.
 
 ---
 
@@ -222,7 +235,7 @@ year:
 
 ---
 
-## 📺 How to Add/Edit Installations
+## How to Add or Edit Installations
 
 ---
 
@@ -288,14 +301,7 @@ Select which year(s) this installation appeared.
 
 The **Hero Image** is the main promotional image at the top of the installation page.
 
-### Specifications
-
-| Property | Requirement |
-| --- | --- |
-| **Dimensions** | 1920px wide, landscape |
-| **File Size** | Under 500KB |
-| **Format** | JPG |
-| **Content** | Best photo of the installation |
+Use your best landscape photo of the installation. See the shared [image size reference](#image-size-quick-reference) for preparation targets.
 
 ### How to Upload
 
@@ -356,14 +362,7 @@ Check **Show All Films Link** to display "All selected films screened" with a li
 
 The **Gallery Images** appear in a masonry grid below the description.
 
-### Specifications
-
-| Property | Requirement |
-| --- | --- |
-| **Dimensions** | 1200px on longest side |
-| **File Size** | Under 300KB each |
-| **Format** | JPG |
-| **Content** | Documentation, detail shots, audience interaction |
+Include documentation, detail shots, and audience interaction in any orientation. See the shared [image size reference](#image-size-quick-reference) for preparation targets.
 
 ### How to Upload
 
@@ -405,11 +404,7 @@ Choose a color that complements your hero image.
 
 ### Step 8: Save and Preview
 
-1. Click **Save** in the top right
-2. Add a commit message (e.g., "Add The Hands That Hold Us installation")
-3. Click **Save** to commit
-4. Wait 1-2 minutes for deployment
-5. Visit the site to see your installation!
+Follow [Save and Check Publication](#save-and-check-publication), then check the installation page, film links, and photo gallery.
 
 ---
 
@@ -439,7 +434,7 @@ galleryImages:
 
 ---
 
-## 🤝 How to Add/Edit Sponsors
+## How to Add or Edit Sponsors
 
 ---
 
@@ -507,14 +502,7 @@ Select which year(s) this sponsor supported.
 
 ### Step 3: Upload Logo
 
-### Specifications
-
-| Property | Requirement |
-| --- | --- |
-| **Dimensions** | 400-500px square (or similar height horizontal) |
-| **File Size** | Under 200KB |
-| **Format** | PNG with transparent background (strongly preferred) |
-| **Content** | Official organization logo |
+Use the organization's official logo. See the shared [image size reference](#image-size-quick-reference) for preparation targets.
 
 ### How to Upload
 
@@ -533,11 +521,7 @@ Select which year(s) this sponsor supported.
 
 ### Step 4: Save and Preview
 
-1. Click **Save** in the top right
-2. Add a commit message (e.g., "Add Fulcrum Fund sponsor")
-3. Click **Save** to commit
-4. Wait 1-2 minutes for deployment
-5. Visit the sponsors page to verify!
+Follow [Save and Check Publication](#save-and-check-publication), then check the sponsor's logo, website link, and tier placement on the sponsors page.
 
 ---
 
@@ -554,7 +538,7 @@ year:
 
 ---
 
-## 📢 How to Add/Edit Posts
+## How to Add or Edit Posts
 
 ---
 
@@ -647,13 +631,7 @@ Icon shown in navigation when viewing the post.
 
 The **Image** appears at the top of the post.
 
-### Specifications
-
-| Property | Requirement |
-| --- | --- |
-| **Dimensions** | 1600×900px (16:9) |
-| **File Size** | Under 350KB |
-| **Format** | JPG or PNG |
+See the shared [image size reference](#image-size-quick-reference) for preparation targets. The optional **Social Image Override** field lets you use a different image for social sharing, such as a static image instead of a GIF.
 
 ### How to Upload
 
@@ -734,11 +712,7 @@ Your content here...
 
 ### Step 5: Save and Preview
 
-1. Click **Save** in the top right
-2. Add a commit message (e.g., "Add film selection announcement")
-3. Click **Save** to commit
-4. Wait 1-2 minutes for deployment
-5. Visit the posts page to verify!
+Follow [Save and Check Publication](#save-and-check-publication), then check the post itself and its placement in the blog archive.
 
 ---
 
@@ -770,7 +744,7 @@ Congratulations to the selected filmmakers!
 
 ---
 
-## 📁 Media Library
+## Media Library
 
 ---
 
@@ -782,7 +756,11 @@ Congratulations to the selected filmmakers!
 | `/img/sketches/` | Installation hero images | Installations → Hero Image |
 | `/img/sponsors/` | Sponsor logos | Sponsors → Logo |
 | `/img/blog/` | Post header images | Posts → Image |
+| `/img/installations/` | Installation gallery uploads | Installations → Gallery Images |
 | `/img/[installation-name]/` | Installation gallery images | Manual |
+| `/img/branding/` | Dust Wave and Fronteras logos | Manual |
+
+These are website paths. Original files are stored in the repository under `src/_includes/img/`. Keep source references in this form; the deployment build creates optimized asset URLs automatically.
 
 ---
 
@@ -796,18 +774,20 @@ Congratulations to the selected filmmakers!
 
 ### Image Size Quick Reference
 
-| Type | Dimensions | Max Size | Format |
+Use these shared preparation targets before uploading. The file size targets are editorial guidance; they are not all enforced by the CMS form.
+
+| Type | Dimensions | File Size Target | Format |
 | --- | --- | --- | --- |
-| Film Still | 1920px wide | 500KB | JPG |
-| Installation Hero | 1920px wide | 500KB | JPG |
-| Installation Gallery | 1200px on longest side | 300KB | JPG |
-| Sponsor Logo | 400-500px square | 200KB | PNG (transparent) |
-| Post Header | 1600×900px | 350KB | JPG |
-| Laurel Badge | Variable | 100KB | PNG (transparent) |
+| Film Still | At least 1920px wide, landscape | Under 500KB | JPG |
+| Installation Hero | At least 1920px wide, landscape | Under 500KB | JPG |
+| Installation Gallery | At least 1200px on longest side | Under 300KB each | JPG |
+| Sponsor Logo | 400-500px square, or horizontal with similar height | Under 200KB | PNG (transparent) |
+| Post Header | 1600×900px (16:9) | Under 350KB | JPG or PNG |
+| Laurel Badge | Variable | Under 100KB | PNG (transparent) |
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ---
 
@@ -825,7 +805,7 @@ Congratulations to the selected filmmakers!
 
 ### Changes not appearing on site?
 
-- Wait 1-2 minutes for GitHub Actions to build and deploy
+- Follow [Save and Check Publication](#save-and-check-publication) and check the workflow run for your change
 - Hard refresh the page (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows)
 - Check GitHub Actions for build errors
 - Contact @Alonso Indacochea if issues persist
@@ -838,10 +818,10 @@ Congratulations to the selected filmmakers!
 
 ---
 
-## 📞 Support
+## Support
 
 For questions or issues, contact @Alonso Indacochea.
 
 ---
 
-*Last updated: August 2026*
+*Last updated: September 2026*
