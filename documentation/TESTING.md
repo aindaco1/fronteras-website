@@ -142,6 +142,11 @@ repository. The workflow uploads screenshots, diffs, traces, and sanitized Jev
 reports even when a check fails. A red optional workflow surfaces review work;
 it does not change branch protection or the production deployment workflow.
 
+The container explicitly trusts only this checkout and its pinned Platform
+submodule for Git operations. This lets the shared pin check inspect both
+repositories despite the runner/container ownership difference; it does not
+disable the pin assertion or trust arbitrary directories.
+
 ## Shared dependency and rollback
 
 The first adoption pins Platform v0.40.0 at
@@ -181,5 +186,11 @@ On September 24, 2026, Node 24's full `npm run test:jev` command passed 10 offli
 tests, the build/performance checks (83 HTML files), and 14 browser tests. Its
 preview prepared 10 questions with zero network attempts. All four explicit
 visual mutation controls failed their assertions as expected. Workflow lint,
-documentation links, and whitespace checks passed. Live Jev and remote CI were
-not run, and nothing was deployed.
+documentation links, and whitespace checks passed. This initial local run made
+no live Jev calls and preceded CI and deployment.
+
+The integration was subsequently merged in
+[PR #31](https://github.com/aindaco1/fronteras-website/pull/31).
+[Build and Deploy run 35959540256](https://github.com/aindaco1/fronteras-website/actions/runs/35959540256)
+passed the optimized build, Pages deployment, cache-rule synchronization, purge,
+and live asset-cache checks for commit `a53f3d9`.
