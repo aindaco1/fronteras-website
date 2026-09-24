@@ -596,7 +596,7 @@ main {
 
 .container {
   width: 960px;
-  max-width: 95vw;
+  max-width: min(95vw, 100%);
   margin: 0 auto;
   img {
     max-width: 100%;

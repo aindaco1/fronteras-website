@@ -35,7 +35,7 @@ useColcade: true
     <div class="grid-col grid-col--2"></div>
     {% for image in galleryImages %}
     <div class="grid-item imagediv">
-      <img class="imagecard" src="{{ image }}" alt="" loading="lazy" decoding="async"/>
+      <img class="imagecard" {% imageDimensions image %} src="{{ image }}" alt="" loading="lazy" decoding="async"/>
     </div>
     {% endfor %}
   </div>

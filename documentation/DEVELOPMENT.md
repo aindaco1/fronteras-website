@@ -7,6 +7,7 @@ For developers maintaining the Fronteras website. See [CMS-GUIDE.md](CMS-GUIDE.m
 Use Node.js 24 to match the [GitHub Actions workflow](../.github/workflows/build-deploy.yml). From the repository root:
 
 ```bash
+git submodule update --init --recursive
 npm ci
 npm start
 ```
@@ -25,9 +26,13 @@ Run these commands from the repository root. [package.json](../package.json) def
 | `npm run build` | Cleans output, compiles Sass, builds the production site, and runs local performance checks |
 | `npm run sass` | Compiles `src/_includes/css/index.scss` to compressed `index.css` without a source map |
 | `npm run clean` | Removes `dev/` and `docs/` |
+| `npm run clean:artifacts` | Also removes generated browser reports and Jev captures/reports; keeps dependencies, fixtures, and baselines |
 | `npm run test:performance` | Checks an existing production build in `docs/`; already included in `npm run build` |
 | `npm run build:ci` | GitHub Actions only: builds, optimizes media, and validates the optimized output |
 | `npm run test:performance:ci` | Checks an existing optimized build in `docs/`; included in `npm run build:ci` |
+| `npm test` | Offline regression checks, including the immutable Platform pin and Jev controls |
+| `npm run test:visual:container` | Compares an existing local build against reviewed desktop/mobile screenshots |
+| `npm run test:jev` | Builds, runs offline/browser checks, and prepares a zero-network Jev preview |
 
 `npm run build` leaves the generated `docs/` directory available for local inspection and retains original media formats. Both output directories are ignored by Git. Store maintained documentation in `documentation/`; `docs/` is the website artifact uploaded for deployment.
 
@@ -74,6 +79,11 @@ The [base layout](../src/_includes/layouts/base.njk) provides the shared page sh
 
 Eleventy assigns content hashes to the compiled stylesheet, Colcade script, and four font files, and copies them under `/assets/`. It also passes through original media, favicons, `CNAME`, and `.nojekyll`. CI then fingerprints and optimizes media as described above.
 
+The `imageDimensions` shortcode reads original image metadata using the existing
+Sharp dependency and reserves space in film and installation grids. This prevents
+lazy-image loading from changing Colcade's initial column assignments. It does
+not modify media; optimization remains restricted to CI.
+
 ### Code Conventions
 
 - Use two-space indentation, UTF-8, LF line endings, a final newline, and no trailing whitespace, as specified in [.editorconfig](../.editorconfig).
@@ -93,13 +103,19 @@ For code, template, stylesheet, or content changes, run `npm run build` and insp
 
 The CI check additionally requires fingerprinted media, verifies its referenced files, and rejects remaining raw media references or the raw `docs/img/` output directory. These are generated-output checks; inspect the rendered site to assess layout and interaction.
 
+See [TESTING.md](TESTING.md) for screenshot comparisons, baseline review, the
+optional CI workflow, and advisory Jev text checks. Normal builds remain offline;
+Jev is never a substitute for a screenshot comparison or release verification.
+
 For changes limited to repository documentation, check relative links, heading anchors, filenames, and `git diff --check`. These guides are outside Eleventy's `src/` input, so a website build is not needed solely to validate prose or documentation moves.
 
 ## Deployment
 
 The [Build and Deploy workflow](../.github/workflows/build-deploy.yml) runs on pull requests targeting `main`, pushes to `main`, and manual dispatches. Pull requests build and validate without deploying. Pushes to `main` and manual dispatches also upload and deploy the generated `docs/` artifact to GitHub Pages.
 
-The build job uses Node.js 24, installs locked dependencies with `npm ci`, restores the media cache, installs FFmpeg, and runs `npm run build:ci`.
+The build job initializes the pinned Platform submodule, uses Node.js 24,
+installs locked dependencies with `npm ci`, runs offline regression checks,
+restores the media cache, installs FFmpeg, and runs `npm run build:ci`.
 
 ### Repository Settings
 
@@ -122,3 +138,17 @@ node scripts/verify-production-assets.mjs
 A successful local build establishes local output validity. Check the relevant workflow run for deployment results, and check the live site for published content. If a cache step fails after the Pages deployment succeeds, inspect that step separately: publication may already have completed. Cloudflare steps are skipped when its integration variable is not enabled.
 
 The repository also retains [netlify.toml](../netlify.toml), configured to run the local production build and publish `docs/`. The deployment workflow described here uses GitHub Pages.
+
+### Post-deployment cleanup
+
+After the exact deployed commit passes the workflow and live verification,
+preserve any needed live Jev evidence, then run `npm run clean:artifacts`.
+Keep `node_modules/`, the pinned `shared/dust-wave-platform/` checkout, source
+media, lockfiles, fixtures, and `tests/browser/baselines/` for local work. Keep
+the matching Playwright image; do not prune other projects' containers or caches.
+The next `npm run build` or `npm run test:jev` recreates generated output.
+
+Fetch/prune remote-tracking references, then remove only branches whose work is
+confirmed merged and which are not used by another worktree. Leave the checkout
+on synchronized `main`. Untracked source files are not build output; inspect or
+archive them before removing anything.

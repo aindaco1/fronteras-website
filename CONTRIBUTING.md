@@ -8,6 +8,10 @@ Follow the [CMS guide](documentation/CMS-GUIDE.md) to add or edit films, install
 
 Follow the [development guide](documentation/DEVELOPMENT.md) for local setup, architecture, code conventions, builds, deployment, and validation. Start with the existing templates and CMS schema when changing content behavior.
 
+Use the [testing guide](documentation/TESTING.md) for desktop/mobile screenshot
+comparisons and optional Jev diagnostics. Review visual changes before updating
+baselines, and keep the Platform submodule initialized at the committed pin.
+
 ## Documentation Changes
 
 Keep maintained guides in `documentation/` with uppercase basenames and a `.md` extension, such as `DEVELOPMENT.md`. Keep `README.md`, `CONTRIBUTING.md`, and `AGENTS.md` at the root as entry points; a license file also belongs at the root.
