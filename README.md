@@ -11,6 +11,7 @@ Use [Pages CMS](https://app.pagescms.org/aindaco1/fronteras-website) to edit Fil
 Use Node.js 24 to match CI, then run:
 
 ```bash
+git submodule update --init --recursive
 npm ci
 npm start  # Dev server at http://localhost:8080/
 ```
@@ -31,5 +32,6 @@ Pull requests run the CI build; pushes to `main` build and deploy to GitHub Page
 |----------|---------|
 | [CMS-GUIDE.md](documentation/CMS-GUIDE.md) | Content editing and shared media guidance |
 | [DEVELOPMENT.md](documentation/DEVELOPMENT.md) | Development, architecture, conventions, and deployment |
+| [TESTING.md](documentation/TESTING.md) | Visual regression baselines, shared Platform helpers, and optional Jev evaluation |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Where to start as a contributor |
 | [AGENTS.md](AGENTS.md) | Repository-wide instructions for AI assistants |

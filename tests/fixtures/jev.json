@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "policy": { "minimumMargin": 0.1, "models": ["jev-1.13.0"] },
+  "labelProvenance": "Engineering-authored synthetic controls; not independent human calibration.",
+  "requirement": "Read the candidate as a visitor reading the page in order. Its prose reads coherently, without unrelated sentence fragments joined together, sentences cut off mid-thought, or needless repetition of entire descriptive statements. Short headings, names, credits, lists, and intentional artistic language are allowed. Do not infer omissions from a reference, assess factual truth, require extra details, or judge visual layout.",
+  "controls": [
+    { "id": "coherent", "candidate": "Crossings\nAn installation about journeys across borders. Visitors share stories about finding a new home.", "expected": "pass" },
+    { "id": "concise", "candidate": "Crossings\nVisitors share stories about finding a new home in this installation about border crossings.", "expected": "pass" },
+    { "id": "repeated", "candidate": "Crossings\nAn installation about journeys across borders. An installation about journeys across borders. An installation about journeys across borders.", "expected": "fail" },
+    { "id": "cut-off", "candidate": "Crossings\nAn installation about journeys across borders. Visitors share stories about finding a new home because", "expected": "fail" }
+  ]
+}

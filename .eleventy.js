@@ -42,6 +42,8 @@ const assetPaths = {
 };
 
 module.exports = function (eleventyConfig) {
+  // Reserve image space before lazy loading so masonry placement is repeatable.
+  eleventyConfig.addAsyncShortcode("imageDimensions", require("./_11ty/imageDimensions"));
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
