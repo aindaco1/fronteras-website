@@ -19,7 +19,7 @@ npm run test:visual:container
 
 The container command uses an already running Podman or Docker engine. It mounts
 this checkout, uses its installed JavaScript dependencies and built `docs/`, and
-runs Playwright 1.62.1 in the matching Ubuntu Noble Linux ARM64 image. On x86
+runs Playwright 1.63.0 in the matching Ubuntu Noble Linux ARM64 image. On x86
 hosts, ARM64 emulation must be available. The first run may download the image.
 CI uses the same image on `ubuntu-24.04-arm`. Node packages and the image's
 Playwright version must be upgraded together.

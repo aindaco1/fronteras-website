@@ -10,5 +10,5 @@ fi
 exec "$engine" run --rm --platform linux/arm64 --ipc=host \
   -e VISUAL_CONTROLS \
   -v "$PWD:/work" -w /work \
-  mcr.microsoft.com/playwright:v1.62.1-noble \
+  mcr.microsoft.com/playwright:v1.63.0-noble \
   npx --no-install playwright test "$@"
