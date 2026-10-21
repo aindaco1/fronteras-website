@@ -26,7 +26,7 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE/shared/dust-wave-platform"
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           cache: npm
       - run: npm ci
       - run: npm test
