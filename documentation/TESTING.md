@@ -22,7 +22,9 @@ this checkout, uses its installed JavaScript dependencies and built `docs/`, and
 runs Playwright 1.64.1 in the matching Ubuntu Noble Linux ARM64 image. On x86
 hosts, ARM64 emulation must be available. The first run may download the image.
 CI uses the same image on `ubuntu-24.04-arm`. Node packages and the image's
-Playwright version must be upgraded together.
+Playwright version must be upgraded together. Dependabot excludes `@playwright/test`
+from automatic updates so a coordinated browser upgrade can also review the pin
+assertion and screenshot baselines.
 
 For native browser debugging, run `npx playwright install chromium` and
 `npm run test:visual`. Baselines are separated by OS and architecture; only the
