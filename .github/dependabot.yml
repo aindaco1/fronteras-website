@@ -4,6 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Upgrade Playwright with its container, pin assertion, and reviewed screenshots.
+    ignore:
+      - dependency-name: "@playwright/test"
     open-pull-requests-limit: 5
     groups:
       eleventy:
